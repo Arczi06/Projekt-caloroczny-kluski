@@ -1,0 +1,200 @@
+KSIĄŻKI
+1. **"Zbrodnia i kara"**  
+   Autor: Fiodor Dostojewski  
+   Data wydania: 1866  
+
+2. **"Mistrz i Małgorzata"**  
+   Autor: Michaił Bułhakow  
+   Data wydania: 1967  
+
+3. **"Rok 1984"**  
+   Autor: George Orwell  
+   Data wydania: 1949  
+
+4. **"Pani Dalloway"**  
+   Autor: Virginia Woolf  
+   Data wydania: 1925  
+
+5. **"Człowiek w poszukiwaniu sensu"**  
+   Autor: Viktor E. Frankl  
+   Data wydania: 1946  
+
+6. **"Sto lat samotności"**  
+   Autor: Gabriel García Márquez  
+   Data wydania: 1967  
+
+7. **"Wielki Gatsby"**  
+   Autor: F. Scott Fitzgerald  
+   Data wydania: 1925  
+
+8. **"Opowieść wigilijna"**  
+   Autor: Charles Dickens  
+   Data wydania: 1843  
+
+9. **"Złodziejka książek"**  
+   Autor: Markus Zusak  
+   Data wydania: 2005  
+
+10. **"W pustyni i w puszczy"**  
+   Autor: Henryk Sienkiewicz  
+   Data wydania: 1911  
+
+11. **"Duma i uprzedzenie"**  
+   Autor: Jane Austen  
+   Data wydania: 1813  
+
+12. **"Na zachodzie bez zmian"**  
+   Autor: Erich Maria Remarque  
+   Data wydania: 1929  
+
+13. **"Harry Potter i Kamień Filozoficzny"**  
+   Autor: J.K. Rowling  
+   Data wydania: 1997  
+
+14. **"Księgi Jakubowe"**  
+   Autor: Olga Tokarczuk  
+   Data wydania: 2014  
+
+15. **"Folwark zwierzęcy"**  
+   Autor: George Orwell  
+   Data wydania: 1945  
+
+16. **"Moby Dick"**  
+   Autor: Herman Melville  
+   Data wydania: 1851  
+
+17. **"Wielkie nadzieje"**  
+   Autor: Charles Dickens  
+   Data wydania: 1860  
+
+18. **"Złota gałąź"**  
+   Autor: James Frazer  
+   Data wydania: 1890  
+
+19. **"Cztery umowy"**  
+   Autor: Don Miguel Ruiz  
+   Data wydania: 1997  
+
+20. **"Fahrenheit 451"**  
+   Autor: Ray Bradbury  
+   Data wydania: 1953  
+
+21. **"Alchemik"**  
+   Autor: Paulo Coelho  
+   Data wydania: 1988  
+
+22. **"Książę"**  
+   Autor: Niccolò Machiavelli  
+   Data wydania: 1532  
+
+23. **"Pani Bovary"**  
+   Autor: Gustave Flaubert  
+   Data wydania: 1856  
+
+24. **"Wielki nauczyciel"**  
+   Autor: Mikhail Bulgakov  
+   Data wydania: 1966  
+
+25. **"Mały Książę"**  
+   Autor: Antoine de Saint-Exupéry  
+   Data wydania: 1943  
+
+26. **"Miłość w czasach zarazy"**  
+   Autor: Gabriel García Márquez  
+   Data wydania: 1985  
+
+27. **"Portret Doriana Graya"**  
+   Autor: Oscar Wilde  
+   Data wydania: 1890  
+
+28. **"Przeminęło z wiatrem"**  
+   Autor: Margaret Mitchell  
+   Data wydania: 1936  
+
+29. **"Wędrowiec"**  
+   Autor: David Mitchell  
+   Data wydania: 2010  
+
+30. **"Dziecię boże"**  
+   Autor: Selma Lagerlöf  
+   Data wydania: 1907  
+
+31. **"Słowacki"**  
+   Autor: Adam Mickiewicz  
+   Data wydania: 1855  
+
+32. **"Ciemno, prawie noc"**  
+   Autor: Joanna Bator  
+   Data wydania: 2012  
+
+33. **"Ziemia obiecana"**  
+   Autor: Władysław Reymont  
+   Data wydania: 1899  
+
+34. **"Kamienie na szaniec"**  
+   Autor: Aleksander Kamiński  
+   Data wydania: 1943  
+
+35. **"Święty Mikołaj"**  
+   Autor: P. E. Ouspensky  
+   Data wydania: 1915  
+
+36. **"Cynkowi chłopcy"**  
+   Autor: M. H. Sweeney  
+   Data wydania: 1980  
+
+37. **"Księga tysiąca i jednej nocy"**  
+   Autor: Różni autorzy  
+   Data wydania: IX wiek  
+
+38. **"Władca Pierścieni"**  
+   Autor: J.R.R. Tolkien  
+   Data wydania: 1954-1955  
+
+39. **"Czerwony i czarny"**  
+   Autor: Stendhal  
+   Data wydania: 1830  
+
+40. **"Zarys filozofii dziejów"**  
+   Autor: Georg Wilhelm Friedrich Hegel  
+   Data wydania: 1837  
+
+41. **"Walden"**  
+   Autor: Henry David Thoreau  
+   Data wydania: 1854  
+
+42. **"Król Edyp"**  
+   Autor: Sofokles  
+   Data wydania: V wiek p.n.e.  
+
+43. **"Gorzka czekolada"**  
+   Autor: Laura Esquivel  
+   Data wydania: 1989  
+
+44. **"Słowiańskie bóstwa"**  
+   Autor: Aleksander Brückner  
+   Data wydania: 1905  
+
+45. **"Współczesność"**  
+   Autor: Witold Gombrowicz  
+   Data wydania: 1953  
+
+46. **"Mały książę"**  
+   Autor: Antoine de Saint-Exupéry  
+   Data wydania: 1943  
+
+47. **"Sztuka wojny"**  
+   Autor: Sun Tzu  
+   Data wydania: V wiek p.n.e.  
+
+48. **"Siła nawyku"**  
+   Autor: Charles Duhigg  
+   Data wydania: 2012  
+
+49. **"Odyseja"**  
+   Autor: Homer  
+   Data wydania: VIII wiek p.n.e.  
+
+50. **"Człowiek bez właściwości"**  
+   Autor: Robert Musil  
+   Data wydania: 1930  
