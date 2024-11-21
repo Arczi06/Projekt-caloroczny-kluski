@@ -22,15 +22,16 @@ header {
 
 header > h1 {
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .settings-button {
     background: url('settings-removebg-preview.png') no-repeat center center; /* ustawienia */
     background-size: contain;
-    width: 40px; /*przycisk */
-    height: 40px;
-    border: none;
+    width: 35px; /*przycisk */
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 100%;
     cursor: pointer;
 }
 .settings-button:hover {
@@ -56,29 +57,38 @@ main {
     border: 1px solid #000000; 
     background-color: white; 
     border-radius: 10px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Cień dla okien */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     padding: 20px; 
     text-align: center; 
     background-color: rgb(60,70,99);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.window-card:hover {
+    box-shadow: 0 10px 10px black;
+    background-color: rgb(70, 77, 99);
+    transition: 0.2s;
+}
 
 .icon {
     width: auto; 
-    height: 100px; 
+    height: 90px; 
     margin-bottom: 10px; 
 }
-.icon:hover{
+/* .icon:hover{
     height: 100px;
     box-shadow: 0 10px 10px black;
     transition: 0.2s;
-}
+} */
 
 .window-card5 {
     grid-column: span 2; /* coby było na dwa okna jakby */
     text-align: center; 
-    margin-top: 20px; 
+    margin-top: 15px; 
     background-color: rgb(60,70,99);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
+footer {
+    height: 2vh;
+    background-color: #343a40; 
+}
