@@ -45,7 +45,7 @@ $conn->close();
                 <a href="#" class="active">Podgląd</a>
                 <a href="profil.php">Profil</a>
                 <a href="#">Ustawienia</a>
-                <a href="#">Wiadomości</a>
+                <a href="chat.php">Wiadomości</a>
                 <a href="#">Strona</a>
                 <a href="logout.php" id="Logout">Logout</a>
             </nav>

@@ -35,6 +35,9 @@ $conn->close();
 <div class="profile-container">
     <div class="profile-header">
         <img src="profile_images/default_profile.jpg" alt="User Profile Image" class="profile-img">
+        <button class ="btn">
+            <a href="dashboard.php">Powrót</a>
+        </button>
         <h1><?php echo htmlspecialchars($user['username']); ?></h1>
         <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
     </div>
