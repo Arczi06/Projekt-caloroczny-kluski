@@ -6,12 +6,12 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #2d3d53, #3a4a63); /* Mroczne, elektryczne tony */
+    background-color: #2f353b;
+    color: #dfe1e3;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f1f1f1; /* Jasny tekst na ciemnym tle */
     transition: background-color 0.3s ease;
 }
 
@@ -23,7 +23,7 @@ body {
 }
 
 .form-box {
-    background-color: #1f2634; /* Ciemne tło */
+    background-color: #3e444b;
     padding: 40px;
     width: 100%;
     max-width: 400px;
@@ -41,7 +41,7 @@ body {
 h2 {
     margin-bottom: 20px;
     font-size: 28px;
-    color: #f1f1f1;
+    color: #f0a500;
     font-weight: 600;
 }
 
@@ -55,17 +55,17 @@ h2 {
     width: 100%;
     padding: 14px 20px;
     font-size: 16px;
-    background: #2a3548; /* Ciemniejsze tło inputów */
-    border: 2px solid #444;
+    background: #2f353b;
+    border: 2px solid #5d6d7e; 
     border-radius: 8px;
     outline: none;
-    color: #f1f1f1;
+    color: #dfe1e3;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-group input:focus {
-    border-color: #00e5ff; /* Neonowy niebieski przy focus */
-    box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+    border-color: #f0a500;
+    box-shadow: 0 0 8px rgba(240, 165, 0, 0.3); 
 }
 
 .input-group label {
@@ -83,8 +83,8 @@ h2 {
     top: -10px;
     left: 18px;
     font-size: 12px;
-    color: #00e5ff; /* Neonowy niebieski dla label */
-    background: #1f2634;
+    color: #f0a500;
+    background: #3e444b;
     padding: 0 4px;
 }
 
@@ -92,16 +92,16 @@ button {
     width: 100%;
     padding: 14px;
     font-size: 16px;
-    background-color: #00e5ff; /* Neonowy niebieski przycisk */
+    background-color: #f0a500;
     border: none;
     border-radius: 8px;
-    color: #1f2634; /* Ciemny tekst na przycisku */
+    color: #2f353b;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #008db3; /* Ciemniejszy odcień niebieskiego */
+    background-color: #e08500; 
     transform: translateY(-3px);
 }
 
@@ -111,7 +111,7 @@ button:hover {
 }
 
 .form-footer a {
-    color: #00e5ff; /* Neonowy link */
+    color: #f0a500; 
     text-decoration: none;
     font-weight: 600;
 }

@@ -1,12 +1,20 @@
-document.querySelectorAll('tr').forEach(row => {
-    const dueDateElement = row.querySelector('.due-date');
-    if (dueDateElement) {
-        const dueDate = new Date(dueDateElement.innerText);
-        const today = new Date();
+document.addEventListener("DOMContentLoaded", () => {
+    const profileImage = document.querySelector(".profile-img");
+    const profileHeader = document.querySelector(".profile-header");
+    const profileContainer = document.querySelector(".profile-container");
 
-        // Check if the due date is earlier than today
-        if (dueDate < today && row.querySelector('td:last-child').innerText !== 'Returned') {
-            row.classList.add('overdue');  // Highlight overdue rows in red
-        }
-    }
+    profileImage.addEventListener("load", () => {
+        profileImage.classList.add("loaded");
+    });
+
+    setTimeout(() => {
+        profileImage.classList.add("loaded");
+        profileHeader.classList.add("fadeIn");
+        profileContainer.classList.add("fadeIn");
+    }, 100);
+
+    const backButton = document.querySelector('.btn-back');
+    backButton.addEventListener('click', () => {
+        document.body.style.backgroundColor = '#34495e';
+    });
 });
