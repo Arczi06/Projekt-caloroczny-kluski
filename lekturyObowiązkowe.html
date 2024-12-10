@@ -69,7 +69,7 @@
 
                 let currentIndex = 0;
 
-                // Funkcja do aktualizacji przesunięcia
+                
                 function updateCarousel() {
                     const containerWidth = document.querySelector('.carousel-container').offsetWidth;
                     carousel.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
@@ -78,7 +78,7 @@
                     });
                 }
 
-                // Obsługa strzałek
+                //-><-
                 leftArrow.addEventListener('click', () => {
                     if (currentIndex > 0) {
                         currentIndex--;
@@ -93,7 +93,7 @@
                     }
                 });
 
-                    // Ustawienia początkowe
+                    // 00
                     window.addEventListener('resize', updateCarousel);
                     updateCarousel();
                 
