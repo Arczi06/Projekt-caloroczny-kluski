@@ -1,45 +1,54 @@
 <?php
 include 'config.php';
-
 session_start();
-$user_id = $_SESSION['user_id'];
 
-$sql = "SELECT username, email FROM users WHERE id = ?";
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT username, email FROM users WHERE id=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
-
+$stmt->bind_result($username, $email);
+$stmt->fetch();
 $stmt->close();
-$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Użytkownika</title>
-    <link rel="stylesheet" href="profil.css?v=1.0">
-<script src="profil.js?v=1.0"></script>
+    <title>Profil użytkownika</title>
+    <link rel="stylesheet" href="profil.css">
 </head>
 <body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Witaj, <?php echo htmlspecialchars($username); ?></h1>
+            <div class="email"><?php echo htmlspecialchars($email); ?></div>
+        </div>
+        <img src="profile.jpg" alt="Profile Image" class="profile-img">
+        <div class="header-buttons">
+            <a href="dashboard.php" class="btn-back">Powrót</a>
+        </div>
 
-<div class="profile-container">
-    <div class="header-buttons">
-        <a href="dashboard.php" class="btn-back">⟵ Powrót</a>
+        <div class="activity-calendar">
+            <h2>Aktywność</h2>
+            <div id="calendar-month-year"></div>
+            <div class="calendar-navigation">
+                <button id="prev-month" class="calendar-btn">Poprzedni miesiąc</button>
+                <button id="next-month" class="calendar-btn">Następny miesiąc</button>
+            </div>
+            <div class="calendar-container"></div>
+        </div>
     </div>
 
-    <div class="profile-header">
-        <img src="profile.jpg" alt="User Profile Image" class="profile-img">
-        <h1><?php echo htmlspecialchars($user['username']); ?></h1>
-        <p class="email"><?php echo htmlspecialchars($user['email']); ?></p>
-    </div>
-
-    <div>
-        <h1>POMYSŁY</h1>
-        <p>kalendarz aktywnosci taki jak na githubie i nv makies 3 ulubioen ksiażki ???</p>
-    </div>
-</div>
+    <script src="profil.js"></script>
 </body>
 </html>
+
+<?php $conn->close(); ?>

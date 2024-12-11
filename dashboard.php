@@ -59,22 +59,10 @@ $conn->close();
                 </div>
             </header>
             <section class="dashboard-section">
-                <div class="card">
+                <!-- <div class="card">
                     <h3>Wypożyczone Książki</h3>
                     <p>6</p>
-                </div>
-                <div class="card">
-                    <h3>Oddane książki</h3>
-                    <p>1,234</p>
-                </div>
-                <div class="card">
-                    <h3>Nieoddane książki</h3>
-                    <p>543</p>
-                </div>
-                <div class="card">
-                    <h3>Zaznaczone</h3>
-                    <p>67</p>
-                </div>
+                </div> -->
             </section>
             <section class="dashboard-section">
                 <div class="chart-container">

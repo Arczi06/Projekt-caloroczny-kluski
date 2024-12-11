@@ -21,7 +21,7 @@ h1 {
     width: 100%;
     max-width: 500px;
     height: 400px;
-    border: 1px solid #444c54;
+    border: 2px solid #444c54;
     padding: 15px;
     overflow-y: auto;
     background-color: #3e444b;
@@ -32,16 +32,34 @@ h1 {
     flex-direction: column;
 }
 
-#chat-box p {
-    margin: 10px 0;
-    padding: 10px;
+
+.my-message {
     background-color: #f0a500;
+    color: #2f353b;
+    text-align: right;
+    align-self: flex-end;
+    margin-left: auto;
+    padding: 10px;
     border-radius: 8px;
     max-width: 80%;
     word-wrap: break-word;
     font-size: 14px;
     line-height: 1.5;
-    color: #2f353b;
+}
+
+
+.other-message {
+    background-color: #3e444b; 
+    color: #dfe1e3;
+    text-align: left;
+    align-self: flex-start;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 #chat-form {
@@ -86,15 +104,6 @@ h1 {
 
 #chat-form button:active {
     transform: scale(0.98);
-}
-
-#chat-box.empty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-style: italic;
-    color: #aaa;
-    font-size: 16px;
 }
 
 .navigation {
