@@ -9,7 +9,8 @@ body {
     background: url("bgc.jpg") no-repeat;
     background-color: rgb(34, 35, 37);
     background-size: cover;
-    color: #cdcdcd;
+    background-attachment: fixed;
+    color: white;
 }
 
 header {
@@ -18,7 +19,7 @@ header {
     align-items: center;
     padding: 10px 20px;
     background-color: #343a40;
-    color: #cdcdcd;
+    color: white;
 }
 
 header > h1 {
@@ -60,6 +61,7 @@ main {
 .window-card {
     grid-column: span 2;
     border: 1px solid #000000;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -85,6 +87,7 @@ main {
     background-color: rgb(60,70,99);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 
 /* @media (max-width: 640px) {
     #windowGallery {
@@ -183,4 +186,3 @@ main {
         margin: auto;
     }
 }
-
