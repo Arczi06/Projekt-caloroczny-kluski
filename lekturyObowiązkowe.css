@@ -9,6 +9,7 @@ body {
     background: url("bgc.jpg") no-repeat;
     background-color: rgb(34, 35, 37);
     background-size: cover;
+    background-attachment: fixed;
 }
 header {
     justify-content: space-between;
