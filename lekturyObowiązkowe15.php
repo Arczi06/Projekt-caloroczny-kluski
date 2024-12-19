@@ -1,3 +1,7 @@
+<?php
+include 'config.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +18,9 @@
     <main>
         <nav>
             <ul>
-                <li><a href="lekturyObowiązkowe13.php">Klasy podstawowe 1 - 3</a></li>
+                <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3</a></li>
                 <li><a href="core.html">Strona Główna</a></li>
-                <li><a href="lekturyObowiązkowe45.php">Klasy średnie 4 - 8</a></li>
+                <li><a href="lekturyObowiązkowe45.php">Kl. średnie 4 - 8</a></li>
             </ul>
         </nav>
         <section>
@@ -27,31 +31,62 @@
                         <header>
                             <h4>KLASA I</h4>
                         </header>
-                        <p>Julian Tuwim – Wybór wierszy</p>
-                        <p>Jan Brzechwa – Wybór wierszy</p>
-                        <p>Czesław Janczarski – Jak Wojtek został strażakiem</p>
-                        <p>Maria Konopnicka – Wybór utworów</p>
+                        <?php
+                            if ($resultS1->num_rows > 0) {
+                                while($rowS1 = $resultS1->fetch_assoc()) {
+                                    echo "Book: " . $rowS1["tittle"]. " - Author: " . " " . $rowS1["author_name"] . " " . $rowS1["author_lastname"] ."<br>";
+                                }
+                            }
+                        ?>
                     </div>
                     <div class="carousel-item"> 
                         <header>
                             <h4>KLASA II</h4>
                         </header>                       
-                        <p>Lektura 1 </p>
-                        <p>Lektura 2</p>
-                        <p>Lektura 3</p>
-                        <p>Lektura 4</p>
-                        <p>Lektura 5</p>
+                        <?php
+                            if ($resultS2->num_rows > 0) {
+                                while($rowS2 = $resultS2->fetch_assoc()) {
+                                    echo "Book: " . $rowS2["tittle"]. " - Author: " . " " . $rowS2["author_name"] . " " . $rowS2["author_lastname"] ."<br>";
+                                }
+                            }
+                        ?>
                     </div>
                     <div class="carousel-item">
                         <header>
                             <h4>KLASA III</h4>
                         </header>
-                        <p>Lektura 1 </p>
-                        <p>Lektura 2</p>
-                        <p>Lektura 3</p>
-                        <p>Lektura 4</p>
-                        <p>Lektura 5</p>
+                        <?php
+                            if ($resultS3->num_rows > 0) {
+                                while($rowS3 = $resultS3->fetch_assoc()) {
+                                    echo "Book: " . $rowS3["tittle"]. " - Author: " . " " . $rowS3["author_name"] . " " . $rowS3["author_lastname"] ."<br>";
+                                }
+                            }
+                        ?>
                     </div>
+                    <div class="carousel-item">
+                        <header>
+                            <h4>KLASA IV</h4>
+                        </header>
+                        <?php
+                            if ($resultS4->num_rows > 0) {
+                                while($rowS4 = $resultS4->fetch_assoc()) {
+                                    echo "Book: " . $rowS4["tittle"]. " - Author: " . " " . $rowS4["author_name"] . " " . $rowS4["author_lastname"] ."<br>";
+                                }
+                            }
+                        ?>
+                    </div>
+                    <div class="carousel-item">
+                        <header>
+                            <h4>KLASA V</h4>
+                        </header>
+                        <?php
+                            if ($resultS5->num_rows > 0) {
+                                while($rowS5 = $resultS5->fetch_assoc()) {
+                                    echo "Book: " . $rowS5["tittle"]. " - Author: " . " " . $rowS5["author_name"] . " " . $rowS5["author_lastname"] ."<br>";
+                                }
+                            }
+                        ?>
+                    </div>    
                 </div>
                 <span class="arrow right-arrow" onclick="scrollCarousel('right')">&#8594;</span>
             </div>
