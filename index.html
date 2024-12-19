@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register - Book Style</title>
+    <link rel="stylesheet" href="loginRegister.css">
+</head>
+<body>
+
+<!-- Światła świec -->
+<div class="candle-light top-left"></div>
+
+<div class="candle-light bottom-left"></div>
+
+<div class="candle-light center"></div>
+
+<div class="candle-light bottom-right"></div>
+
+
+
+    <div class="book-container">
+        <div class="book-page left-page">
+            <h2>Login</h2>
+            <form action="login.php" method="POST">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <button type="submit">Log In</button>
+                <a href="#" id="go-to-register">Don't have an account? Register</a>
+            </form>
+        </div>
+        
+        <div class="book-page right-page">
+            <h2>Register</h2>
+            <form action="register.php" method="POST">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="email" name="email" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <button type="submit">Register</button>
+                <a href="#" id="go-to-login">Already have an account? Login</a>
+            </form>
+        </div>
+
+        <div class="page-flip"></div> <!-- Pusta kartka z animacją -->
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>      
