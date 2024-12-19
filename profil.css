@@ -1,7 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #3e2723; /* Głębokie tło przypominające atmosferę biblioteki */
-    color: #f1e0c6; /* Jasny kremowy kolor tekstu */
+    background-color: #3e2723;
+    color: #f1e0c6; 
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,16 +9,16 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    background-image: url('background-books.jpg'); /* Obraz tła z książkami */
+    background-image: url('background-books.jpg');
     background-size: cover;
     transition: background-color 0.3s ease;
 }
 
 .profile-container {
-    background-color: rgba(40, 44, 50, 0.9); /* Lekko przezroczyste ciemniejsze tło */
+    background-color: rgba(40, 44, 50, 0.9); 
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Mroczny cień */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
     width: 100%;
     max-width: 500px;
     text-align: center;
@@ -29,15 +29,15 @@ body {
 .profile-header h1 {
     font-size: 28px;
     margin-bottom: 10px;
-    color: #b38e5d; /* Złoty kolor, jak starożytne księgi */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efekt cienia, jak na książce */
+    color: #b38e5d; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
     opacity: 0;
     animation: fadeIn 1s 0.5s forwards;
 }
 
 .profile-header .email {
     font-size: 14px;
-    color: #dfe1e3; /* Jaśniejszy kolor tekstu */
+    color: #dfe1e3; 
     opacity: 0;
     animation: fadeIn 1s 1s forwards;
 }
@@ -47,7 +47,7 @@ body {
     height: 120px;
     border-radius: 50%;
     margin-bottom: 15px;
-    border: 3px solid #b38e5d; /* Złota obwódka wokół obrazu */
+    border: 3px solid #b38e5d;
     object-fit: cover;
     opacity: 0;
     animation: scaleUp 1s 0.5s forwards, fadeIn 1s 0.5s forwards;
@@ -64,7 +64,7 @@ body {
     font-size: 14px;
     font-weight: bold;
     color: white;
-    background-color: #704214; /* Kolor przypominający drewno */
+    background-color: #704214; 
     padding: 10px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(112, 66, 20, 0.3);
@@ -72,9 +72,9 @@ body {
 }
 
 .btn-back:hover {
-    background-color: #5b3617; /* Mroczny brąz */
+    background-color: #5b3617;
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(112, 66, 20, 0.5); /* Efekt przy hoverze */
+    box-shadow: 0 6px 12px rgba(112, 66, 20, 0.5); 
 }
 
 .activity-calendar {
@@ -93,7 +93,7 @@ body {
 .calendar-day {
     width: 35px;
     height: 35px;
-    background-color: #3e444b; /* Ciemniejszy kolor przypominający mrok w bibliotece */
+    background-color: #3e444b; 
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -107,17 +107,17 @@ body {
 }
 
 .calendar-day.active {
-    background-color: #b38e5d; /* Złoty kolor aktywowanych dni */
+    background-color: #b38e5d; 
     color: #fff;
-    transform: scale(1.1); /* Powiększenie aktywnych dni */
+    transform: scale(1.1);
 }
 
 .activity-calendar h2 {
-    color: #b38e5d; /* Złoty kolor tytułu */
+    color: #b38e5d;
     margin-bottom: 10px;
     font-size: 24px;
     font-weight: 600;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Magia wokół tytułu */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .calendar-navigation {
@@ -128,7 +128,7 @@ body {
 }
 
 .calendar-btn {
-    background-color: #b38e5d; /* Złoty kolor przycisków */
+    background-color: #b38e5d;
     color: #fff;
     border: none;
     padding: 12px 18px;
@@ -139,7 +139,7 @@ body {
 }
 
 .calendar-btn:hover {
-    background-color: #7f6037; /* Mroczny złoty kolor przy najechaniu */
+    background-color: #7f6037; 
     transform: translateY(-3px);
 }
 

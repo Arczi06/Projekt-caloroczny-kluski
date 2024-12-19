@@ -1,7 +1,7 @@
 body {
-    font-family: 'Georgia', serif; /* Użycie klasycznej czcionki */
-    background-color: #3e2723; /* Głębokie ciepłe tło */
-    color: #f1e0c6; /* Jasne, przyjemne dla oka kolory tekstu */
+    font-family: 'Georgia', serif; 
+    background-color: #3e2723;
+    color: #f1e0c6; 
     margin: 0;
     padding: 0;
     display: flex;
@@ -17,7 +17,7 @@ body {
 
 .sidebar {
     width: 250px;
-    background-color: #4e342e; /* Ciemniejszy, ciepły kolor */
+    background-color: #4e342e;
     padding: 20px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
     position: fixed;
@@ -30,14 +30,14 @@ body {
 }
 
 .sidebar:hover {
-    background-color: #3e2723; /* Mniejszy kontrast na hover */
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5); /* Większy cień */
+    background-color: #3e2723; 
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5); 
 }
 
 .sidebar-header h2 {
     font-size: 24px;
     text-align: center;
-    color: #f1e0c6; /* Jaśniejszy kolor na tle */
+    color: #f1e0c6; 
     margin-bottom: 30px;
     animation: fadeInText 2s ease-in-out;
 }
@@ -57,24 +57,24 @@ body {
     display: block;
     padding: 15px;
     margin-bottom: 10px;
-    color: #f1e0c6; /* Jasny kolor tekstu */
+    color: #f1e0c6; 
     text-decoration: none;
     font-size: 16px;
-    background: #3e444b; /* Ciemniejszy odcień */
+    background: #3e444b; 
     border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sidebar-nav a:hover, .sidebar-nav a.active {
-    background-color: #815a0c; /* Ciepły, złocisty kolor na hover */
+    background-color: #815a0c; 
     color: white;
-    transform: scale(1.02); /* Subtelna animacja */
+    transform: scale(1.02); 
 }
 
 .dashboard-content {
     flex: 1;
     padding: 30px;
-    margin-left: 250px; /* Odpowiednia przestrzeń obok paska nawigacyjnego */
+    margin-left: 250px; 
     overflow-y: auto;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
     border-radius: 15px;
@@ -98,9 +98,9 @@ body {
     height: 50px;
     border-radius: 50%;
     margin-right: 15px;
-    border: 2px solid #f1e0c6; /* Jasne akcenty w obramowaniu */
+    border: 2px solid #f1e0c6; 
     position: relative;
-    top: 5px; /* Przesunięcie, aby uniknąć nachodzenia */
+    top: 5px; 
     animation: avatarPulse 3s ease-in-out infinite;
 }
 

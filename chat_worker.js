@@ -4,7 +4,7 @@ function fetchMessages() {
     fetch('fetch_messages.php')
         .then(response => response.text())
         .then(data => {
-            console.log("Received data:", data); // Debugowanie
+            console.log("Received data:", data);
             if (data !== messages) {
                 messages = data;
                 postMessage({ type: 'messages', data: messages });

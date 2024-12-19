@@ -1,17 +1,17 @@
 <?php
 session_start();
 
-// Sprawdzenie, czy użytkownik jest zalogowany
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Połączenie z bazą danych
-include('config.php');
-include('assign_message_classes.php'); // Dołączamy plik z funkcją
 
-// Zapytanie do bazy danych, aby pobrać wiadomości
+include('config.php');
+include('assign_message_classes.php');
+
+
 $query = "SELECT m.message, u.username, m.user_id FROM messages m
           JOIN users u ON m.user_id = u.id
           ORDER BY m.created_at DESC LIMIT 10";
@@ -20,7 +20,7 @@ $result = $conn->query($query);
 
 $messages = [];
 
-// Przeiteruj po wynikach i stwórz tablicę wiadomości
+
 while ($row = $result->fetch_assoc()) {
     $messages[] = [
         'user_id' => $row['user_id'],
@@ -29,10 +29,9 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-// Przypisz klasy CSS do wiadomości
-$messagesWithClass = assignMessageClass($messages, $conn); // Przekazujemy $conn
+$messagesWithClass = assignMessageClass($messages, $conn); 
 
-// Zamknij połączenie z bazą danych
+
 $conn->close();
 ?>
 
@@ -50,10 +49,10 @@ $conn->close();
     </div>
     <h1>Live Chat</h1>
     
-    <!-- Wyświetlanie wiadomości -->
+
     <div id="chat-box">
         <?php
-        // Wyświetlanie wiadomości z przypisanymi klasami CSS
+   
         echo $messagesWithClass;
         ?>
     </div>

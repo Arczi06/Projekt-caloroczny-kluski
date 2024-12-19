@@ -3,35 +3,33 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Tło z tajemniczym klimatem i wyraźniejszymi detalami */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background: 
-        linear-gradient(rgba(20, 15, 10, 0.9), rgba(20, 15, 10, 0.9)), /* Tajemniczy półcień */
-        url('library-texture.jpg') no-repeat center center fixed; /* Wyraźne tło */
+        linear-gradient(rgba(20, 15, 10, 0.9), rgba(20, 15, 10, 0.9)),
+        url('library-texture.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Georgia', serif;
     position: relative;
     overflow: hidden;
 }
 
-/* Światła świec */
+
 .candle-light {
     position: absolute;
     width: 100px;
     height: 100px;
     background: radial-gradient(circle, rgba(255, 200, 80, 0.8) 0%, rgba(255, 150, 50, 0.3) 50%, transparent 100%);
     border-radius: 50%;
-    filter: blur(10px); /* Zmniejszone rozmycie, aby światło było bardziej intensywne */
+    filter: blur(10px); 
     animation: candle-flicker 2.5s infinite alternate ease-in-out;
     pointer-events: none;
 }
 
-/* Pozycje świec */
+
 .candle-light.top-left {
     top: 25%;
     left: 7px;
@@ -52,7 +50,7 @@ body {
     bottom: 79%;
     right: 9px;
 }
-/* Animacja migotania świec */
+
 @keyframes candle-flicker {
     0% {
         opacity: 0.7;
@@ -92,12 +90,12 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    left: calc(50% - 15px); /* Dopasowanie grzbietu */
+    left: calc(50% - 15px);
     width: 30px;
     height: 100%;
     background-color: #3e2723;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    z-index: 2; /* Grzbiet za animowaną kartką */
+    z-index: 2; 
     border-radius: 5px;
     background-image: url('book-spine-texture.jpg');
     background-size: cover;
@@ -191,7 +189,7 @@ input:not(:placeholder-shown) + label {
     color: #3e2723;
 }
 
-/* Stylizacja przycisków */
+
 button {
     padding: 12px;
     font-size: 16px;

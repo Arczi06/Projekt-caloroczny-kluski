@@ -18,10 +18,8 @@ $result = $conn->query("
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        // Kolor użytkownika
         $userColor = $row['message_color'];
         
-        // Sprawdzamy, czy wiadomość należy do zalogowanego użytkownika
         if ($row['user_id'] == $loggedInUserId) {
             echo "<p class='my-message' style='border: 2px solid {$userColor};'><strong>" . htmlspecialchars($row['username']) . "</strong> (" . $row['created_at'] . "): " . htmlspecialchars($row['message']) . "</p>";
         } else {
