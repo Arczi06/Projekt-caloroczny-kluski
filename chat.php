@@ -41,9 +41,27 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="dashboard.css">
     <title>Live Chat</title>
 </head>
 <body>
+<aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Dashboard</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.php">Podgląd</a>
+                <a href="profil.php">Profil</a>
+                <a href="#">Ustawienia</a>
+                <a href="chat.php" class="active">Wiadomości</a>
+                <a href="#">Strona</a>
+                <a href="logout.php" id="Logout">Logout</a>
+                <div class="solitaire-card">
+                    <h3 class ="pasjanszagraj">Zagraj w Pasjansa</h3>
+                    <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
+                </div>
+            </nav>
+        </aside>
     <div class="navigation">
         <a href="dashboard.php" class="back-button">Powrót do Dashboarda</a>
     </div>

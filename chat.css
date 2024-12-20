@@ -70,6 +70,7 @@ h1 {
 }
 
 #chat-form input {
+    margin-left: 22%;
     width: 80%;
     padding: 10px;
     border-radius: 5px;

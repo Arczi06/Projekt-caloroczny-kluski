@@ -24,8 +24,26 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil użytkownika</title>
     <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+<aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Dashboard</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.php">Podgląd</a>
+                <a href="profil.php" class="active">Profil</a>
+                <a href="#">Ustawienia</a>
+                <a href="chat.php">Wiadomości</a>
+                <a href="#">Strona</a>
+                <a href="logout.php" id="Logout">Logout</a>
+                <div class="solitaire-card">
+                    <h3 class ="pasjanszagraj">Zagraj w Pasjansa</h3>
+                    <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
+                </div>
+            </nav>
+        </aside>
     <div class="profile-container">
         <div class="profile-header">
             <h1><?php echo htmlspecialchars($username); ?></h1>
