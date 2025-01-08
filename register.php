@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    
+    if (!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/", $password)) {
+        echo "Hasło nie spełnia wymagań!";
+        exit();
+    }
 
 
     $sql = "SELECT id FROM users WHERE username=? OR email=?";

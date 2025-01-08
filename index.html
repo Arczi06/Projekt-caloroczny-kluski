@@ -50,15 +50,32 @@
                 </div>
 
                 <div class="input-group">
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password-reg" name="password" required>
                     <label for="password">Password</label>
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" id="tak">Register</button>
                 <a href="#" id="go-to-login">Already have an account? Login</a>
             </form>
         </div>
 
-        <div class="page-flip"></div>
+        <div class="page-flip">
+            <div class="wyg-strona1" id="stary">
+                <p id="stary" style="transform: rotateY(180deg);">Witaj panownie!</p>
+                <img src="logo.png" alt="no nie ma" id="logo">
+            </div>
+            <div class="wyg-strona2" id="nowy" style="display: none;">
+                <p id="nowy">Dołącz teraz!</p>
+            </div>
+            <div id="password-requirements" style="display: none;">
+                <p id="length">Minimalna długość hasła: 8 znaków</p>
+                <p id="uppercase">Co najmniej jedna wielka litera</p>
+                <p id="number">Co najmniej jedna cyfra</p>
+                <p id="special">Co najmniej jeden znak specjalny (!@#$%^&*)</p>
+                <p>zasady uzydkowania z biblioteki ⤵</p>
+                <br>
+                <img src="logo2.png" alt="" id="logo2" href="warunki.html">
+            </div>
+        </div>
     </div>
     <script src="login.js"></script>
 </body>

@@ -2,18 +2,18 @@
 session_start();
 include 'config.php';
 
-function generateUserColor($userId) {
-    $hash = md5($userId);
+function generateUserColor($username) {
+    $hash = md5($username);
     
     return '#' . substr($hash, 0, 6);
 }
 
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
 
-    $color = generateUserColor($user_id);
+    $color = generateUserColor($username);
 
-    $sql = "UPDATE users SET message_color = '$color' WHERE id = '$user_id'";
+    $sql = "UPDATE users SET message_color = '$color' WHERE id = '$username'";
 
     if ($conn->query($sql) === TRUE) {
         echo "Kolor wiadomości został przypisany.";
