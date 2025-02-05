@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sty 08, 2025 at 08:10 PM
+-- Generation Time: Dec 19, 2024 at 07:29 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -57,15 +57,6 @@ CREATE TABLE `messages` (
   `user_id` int(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`id`, `message`, `created_at`, `user_id`) VALUES
-(49, 'hejj', '2024-12-19 18:41:57', 13),
-(50, 'no tak', '2024-12-23 15:29:52', 23),
-(51, 'lepiej ?', '2024-12-23 15:52:48', 24);
-
 -- --------------------------------------------------------
 
 --
@@ -86,17 +77,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`) VALUES
 (11, 'test@test.com', 'test', '$2y$10$FBdQPHqfmg3djDgrXfpdruIpR66Lh.vkAnH3SxKyGf2/ITQJ4cUVu', '#4fc82b'),
-(12, '1111@gmail.com', 'nowy', '$2y$10$UDRvbrO2IhzK0Ozjai5I3.78HADmCdbJko2kOvBAevjkRCG7IB/A6', '#6b51d4'),
-(13, 'taki@taki.com', 'jaki', '$2y$10$UAbhNhc0RWis6WBsWyeOOOmvQcHm4R8CHSZaINm3kJBvePfRmsaaW', '#3fdba3'),
-(17, 'ger', 'nig', '$2y$10$..fL4EAeSF88RZcHMBN13eus.lkSyONw/eQCVPrQDegG88O2AxwmO', '#452354'),
-(18, '1111', '1111', '$2y$10$qQ.dHHmitjf2SIvhmHm9QewEwCfdTtXIIG2ezsCcNjeyxcSs0htwO', '#4ec959'),
-(19, 'hej', 'hej', '$2y$10$ooQFZ/yoT56VFTybgjyCVOP4dU4hZvpCLG.a2HlW03O2Ak/OfsnGK', '#9400f1'),
-(20, 'stulejka', 'hejka', '$2y$10$8ZnOO3eLgGd/fW4tjdrKbuopV7TH7t5E22QNkBVmqs4RvJRyrkcWu', '#f5ca38'),
-(21, '312', '121', '$2y$10$WtcKrtx/h3hDTEyEVvO2hekraydZkYtRYePjI2oKG304b06UuKcoe', '#6f4b66'),
-(22, '14114', '14114', '$2y$10$erFOx4lYC/AtZSEYGxpIYuhGrAvsBigq0Q85P5ONXNulUg4tG/PZu', '#785f3e'),
-(23, 'iwaniecartur14@gmail.com', 'Arturo', '$2y$10$LYiZN8ZZhaXmh8GULbm/0ep26XU47zjcJB3MLQxX4iCTSkZG.DdTu', '#535fa3'),
-(24, 'rekin', 'rekinek', '$2y$10$WReiSBtlk.tA5m7zMfMwuOMPEY6TwGSWK/df7cfM5hWPBdRgREIcO', '#c23560'),
-(25, 'nowy@gmail.com', 'A123450', '$2y$10$mCE8zeGNjX2wOc0PwlFhOehylZ7bwCCQ0zvx3z0onZw6z/LK97U26', '#b7a568');
+(12, '1111@gmail.com', 'nowy', '$2y$10$UDRvbrO2IhzK0Ozjai5I3.78HADmCdbJko2kOvBAevjkRCG7IB/A6', '#6b51d4');
 
 -- --------------------------------------------------------
 
@@ -117,10 +98,7 @@ CREATE TABLE `user_activity` (
 --
 
 INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `login_count`) VALUES
-(9, 11, '2024-12-19', '2024-12-19 18:03:00', 2),
-(10, 13, '2024-12-19', '2024-12-19 18:41:50', 1),
-(12, 23, '2024-12-23', '2024-12-23 15:29:36', 2),
-(13, 24, '2024-12-23', '2024-12-23 15:52:30', 1);
+(9, 11, '2024-12-19', '2024-12-19 18:03:00', 2);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -161,19 +139,19 @@ ALTER TABLE `user_activity`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
