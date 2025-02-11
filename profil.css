@@ -1,39 +1,43 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #2f353b;
-    color: #dfe1e3;
+    background-color: #3e2723;
+    color: #f1e0c6; 
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+    background-image: url('background-books.jpg');
+    background-size: cover;
     transition: background-color 0.3s ease;
 }
 
 .profile-container {
-    background-color: #3e444b;
+    background-color: rgba(40, 44, 50, 0.9); 
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     text-align: center;
     opacity: 0;
-    animation: fadeIn 1s forwards;
+    animation: fadeIn 1s forwards, scaleUp 1s 0.5s forwards;
 }
 
 .profile-header h1 {
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 10px;
-    color: #f0a500;
+    color: #b38e5d; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
     opacity: 0;
     animation: fadeIn 1s 0.5s forwards;
 }
 
 .profile-header .email {
     font-size: 14px;
-    color: #c1c1c1;
+    color: #dfe1e3; 
     opacity: 0;
     animation: fadeIn 1s 1s forwards;
 }
@@ -43,7 +47,7 @@ body {
     height: 120px;
     border-radius: 50%;
     margin-bottom: 15px;
-    border: 3px solid #f0a500;
+    border: 3px solid #b38e5d;
     object-fit: cover;
     opacity: 0;
     animation: scaleUp 1s 0.5s forwards, fadeIn 1s 0.5s forwards;
@@ -60,16 +64,17 @@ body {
     font-size: 14px;
     font-weight: bold;
     color: white;
-    background-color: #b86b6b;
+    background-color: #704214; 
     padding: 10px 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(184, 107, 107, 0.3);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(112, 66, 20, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-back:hover {
-    background-color: #9f3f3f;
+    background-color: #5b3617;
     transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(112, 66, 20, 0.5); 
 }
 
 .activity-calendar {
@@ -81,29 +86,38 @@ body {
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
     margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
 }
 
 .calendar-day {
-    width: 30px;
-    height: 30px;
-    background-color: #2a2d32;
-    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+    background-color: #3e444b; 
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    transition: background-color 0.3s ease;
-    color: #555;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: #110b02; /* Jasny kolor tekstu */
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 1s 0.5s forwards;
 }
 
 .calendar-day.active {
-    background-color: #f0a500;
+    background-color: #b38e5d; 
     color: #fff;
+    transform: scale(1.1);
 }
 
 .activity-calendar h2 {
-    color: #f0a500;
+    color: #b38e5d;
     margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .calendar-navigation {
@@ -114,18 +128,19 @@ body {
 }
 
 .calendar-btn {
-    background-color: #f0a500;
+    background-color: #b38e5d;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 12px 18px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .calendar-btn:hover {
-    background-color: #e89a00;
+    background-color: #7f6037; 
+    transform: translateY(-3px);
 }
 
 @keyframes fadeIn {

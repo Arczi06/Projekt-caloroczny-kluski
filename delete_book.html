@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuń Książkę</title>
+    <link rel="stylesheet" href="librarian.css">
+</head>
+<body>
+    <h1>Usuń Książkę</h1>
+    <!-- Form for deleting a book -->
+<form id="delete-book-form" action="manage_books.php" method="POST">
+
+        <label for="book-id">ID Książki:</label>
+        <input type="text" id="book-id" name="book-id" required>
+        <button type="submit">Usuń</button>
+    </form>
+    <button onclick="window.location.href='librarian.html'">Powrót</button>
+</body>
+</html>

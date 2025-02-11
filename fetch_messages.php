@@ -10,7 +10,7 @@ include 'config.php';
 $loggedInUserId = $_SESSION['user_id'];
 
 $result = $conn->query("
-    SELECT users.username, messages.message, messages.created_at, messages.user_id
+    SELECT users.username, users.message_color, messages.message, messages.created_at, messages.user_id
     FROM messages
     JOIN users ON messages.user_id = users.id
     ORDER BY messages.created_at ASC
@@ -18,10 +18,12 @@ $result = $conn->query("
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $userColor = $row['message_color'];
+        
         if ($row['user_id'] == $loggedInUserId) {
-            echo "<p class='my-message'><strong>" . htmlspecialchars($row['username']) . "</strong> (" . $row['created_at'] . "): " . htmlspecialchars($row['message']) . "</p>";
+            echo "<p class='my-message' style='border: 2px solid {$userColor};'><strong>" . htmlspecialchars($row['username']) . "</strong> (" . $row['created_at'] . "): " . htmlspecialchars($row['message']) . "</p>";
         } else {
-            echo "<p class='other-message'><strong>" . htmlspecialchars($row['username']) . "</strong> (" . $row['created_at'] . "): " . htmlspecialchars($row['message']) . "</p>";
+            echo "<p class='other-message' style='border: 2px solid {$userColor};'><strong>" . htmlspecialchars($row['username']) . "</strong> (" . $row['created_at'] . "): " . htmlspecialchars($row['message']) . "</p>";
         }
     }
 } else {

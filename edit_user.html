@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, content="width=device-width, initial-scale=1.0">
+    <title>Edytuj Użytkownika</title>
+    <link rel="stylesheet" href="librarian.css">
+</head>
+<body>
+    <h1>Edytuj Użytkownika</h1>
+    <!-- Form for editing a user -->
+    <form id="edit-user-form">
+        <label for="user-id">ID Użytkownika:</label>
+        <input type="text" id="user-id" name="user-id" required>
+        <label for="new-name">Nowe Imię:</label>
+        <input type="text" id="new-name" name="new-name" required>
+        <label for="new-email">Nowy Email:</label>
+        <input type="email" id="new-email" name="new-email" required>
+        <button type="submit">Zapisz Zmiany</button>
+    </form>
+    <button onclick="window.location.href='librarian.html'">Powrót</button>
+</body>
+</html>

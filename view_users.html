@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zobacz Użytkowników</title>
+    <link rel="stylesheet" href="librarian.css">
+</head>
+<body>
+    <h1>Zobacz Użytkowników</h1>
+    <div id="user-list">
+        <!-- User list will be populated here -->
+    </div>
+    <button onclick="window.location.href='librarian.html'">Powrót</button>
+    <script>
+        // Fetch and display users from the server
+        fetch('manage_users.php')
+            .then(response => response.json())
+            .then(users => {
+                const userList = document.getElementById('user-list');
+                users.forEach(user => {
+                    const userDiv = document.createElement('div');
+                    userDiv.textContent = `ID: ${user.id}, Name: ${user.name}, Email: ${user.email}`;
+                    userList.appendChild(userDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching users:', error));
+    </script>
+</body>
+</html>

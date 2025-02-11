@@ -78,6 +78,13 @@ CREATE TABLE `users` (
 
 --
 -- Dumping data for table `users`
+
+-- Create the books table
+CREATE TABLE `books` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(255) NOT NULL,
+    `author` VARCHAR(255) NOT NULL
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`) VALUES

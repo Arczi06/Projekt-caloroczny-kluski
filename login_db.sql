@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2024 at 12:01 AM
+-- Generation Time: Dec 19, 2024 at 07:29 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -57,56 +57,6 @@ CREATE TABLE `messages` (
   `user_id` int(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`id`, `message`, `created_at`, `user_id`) VALUES
-(1, 'hej', '2024-11-27 23:55:28', 3),
-(2, 'co tam', '2024-11-27 23:55:45', 3),
-(3, 'a nic a tam ?', '2024-11-27 23:56:09', 2),
-(4, 'lubie jesc', '2024-11-28 00:02:18', 2),
-(5, 'nic', '2024-11-28 00:07:19', 3),
-(6, 'nigger', '2024-11-28 00:10:07', 3),
-(7, 'hej', '2024-11-28 00:10:30', 3),
-(8, 'halo', '2024-12-11 19:34:40', 3),
-(9, '???', '2024-12-11 19:34:54', 3),
-(10, 'nic', '2024-12-11 19:34:58', 3),
-(11, 'halo', '2024-12-11 19:47:44', 3),
-(12, 'halo', '2024-12-11 20:40:29', 3),
-(13, '?', '2024-12-11 20:40:33', 3),
-(14, 'ggg', '2024-12-11 20:44:17', 3),
-(15, 'wdasf', '2024-12-11 20:46:25', 3),
-(16, 'halo ?\\', '2024-12-11 20:57:02', 3),
-(17, 'halooo', '2024-12-11 20:57:09', 3),
-(18, 'hej ?', '2024-12-11 20:57:33', 3),
-(19, '?', '2024-12-11 20:57:44', 3),
-(20, 'halo', '2024-12-11 21:01:03', 3),
-(21, 'za halo w morde wala', '2024-12-11 21:01:11', 3),
-(22, 'o', '2024-12-11 21:02:41', 3),
-(23, 'dziala', '2024-12-11 21:02:42', 3),
-(24, 'zajebiscie ', '2024-12-11 21:02:45', 3),
-(25, 'sigma sigma boi', '2024-12-11 21:02:49', 3),
-(26, 'nigger', '2024-12-11 21:03:01', 3),
-(27, 'nighguia', '2024-12-11 21:03:38', 6),
-(28, 'nom', '2024-12-11 21:03:45', 3),
-(29, 'ajaja', '2024-12-11 21:03:52', 6),
-(30, 'aha', '2024-12-11 21:04:00', 3),
-(31, 'ale jaja', '2024-12-11 21:07:12', 3),
-(32, 'i co ?', '2024-12-11 21:07:19', 6),
-(33, 'napewno ?', '2024-12-11 21:10:55', 3),
-(34, 'nie', '2024-12-11 21:11:01', 6),
-(35, 'to kys', '2024-12-11 21:11:10', 3),
-(36, 'kys ?', '2024-12-11 21:12:07', 6),
-(37, 'kys ?', '2024-12-11 21:12:31', 6),
-(38, 'kys ?', '2024-12-11 21:13:01', 3),
-(39, 'o kurwa', '2024-12-11 21:14:24', 6),
-(40, 'co ?', '2024-12-11 21:14:29', 3),
-(41, 'gówno', '2024-12-11 21:14:36', 6),
-(42, 'ajajaj', '2024-12-11 21:21:08', 3),
-(43, 'nih', '2024-12-11 21:44:59', 3),
-(44, 'ez', '2024-12-11 22:01:44', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -117,20 +67,17 @@ CREATE TABLE `users` (
   `id` int(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `message_color` varchar(7) DEFAULT '#000000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `password`) VALUES
-(1, 'pomocy@gmail.com', 'pomocy', '$2y$10$nYG8HcXCtphUS.5ksrtNte7RF5RcmU.OJ1Iq69pasmR'),
-(2, 'iwaniecartur14@gmail.com', 'Arturo', '$2y$10$l/WFPz8QoAxVsJ0wGvdKvuEx.qu2oEI3oTil70/Wksudp.4diZ80.'),
-(3, 'nowy@gmail.com', 'nowy', '$2y$10$px37pn4ZREPzqFgyYqV/u.sbP02yfFF2F4y9iu03h8owahdDeQO66'),
-(4, 'julka@gmail.com', 'julka', '$2y$10$i0YFAQGRKw5MyoIxKVBQTOFKo0zC3VaEOFFffBFd3xTdF5Trec96i'),
-(5, 'seba@gmail.coijm', 'seab', '$2y$10$BJwcZC4lQCebKbGWQJWopOunZE3BwVs6OEaYazUITfEvRzej6aS6m'),
-(6, 'idiota@gmail.com', 'idiota', '$2y$10$ZrDP0JQsbZcIYFce0cb9DuxCuftcn23rjzDmUwI49lgbG4DM2VbIa');
+INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`) VALUES
+(11, 'test@test.com', 'test', '$2y$10$FBdQPHqfmg3djDgrXfpdruIpR66Lh.vkAnH3SxKyGf2/ITQJ4cUVu', '#4fc82b'),
+(12, '1111@gmail.com', 'nowy', '$2y$10$UDRvbrO2IhzK0Ozjai5I3.78HADmCdbJko2kOvBAevjkRCG7IB/A6', '#6b51d4');
 
 -- --------------------------------------------------------
 
@@ -151,8 +98,7 @@ CREATE TABLE `user_activity` (
 --
 
 INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `login_count`) VALUES
-(1, 6, '2024-12-11', '2024-12-11 22:50:30', 1),
-(2, 3, '2024-12-11', '2024-12-11 22:56:41', 1);
+(9, 11, '2024-12-19', '2024-12-19 18:03:00', 2);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -193,19 +139,19 @@ ALTER TABLE `user_activity`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

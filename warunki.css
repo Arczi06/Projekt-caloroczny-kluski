@@ -1,0 +1,135 @@
+/* Ogólny styl strony */
+body {
+    background-color: #746c63;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Dodanie animacji mgły */
+@keyframes mist {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mist {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('mist.png') repeat;
+    animation: mist 10s infinite;
+    z-index: -1;
+}
+
+/* Styl dla pojemnika z papirusem */
+.papyrus-container {
+    width: 80%;
+    max-width: 800px;
+    padding: 30px;
+    background-color: #f4e2b5;
+    border: 2px solid #7f5c3c;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: auto;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Animacja fade-in dla papirusu */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Styl dla tekstów w papirusie */
+.papyrus {
+    padding: 20px;
+    background-color: #fdf1d3;
+    border-radius: 8px;
+    font-size: 1.1em;
+    position: relative;
+    z-index: 2;
+}
+
+/* Styl nagłówka */
+.title h1 {
+    text-align: center;
+    color: #6f4e37;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Efekt świetlny przy nagłówku */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 15px #ffcc00;
+    }
+    100% {
+        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+    }
+}
+
+/* Styl przycisku powrotu */
+#return-button {
+    background-color: #7f5c3c;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+#return-button:hover {
+    background-color: #6b4c3b;
+    transform: scale(1.1);
+}
+
+/* Styl dla listy warunków */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Animacja migania dla tekstu */
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Dodatkowe efekty przycisku */
+#return-button {
+    animation: blink 2s infinite;
+}

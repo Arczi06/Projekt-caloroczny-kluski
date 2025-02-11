@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj Książkę</title>
+    <link rel="stylesheet" href="librarian.css">
+</head>
+<body>
+    <h1>Dodaj Książkę</h1>
+    <!-- Form for adding a book -->
+<form id="add-book-form" action="manage_books.php" method="POST">
+
+        <label for="title">Tytuł:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="author">Autor:</label>
+        <input type="text" id="author" name="author" required>
+        <button type="submit">Dodaj</button>
+    </form>
+    <button onclick="window.location.href='librarian.html'">Powrót</button>
+</body>
+</html>

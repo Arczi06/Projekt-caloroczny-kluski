@@ -48,6 +48,10 @@ $conn->close();
                 <a href="chat.php">Wiadomości</a>
                 <a href="#">Strona</a>
                 <a href="logout.php" id="Logout">Logout</a>
+                <div class="solitaire-card">
+                    <h3 class ="pasjanszagraj">Zagraj w Pasjansa</h3>
+                    <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
+                </div>
             </nav>
         </aside>
 
@@ -55,20 +59,18 @@ $conn->close();
             <header class="dashboard-header">
                 <div class="user-info">
                     <img src="profile.jpg" alt="User Profile" class="user-avatar">
-                    <span class="user-name">Hello, <?php echo htmlspecialchars($user['username']); ?>!</span>
+                    <span class="user-name">Witaj <?php echo htmlspecialchars($user['username']); ?>!</span>
                 </div>
             </header>
             <section class="dashboard-section">
-                <!-- <div class="card">
-                    <h3>Wypożyczone Książki</h3>
-                    <p>6</p>
-                </div> -->
             </section>
             <section class="dashboard-section">
                 <div class="chart-container">
                 </div>
             </section>
         </main>
+
+        
     </div>
     <script src="dashboard.js"></script>
 </body>
