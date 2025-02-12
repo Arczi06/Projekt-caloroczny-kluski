@@ -44,7 +44,7 @@ $conn->close();
             <nav class="sidebar-nav">
                 <a href="#" class="active">Podgląd</a>
                 <a href="profil.php">Profil</a>
-                <a href="#">Ustawienia</a>
+                <a href="admin\index.html">Ustawienia</a>
                 <a href="chat.php">Wiadomości</a>
                 <a href="#">Strona</a>
                 <a href="logout.php" id="Logout">Logout</a>
