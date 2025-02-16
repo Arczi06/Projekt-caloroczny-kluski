@@ -1,0 +1,326 @@
+/* Nawigacja */
+nav {
+    background-color: #2a1a0b;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Wyrównanie do lewej */
+    z-index: 1000; /* Zapewnia, że pasek będzie na wierzchu */
+}
+
+nav .logo {
+    width: 40px;
+    height: 40px;
+    background-image: url('logo.png'); /* Ścieżka do logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative; /* Aby umożliwić efekty podświetlenia */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif; /* Elegancki font */
+    font-weight: 500;
+    padding: 10px 20px;
+    display: block;
+    border-radius: 30px; /* Zaokrąglone rogi dla bardziej profesjonalnego wyglądu */
+    transition: all 0.3s ease-in-out; /* Gładkie przejścia */
+}
+
+nav ul li a:hover ,nav ul li a.active{
+    background-color: #d1b497;
+    color: #333;
+    transform: scale(1.05); /* Powiększenie na hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Efekt podświetlenia */
+}
+
+nav ul li a:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Złote podświetlenie po kliknięciu */
+}
+
+/* Styl główny dla strony */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin-top: 80px; /* Umożliwia miejsce dla nawigacji na górze */
+    padding: 0;
+}
+
+/* Styl główny dla dashboardu */
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+    padding: 0 30px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 45%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #2a1a0b;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 18px;
+    color: #4e3b31;
+}
+
+/* Styl dla sekcji */
+section {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px auto;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+section h2 {
+    font-size: 26px;
+    color: #2a1a0b;
+    border-bottom: 2px solid #d1b497;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Input wyszukiwania */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 6px;
+    border: 1px solid #b5a07d;
+    background-color: #f9f4e1;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Styl dla tabel */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #2a1a0b;
+    color: white;
+    font-weight: 600;
+}
+
+td {
+    background-color: #fafafa;
+}
+
+/* Przycisk "Zobacz więcej" */
+.btn-more {
+    background-color: #2a1a0b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-more:hover {
+    background-color: #d1b497;
+}
+
+/* Tabela z filtrami i opcjami */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.search-bar {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #b5a07d;
+    background-color: #f9f4e1;
+}
+
+.filter-btn {
+    background-color: #2a1a0b;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background-color: #d1b497;
+}
+
+/* Drobne poprawki dla przycisków i linków */
+a {
+    color: #2a1a0b;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #d1b497;
+}
+
+/* Ustawienia dla mniejszych ekranów (responsive) */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+#pendingUsers {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.pending-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pending-card {
+    width: calc(33% - 20px);
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.pending-card:hover {
+    transform: translateY(-5px);
+}
+
+.pending-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pending-card p {
+    margin: 5px 0;
+}
+
+.actions {
+    margin-top: 15px;
+}
+
+.accept-btn, .reject-btn {
+    padding: 8px 12px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.accept-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reject-btn {
+    background-color: #F44336;
+    color: white;
+}
+
+.accept-btn:hover {
+    background-color: #45a049;
+}
+
+.reject-btn:hover {
+    background-color: #e53935;
+}
+
+/* Styl dla przycisku logout */
+.logout-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #f44336;  /* Czerwony kolor tła */
+    color: white;  /* Kolor tekstu */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;  /* Ciemniejszy czerwony przy najechaniu */
+}
+
+.logout-btn:focus {
+    outline: none;  /* Usunięcie obramowania przy kliknięciu */
+}

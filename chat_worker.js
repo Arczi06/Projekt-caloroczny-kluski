@@ -4,6 +4,7 @@ function fetchMessages() {
     fetch('fetch_messages.php')
         .then(response => response.text())
         .then(data => {
+            console.log("Received data:", data);
             if (data !== messages) {
                 messages = data;
                 postMessage({ type: 'messages', data: messages });
@@ -12,14 +13,12 @@ function fetchMessages() {
         .catch(error => console.error('Błąd pobierania wiadomości:', error));
 }
 
-
 function checkNewMessages() {
     fetch('check_new_messages.php')
         .then(response => response.text())
         .then(data => {
             if (data === 'true') {
-
-                fetchMessages(); 
+                fetchMessages();
             }
         })
         .catch(error => console.error('Błąd sprawdzania nowych wiadomości:', error));

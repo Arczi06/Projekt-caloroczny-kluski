@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2024 at 12:01 AM
+-- Generation Time: Feb 16, 2025 at 02:01 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -57,55 +57,29 @@ CREATE TABLE `messages` (
   `user_id` int(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `messages`
+-- Struktura tabeli dla tabeli `pending_users`
 --
 
-INSERT INTO `messages` (`id`, `message`, `created_at`, `user_id`) VALUES
-(1, 'hej', '2024-11-27 23:55:28', 3),
-(2, 'co tam', '2024-11-27 23:55:45', 3),
-(3, 'a nic a tam ?', '2024-11-27 23:56:09', 2),
-(4, 'lubie jesc', '2024-11-28 00:02:18', 2),
-(5, 'nic', '2024-11-28 00:07:19', 3),
-(6, 'nigger', '2024-11-28 00:10:07', 3),
-(7, 'hej', '2024-11-28 00:10:30', 3),
-(8, 'halo', '2024-12-11 19:34:40', 3),
-(9, '???', '2024-12-11 19:34:54', 3),
-(10, 'nic', '2024-12-11 19:34:58', 3),
-(11, 'halo', '2024-12-11 19:47:44', 3),
-(12, 'halo', '2024-12-11 20:40:29', 3),
-(13, '?', '2024-12-11 20:40:33', 3),
-(14, 'ggg', '2024-12-11 20:44:17', 3),
-(15, 'wdasf', '2024-12-11 20:46:25', 3),
-(16, 'halo ?\\', '2024-12-11 20:57:02', 3),
-(17, 'halooo', '2024-12-11 20:57:09', 3),
-(18, 'hej ?', '2024-12-11 20:57:33', 3),
-(19, '?', '2024-12-11 20:57:44', 3),
-(20, 'halo', '2024-12-11 21:01:03', 3),
-(21, 'za halo w morde wala', '2024-12-11 21:01:11', 3),
-(22, 'o', '2024-12-11 21:02:41', 3),
-(23, 'dziala', '2024-12-11 21:02:42', 3),
-(24, 'zajebiscie ', '2024-12-11 21:02:45', 3),
-(25, 'sigma sigma boi', '2024-12-11 21:02:49', 3),
-(26, 'nigger', '2024-12-11 21:03:01', 3),
-(27, 'nighguia', '2024-12-11 21:03:38', 6),
-(28, 'nom', '2024-12-11 21:03:45', 3),
-(29, 'ajaja', '2024-12-11 21:03:52', 6),
-(30, 'aha', '2024-12-11 21:04:00', 3),
-(31, 'ale jaja', '2024-12-11 21:07:12', 3),
-(32, 'i co ?', '2024-12-11 21:07:19', 6),
-(33, 'napewno ?', '2024-12-11 21:10:55', 3),
-(34, 'nie', '2024-12-11 21:11:01', 6),
-(35, 'to kys', '2024-12-11 21:11:10', 3),
-(36, 'kys ?', '2024-12-11 21:12:07', 6),
-(37, 'kys ?', '2024-12-11 21:12:31', 6),
-(38, 'kys ?', '2024-12-11 21:13:01', 3),
-(39, 'o kurwa', '2024-12-11 21:14:24', 6),
-(40, 'co ?', '2024-12-11 21:14:29', 3),
-(41, 'gówno', '2024-12-11 21:14:36', 6),
-(42, 'ajajaj', '2024-12-11 21:21:08', 3),
-(43, 'nih', '2024-12-11 21:44:59', 3),
-(44, 'ez', '2024-12-11 22:01:44', 3);
+CREATE TABLE `pending_users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` int(11) DEFAULT 0,
+  `status` enum('pending','approved','rejected') DEFAULT 'pending',
+  `message_color` varchar(7) DEFAULT '#000000',
+  `date_submitted` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pending_users`
+--
+
+INSERT INTO `pending_users` (`id`, `username`, `email`, `password`, `role`, `status`, `message_color`, `date_submitted`) VALUES
+(2, 'biblioo', 'biblioo@gmail.com', '$2y$10$EXHfhhBpbUIMRJxjdgSd.uCbIXzby3lJhqbs4iegF6OYWoqr5pof6', 1, 'rejected', '#d4735e', '2025-02-15 16:19:18');
 
 -- --------------------------------------------------------
 
@@ -117,20 +91,35 @@ CREATE TABLE `users` (
   `id` int(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `message_color` varchar(7) DEFAULT '#000000',
+  `role` int(11) DEFAULT 0,
+  `date_registered` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `password`) VALUES
-(1, 'pomocy@gmail.com', 'pomocy', '$2y$10$nYG8HcXCtphUS.5ksrtNte7RF5RcmU.OJ1Iq69pasmR'),
-(2, 'iwaniecartur14@gmail.com', 'Arturo', '$2y$10$l/WFPz8QoAxVsJ0wGvdKvuEx.qu2oEI3oTil70/Wksudp.4diZ80.'),
-(3, 'nowy@gmail.com', 'nowy', '$2y$10$px37pn4ZREPzqFgyYqV/u.sbP02yfFF2F4y9iu03h8owahdDeQO66'),
-(4, 'julka@gmail.com', 'julka', '$2y$10$i0YFAQGRKw5MyoIxKVBQTOFKo0zC3VaEOFFffBFd3xTdF5Trec96i'),
-(5, 'seba@gmail.coijm', 'seab', '$2y$10$BJwcZC4lQCebKbGWQJWopOunZE3BwVs6OEaYazUITfEvRzej6aS6m'),
-(6, 'idiota@gmail.com', 'idiota', '$2y$10$ZrDP0JQsbZcIYFce0cb9DuxCuftcn23rjzDmUwI49lgbG4DM2VbIa');
+INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`, `role`, `date_registered`, `profile_image`) VALUES
+(43, 'admin@admin.com', 'admin', '$2y$10$2HYivHXJWzQMRduo/wb93Ojz6ku9RMy8p2gGis/n8RMlo9KCW95qe', '#44cb73', 2, '2025-02-15 16:10:29', NULL),
+(57, 'bilblio@gmail.com', 'biblio', '$2y$10$HurPhKNM4/OuOVD4JFHETOkGT9VnBpRL/gBIexwdtKw746TZn5R4q', '#000000', 1, '2025-02-15 16:17:50', NULL),
+(58, 'czytelnik.czytelnik@gmail.com', 'czytelnik2', '$2y$10$I53BDAQ9U2tTABNrTV1SEOnaHhYVXqY1w9fDhrbEiXQBG9FwBpNYC', '#6208ef', 0, '2025-02-15 16:32:00', NULL),
+(59, 'john123@example.com', 'John123', '$2y$10$wQw2AcVt5Y0MnP9GqEqREoTAgf6S18mFxPpRA3jLkIzgFip9MycU2', '#000000', 1, '2025-02-15 11:00:00', NULL),
+(60, 'jane456@example.com', 'Jane456', '$2y$10$JtZ2WkLr1H9zQhZhAY3K6iJZ54hvsyLvVEZG/2Xa3v9CJyMG9t8pG', '#000000', 0, '2025-02-15 11:01:00', NULL),
+(61, 'alice789@example.com', 'Alice789', '$2y$10$htnk8g4v9l6wwb5mA3NEnxDKF8K4k6Bd03zLl0gHs0JkYt.Kop8qg', '#000000', 2, '2025-02-15 11:02:00', NULL),
+(62, 'bob321@example.com', 'Bob321', '$2y$10$FQwYxDrI8RMwYdtLfNi8fUwT28OkimLx5d8A7Hw.gQ2klwZyqblW3', '#000000', 1, '2025-02-15 11:03:00', NULL),
+(63, 'charlie654@example.com', 'Charlie654', '$2y$10$8Gq0s8gPHiZc.VGhQyIWdxIA5f5vXO8TSfnJqFTYp0ioW5tZT8zXq', '#000000', 0, '2025-02-15 11:04:00', NULL),
+(64, 'david987@example.com', 'David987', '$2y$10$Fh5qu4ZgEJ96jZw6jr8nNUj4TkhlMRm5cWL1ETeq9lzHbhFplEovO', '#000000', 2, '2025-02-15 11:05:00', NULL),
+(65, 'eve543@example.com', 'Eve543', '$2y$10$0Ht55KOH7AqkSfFqF3lCVLOE5grWgF1HzgR3Op79Wy1QGm1YPf0nK', '#000000', 0, '2025-02-15 11:06:00', NULL),
+(66, 'grace876@example.com', 'Grace876', '$2y$10$YjZbD4mldxFhdfISW8E.hoXtCOcf2VvAQt2BYE1B2VxjGRmFhmuua', '#000000', 1, '2025-02-15 11:07:00', NULL),
+(67, 'heidi345@example.com', 'Heidi345', '$2y$10$uYk3TmKk8fIzwQxg.9H1PBVqTj99aRHtiBYyTW7l.RjeHvfpRgS1G', '#000000', 2, '2025-02-15 11:08:00', NULL),
+(68, 'ivy210@example.com', 'Ivy210', '$2y$10$AKPBG89lrO4odXkw4BbeFkRaDe9nYreRATzZn5Mjgh5FkDZfpYrC9', '#000000', 0, '2025-02-15 11:09:00', NULL),
+(69, 'jack543@example.com', 'Jack543', '$2y$10$ty7C0nFtXix47dTfG.Rkw1qewF5/0E.oFZSKPj8DAACuqvC0BXQ3C', '#000000', 1, '2025-02-15 11:10:00', NULL),
+(71, 'louis432@example.com', 'Louis432', '$2y$10$y2YbqE7VuzhbIZ2E6jQj7X9mfjmVLz9u.ZsQSzE3XzE.60oz6CzYK', '#000000', 2, '2025-02-15 11:12:00', NULL),
+(72, 'megan321@example.com', 'Megan321', '$2y$10$wsHmAUGYwMBi5LP6j1bCPVu8o5TQ0dTpZ8c3gIcGZCy5FScUN1vuO', '#000000', 1, '2025-02-15 11:13:00', NULL),
+(74, 'nowy@gmail.com', 'nowynowy', '$2y$10$nFK/r.WgkMXTyTcUE11Oj.gJlNocWDM2tjV4.s8SvXcVHOupfT1p2', '#eb624d', 0, '2025-02-15 17:48:14', '937bfd6837e91cb0f8c542484bcc902f.jpg');
 
 -- --------------------------------------------------------
 
@@ -143,16 +132,22 @@ CREATE TABLE `user_activity` (
   `user_id` int(11) NOT NULL,
   `activity_date` date NOT NULL,
   `login_time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `login_count` int(11) DEFAULT 0
+  `login_count` int(11) DEFAULT 0,
+  `activity_description` text NOT NULL DEFAULT 'Login'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_activity`
 --
 
-INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `login_count`) VALUES
-(1, 6, '2024-12-11', '2024-12-11 22:50:30', 1),
-(2, 3, '2024-12-11', '2024-12-11 22:56:41', 1);
+INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `login_count`, `activity_description`) VALUES
+(19, 43, '2025-02-11', '2025-02-11 21:46:42', 1, 'Login'),
+(20, 43, '2025-02-15', '2025-02-15 16:10:51', 6, 'Login'),
+(21, 57, '2025-02-15', '2025-02-15 16:18:47', 1, 'Login'),
+(22, 58, '2025-02-15', '2025-02-15 16:39:22', 1, 'Login'),
+(23, 74, '2025-02-15', '2025-02-15 17:48:32', 2, 'Login'),
+(24, 43, '2025-02-16', '2025-02-16 12:32:57', 1, 'Login'),
+(25, 74, '2025-02-16', '2025-02-16 12:33:39', 1, 'Login');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -171,6 +166,14 @@ ALTER TABLE `borrowed_books`
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indeksy dla tabeli `pending_users`
+--
+ALTER TABLE `pending_users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indeksy dla tabeli `users`
@@ -193,19 +196,25 @@ ALTER TABLE `user_activity`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT for table `pending_users`
+--
+ALTER TABLE `pending_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
