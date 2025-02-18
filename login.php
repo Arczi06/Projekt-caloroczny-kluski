@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     header("Location: przyklad1.php");
                     break;
                 case 2:
-                    header("Location: przyklad2.php");
+                    header("Location: admin_panel.php");
                     break;
                 default:
                     header("Location: dashboard.php");
@@ -62,9 +62,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Invalid password or username!";
         }
     } else {
-        echo "Invalid username!";
+        // Sprawdzamy, czy użytkownik jest w tabeli pending_users
+        $sqlPending = "SELECT id, role, status FROM pending_users WHERE username=?";
+        $stmtPending = $conn->prepare($sqlPending);
+        $stmtPending->bind_param("s", $username);
+        $stmtPending->execute();
+        $stmtPending->store_result();
+
+        if ($stmtPending->num_rows > 0) {
+            $stmtPending->bind_result($id, $role, $status);
+            $stmtPending->fetch();
+            
+            if ($status == 'pending') {
+                echo "Twoje konto jest oczekujące na zatwierdzenie przez administratora.";
+            } else if ($status == 'rejected') {
+                echo "Twoje konto zostało odrzucone przez administratora.";
+            }
+        } else {
+            echo "Invalid username!";
+        }
     }
+
     $stmt->close();
+    $stmtPending->close();
     $conn->close();
 }
 ?>

@@ -9,7 +9,7 @@ include 'config.php';
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT username FROM users WHERE id = ?";
+$sql = "SELECT username, profile_image FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -17,6 +17,9 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
+    $profile_image = !empty($user['profile_image']) && file_exists('ni/' . $user['profile_image']) 
+        ? 'ni/' . $user['profile_image'] 
+        : 'profile.jpg';
 } else {
     echo "User not found.";
     exit;
@@ -44,12 +47,12 @@ $conn->close();
             <nav class="sidebar-nav">
                 <a href="#" class="active">Podgląd</a>
                 <a href="profil.php">Profil</a>
-                <a href="admin\index.html">Ustawienia</a>
+                <a href="admin/index.html">Ustawienia</a>
                 <a href="chat.php">Wiadomości</a>
                 <a href="#">Strona</a>
                 <a href="logout.php" id="Logout">Logout</a>
                 <div class="solitaire-card">
-                    <h3 class ="pasjanszagraj">Zagraj w Pasjansa</h3>
+                    <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>
                     <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
                 </div>
             </nav>
@@ -58,7 +61,7 @@ $conn->close();
         <main class="dashboard-content">
             <header class="dashboard-header">
                 <div class="user-info">
-                    <img src="profile.jpg" alt="User Profile" class="user-avatar">
+                    <img src="<?php echo $profile_image; ?>" alt="Profile Image" class="user-avatar" id="user-avatar">
                     <span class="user-name">Witaj <?php echo htmlspecialchars($user['username']); ?>!</span>
                 </div>
             </header>
@@ -69,8 +72,6 @@ $conn->close();
                 </div>
             </section>
         </main>
-
-        
     </div>
     <script src="dashboard.js"></script>
 </body>

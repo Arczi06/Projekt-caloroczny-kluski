@@ -152,3 +152,99 @@ body {
     0% { opacity: 0; transform: scale(0.8); }
     100% { opacity: 1; transform: scale(1); }
 }
+
+#image-options {
+    max-height: 400px; /* Określenie maksymalnej wysokości dla kontenera */
+    width: 100%;
+    overflow-y: auto; /* Dodanie przewijania w pionie */
+    background-color: #f0f0f0; /* Opcjonalnie tło dla lepszej widoczności */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcjonalny cień dla efektu */
+}
+
+#image-options ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Odstępy między miniaturkami */
+}
+
+#image-options li {
+    list-style-type: none;
+    max-width: 100px; /* Maksymalna szerokość miniaturki */
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto;
+    max-width: 100px; /* Ustalony rozmiar miniaturki */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1); /* Efekt powiększenia przy najechaniu */
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.8); /* ciemniejsze tło */
+    /* Inne style */
+}
+
+
+
+
+
+
+/* Stylizacja przycisku "Wybierz nowe zdjęcie" */
+#choose-image-btn {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #704214; 
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#choose-image-btn:hover {
+    background-color: #5b3617;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(112, 66, 20, 0.5);
+}
+
+#choose-image-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(179, 142, 93, 0.5);
+}
+
+/* Stylizacja przycisku "Prześlij zdjęcie" */
+#upload-form button {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b38e5d;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#upload-form button:hover {
+    background-color: #7f6037;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(112, 66, 20, 0.5);
+}
+
+#upload-form button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(179, 142, 93, 0.5);
+}
+
+#upload-form button:active {
+    transform: translateY(1px);
+}
