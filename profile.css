@@ -1,0 +1,157 @@
+/* profile.css - Motyw inspirowany starą biblioteką */
+
+/* Globalne style */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #2a1a0b; /* Ciemne tło nawiązujące do drewna */
+    margin: 0;
+    padding: 0;
+    color: #4e3b31; /* Ciepły brązowy tekst */
+}
+
+/* Kontener profilu */
+#user-profile {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #f9f4e1; /* Jasne kremowe tło */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+#user-profile:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Informacje o profilu */
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.profile-info img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid #d1b497; /* Subtelna złotawa obwódka */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-info img:hover {
+    transform: scale(1.05);
+    border-color: #b9977a;
+}
+
+.profile-info h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #4e3b31; /* Ciepły brąz */
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #4e3b31;
+}
+
+/* Tabela aktywności */
+.activity-calendar {
+    margin-top: 40px;
+}
+
+.activity-calendar h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #4e3b31;
+}
+
+.activity-calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: #fafafa;
+    border-radius: 8px;
+}
+
+.activity-calendar table th,
+.activity-calendar table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #d1b497;
+}
+
+.activity-calendar table th {
+    background-color: #d1b497;
+    font-weight: 600;
+    color: #2a1a0b;
+}
+
+.activity-calendar table td {
+    color: #4e3b31;
+}
+
+.activity-calendar table tr:hover {
+    background-color: #f9f4e1;
+    transition: background-color 0.2s ease;
+}
+
+/* Przycisk edytowania */
+.button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #d1b497; /* Złotawy odcień */
+    color: #2a1a0b;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #b9977a;
+    transform: scale(1.05);
+}
+
+/* Przycisk profilowy */
+.profile-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Zielony */
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #45a049;
+    border-color: #3d8b3f;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    #user-profile {
+        padding: 20px;
+    }
+
+    .profile-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-info img {
+        width: 100px;
+        height: 100px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .activity-calendar table th,
+    .activity-calendar table td {
+        padding: 8px;
+    }
+}

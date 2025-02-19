@@ -94,3 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
         generateCalendar(currentYear, currentMonth);
     });
 });
+document.getElementById('choose-image-btn').addEventListener('click', function() {
+    document.getElementById('upload-form').style.display = 'block'; // Pokazuje formularz
+});

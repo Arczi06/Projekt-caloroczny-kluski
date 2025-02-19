@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Społeczność</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo">
+            <h1>Społeczność</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="forum-container">
+        <section class="new-post">
+            <h2>Nowy post</h2>
+            <form class="forum-form">
+                <div class="form-group">
+                    <label for="post-title">Tytuł:</label>
+                    <input type="text" id="post-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Treść:</label>
+                    <textarea id="post-content" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Opublikuj</button>
+            </form>
+        </section>
+
+        <section class="posts">
+            <h2>Najnowsze posty</h2>
+            <div class="post-card">
+                <h3>Przykładowy tytuł posta</h3>
+                <p class="post-meta">Autor: Jan Kowalski | Data: 2023-10-15</p>
+                <p class="post-content">To jest przykładowa treść posta na forum społecznościowym.</p>
+                
+                <div class="replies">
+                    <h4>Odpowiedzi:</h4>
+                    <div class="reply">
+                        <p class="reply-meta">Autor: Anna Nowak | Data: 2023-10-16</p>
+                        <p class="reply-content">To jest przykładowa odpowiedź na post.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Społeczność</p>
+        </div>
+    </footer>
+</body>
+</html>

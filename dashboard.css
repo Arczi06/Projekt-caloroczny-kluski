@@ -98,7 +98,8 @@ body {
     height: 50px;
     border-radius: 50%;
     margin-right: 15px;
-    border: 2px solid #f1e0c6; 
+    border: 2px solid #f1e0c6;
+    background-color: #818068;
     position: relative;
     top: 5px; 
     animation: avatarPulse 3s ease-in-out infinite;
@@ -264,3 +265,4 @@ body {
         transform: translateX(-50%);
     }
 }
+
