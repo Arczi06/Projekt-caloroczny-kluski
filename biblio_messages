@@ -1,0 +1,59 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.html");
+    exit;
+}
+
+include 'config.php';
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT username, profile_image FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($username, $profile_image);
+$stmt->fetch();
+$stmt->close();
+
+$profile_image_path = isset($profile_image) && $profile_image ? "ni/$profile_image" : "ni/default.jpg";
+
+$messages_sql = "SELECT * FROM messages ORDER BY sent_at DESC";
+$messages_result = $conn->query($messages_sql);
+?>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiadomości</title>
+    <link rel="stylesheet" href="librarian.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <?php include 'librarian_sidebar.php'; ?>
+
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <div class="user-info">
+                    <img src="<?php echo $profile_image_path; ?>" alt="Profile Image" class="user-avatar">
+                    <span class="user-name">Witaj, <?php echo htmlspecialchars($username); ?>!</span>
+                </div>
+            </header>
+
+            <section class="dashboard-section">
+                <h2>Wiadomości</h2>
+                <div class="messages-container">
+                    <?php while ($message = $messages_result->fetch_assoc()) : ?>
+                        <div class="message">
+                            <p><strong><?php echo htmlspecialchars($message['sender']); ?>:</strong> <?php echo htmlspecialchars($message['content']); ?></p>
+                            <small><?php echo $message['sent_at']; ?></small>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2025 at 06:12 PM
+-- Generation Time: Feb 27, 2025 at 12:18 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -24,25 +24,55 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `books`
+--
+
+CREATE TABLE `books` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `year` int(11) NOT NULL,
+  `genre` varchar(100) DEFAULT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `title`, `author`, `year`, `genre`, `quantity`, `created_at`) VALUES
+(1, 'Wiedźmin: Ostatnie życzenie', 'Andrzej Sapkowski', 1993, 'Fantasy', 5, '2025-02-26 21:58:03'),
+(2, 'Hobbit', 'J.R.R. Tolkien', 1937, 'Fantasy', 3, '2025-02-26 21:58:03'),
+(3, 'Metro 2033', 'Dmitry Glukhovsky', 2005, 'Sci-Fi', 4, '2025-02-26 21:58:03'),
+(4, 'Dziady', 'Adam Mickiewicz', 1823, 'Dramat', 2, '2025-02-26 21:58:03'),
+(5, 'Pan Tadeusz', 'Adam Mickiewicz', 1834, 'Epopeja', 3, '2025-02-26 21:58:03');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `borrowed_books`
 --
 
 CREATE TABLE `borrowed_books` (
-  `id` int(50) NOT NULL,
-  `user_id` int(50) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `author` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
   `borrow_date` date NOT NULL,
   `due_date` date NOT NULL,
-  `status` varchar(50) NOT NULL
+  `status` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `borrowed_books`
 --
 
-INSERT INTO `borrowed_books` (`id`, `user_id`, `title`, `author`, `borrow_date`, `due_date`, `status`) VALUES
-(1, 3, 'nvm', 'sigma', '0000-00-00', '0000-00-00', 'returned');
+INSERT INTO `borrowed_books` (`id`, `user_id`, `book_id`, `borrow_date`, `due_date`, `status`) VALUES
+(1, 57, 4, '2025-02-14', '2025-03-13', 1),
+(2, 57, 3, '2025-02-10', '2025-03-14', 2),
+(3, 71, 5, '2025-02-12', '2025-03-03', 3),
+(4, 58, 2, '2025-01-31', '2025-03-28', 4),
+(5, 59, 2, '2025-02-22', '2025-03-28', 0);
 
 -- --------------------------------------------------------
 
@@ -144,7 +174,7 @@ INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`, `ro
 (82, '1212@gmail.com', '121234', '$2y$10$3hm1.TOlw0eficFhybBRjeqxBr5O6/jHfiqTGwSsGdhN0ydV10I2a', '#a46e37', 1, '2025-02-17 18:54:20', 'c90e6945a097553cb4e5e1788266a0fe.jpg'),
 (83, 'przykład333@gmial.com', 'przykład33', '$2y$10$pcXjsvYAjbwnhWKtzk1dMOC3OiL5Obb1MMpYarACiGoi5X3nBZAUm', '#000000', 1, '2025-02-18 16:48:06', 'default.jpg'),
 (84, 'niger111@gmail.com', 'czarny', '$2y$10$pCL0qzkrW5Oeh8ZyI1YY9en1ytHLtL1y07dqrmpx2.LuVa8tdsbw6', '#000000', 1, '2025-02-18 16:49:05', 'default.jpg'),
-(85, 'przykład222@gmail.com', 'przykład22', '$2y$10$vpxBDGqObweu3JszIKrAwe1sWazCX3rPmmfraZ7Ir.KE6k8oUzlPy', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg');
+(85, 'przyklad222@gmail.com', 'przykład22', '$2y$10$7XRQGVPZTQf2XKtVE2.JWOIka8kAtAY40paOsIeW9sU8VBQfVkSve', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -184,18 +214,27 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `lo
 (34, 82, '2025-02-17', '2025-02-17 18:54:25', 1, 'Login'),
 (35, 43, '2025-02-18', '2025-02-18 15:54:12', 2, 'Login'),
 (36, 80, '2025-02-18', '2025-02-18 15:54:39', 4, 'Login'),
-(37, 84, '2025-02-18', '2025-02-18 16:58:55', 1, 'Login');
+(37, 84, '2025-02-18', '2025-02-18 16:58:55', 1, 'Login'),
+(38, 43, '2025-02-26', '2025-02-26 22:01:05', 1, 'Login'),
+(39, 85, '2025-02-26', '2025-02-26 22:01:37', 2, 'Login');
 
 --
 -- Indeksy dla zrzutów tabel
 --
 
 --
+-- Indeksy dla tabeli `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `book_id` (`book_id`);
 
 --
 -- Indeksy dla tabeli `messages`
@@ -230,6 +269,18 @@ ALTER TABLE `user_activity`
 --
 
 --
+-- AUTO_INCREMENT for table `books`
+--
+ALTER TABLE `books`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `borrowed_books`
+--
+ALTER TABLE `borrowed_books`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
@@ -251,7 +302,18 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `borrowed_books`
+--
+ALTER TABLE `borrowed_books`
+  ADD CONSTRAINT `borrowed_books_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `borrowed_books_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
