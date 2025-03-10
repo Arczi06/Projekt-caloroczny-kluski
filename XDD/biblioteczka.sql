@@ -18,6 +18,16 @@ INSERT INTO biblioteczka (okładka, tytuł, autor, krótki_opis, streszczenie) V
 ('./biblioteka/D.jpg', 'Duma i uprzedzenie', 'Jane Austen', 'Historia miłości Elizabeth Bennet i pana Darcy.', 'Klasyczna powieść romantyczna o miłości, społeczeństwie i uprzedzeniach.');
 
 
+INSERT INTO biblioteczka (okładka, tytuł, autor, krótki_opis, streszczenie) VALUES
+('./biblioteka/MS.jpg', 'Mistrz i Małgorzata', 'Michaił Bułhakow', 'Diabeł odwiedza Moskwę i wywraca miasto do góry nogami.', 'Powieść łącząca satyrę, realizm magiczny i filozofię, ukazująca walkę dobra ze złem.'),
+('./biblioteka/BB.jpg', 'Bracia Karamazow', 'Fiodor Dostojewski', 'Historia trzech braci o różnych osobowościach i ich konfliktu z ojcem.', 'Głęboka powieść filozoficzna o wierze, moralności i rodzinnych relacjach.'),
+('./biblioteka/SH.jpg', 'Sherlock Holmes: Studium w szkarłacie', 'Arthur Conan Doyle', 'Detektyw Sherlock Holmes rozwiązuje tajemniczą zbrodnię w Londynie.', 'Pierwsza powieść o Sherlocku Holmesie, w której poznajemy jego niezwykłe metody dedukcji.'),
+('./biblioteka/PP.jpg', 'Proces', 'Franz Kafka', 'Josef K. zostaje aresztowany, ale nie wie, za co.', 'Powieść o absurdzie biurokracji i poczuciu winy w świecie bez wyjaśnień.'),
+('./biblioteka/WT.jpg', 'Wojna i pokój', 'Lew Tołstoj', 'Epopeja historyczna o wojnach napoleońskich i losach rosyjskiej arystokracji.', 'Jedna z najważniejszych powieści wszech czasów, łącząca fikcję z historią.'),
+('./biblioteka/HG.jpg', 'Igrzyska śmierci', 'Suzanne Collins', 'Katniss Everdeen bierze udział w brutalnej grze o przetrwanie.', 'Dystopijna powieść o totalitarnym państwie zmuszającym młodych ludzi do walki na śmierć i życie.'),
+('./biblioteka/DC.jpg', 'Don Kichot', 'Miguel de Cervantes', 'Szlachcic z La Manchy postanawia zostać wędrownym rycerzem.', 'Satyrystyczna powieść o iluzji, marzeniach i starciu z rzeczywistością.'),
+('./biblioteka/RJ.jpg', 'Romeo i Julia', 'William Shakespeare', 'Tragiczna miłość dwojga młodych kochanków z wrogich rodów.', 'Jedna z najsłynniejszych tragedii o miłości, nienawiści i przeznaczeniu.');
+
 
 
 CREATE TABLE wydarzenia (
@@ -27,6 +37,8 @@ CREATE TABLE wydarzenia (
     data DATE NOT NULL,
     zdjecie VARCHAR(255) NOT NULL
 );
+
+ALTER TABLE wydarzenia ADD COLUMN reakcje TEXT DEFAULT '{}';
 
 INSERT INTO wydarzenia (tytul, opis, data, zdjecie) VALUES
 ('Spotkanie autorskie', 'Zapraszamy na spotkanie z popularnym autorem, który opowie o swojej najnowszej książce.', '2024-04-10', './eventy/spotkanie_autorskie.jpg'),
