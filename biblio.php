@@ -42,10 +42,11 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Bibliotekarza</title>
     <link rel="stylesheet" href="biblio.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="dashboard-container">
-    <?php include 'biblio_sidebar.php'; ?>
+        <?php include 'biblio_sidebar.php'; ?>
 
         <main class="dashboard-content">
             <header class="dashboard-header">
@@ -59,11 +60,13 @@ $conn->close();
                 <h2>Statystyki</h2>
                 <div class="stats">
                     <div class="card">
+                        <i class="fas fa-users"></i>
                         <h3>Użytkownicy</h3>
                         <p><?= $users_count; ?></p>
                     </div>
                     <div class="card">
-                        <h3>Książki</h3>
+                        <i class="fas fa-book"></i>
+                        <h3>Wypożyczone Książki</h3>
                         <p><?= $books_count; ?></p>
                     </div>
                 </div>

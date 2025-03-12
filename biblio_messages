@@ -28,7 +28,7 @@ $messages_result = $conn->query($messages_sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wiadomości</title>
-    <link rel="stylesheet" href="librarian.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="dashboard-container">

@@ -17,6 +17,13 @@ if ($user = $result->fetch_assoc()) {
     $profile_image = (!empty($user['profile_image']) && file_exists("ni/{$user['profile_image']}")) 
         ? "ni/{$user['profile_image']}" 
         : "ni/default.jpg";
+
+    $role_classes = [
+        1 => "librarian", // Bibliotekarz
+        2 => "admin",     // Administrator
+        0 => "reader"     // Czytelnik
+    ];
+    $role_class = $role_classes[$user['role']] ?? "reader";
 } else {
     die("Użytkownik nie istnieje.");
 }
@@ -35,7 +42,7 @@ $conn->close();
 </head>
 <body>
     <div class="profile-container">
-        <div class="profile-card">
+        <div class="profile-card <?= $role_class ?>">
             <img src="<?= $profile_image; ?>" alt="Profilowe" class="profile-avatar">
             <h2><?= htmlspecialchars($user['username']); ?></h2>
             <p>Email: <?= htmlspecialchars($user['email']); ?></p>
