@@ -49,7 +49,7 @@ $conn->close();
                 <a href="profil.php">Profil</a>
                 <a href="admin/index.html">Ustawienia</a>
                 <a href="chat.php">Wiadomości</a>
-                <a href="#">Strona</a>
+                <a href="user_home.php">Strona</a>
                 <a href="logout.php" id="Logout">Logout</a>
                 <div class="solitaire-card">
                     <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>

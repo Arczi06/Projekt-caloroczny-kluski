@@ -17,8 +17,10 @@ $stmt->fetch();
 $stmt->close();
 
 $image_directory = 'ni';
-$profile_images = scandir($image_directory); 
-$profile_images = array_diff($profile_images, array('.', '..'));
+if (!is_dir($image_directory)) {
+    mkdir($image_directory, 0755, true);
+}
+$profile_images = is_dir($image_directory) ? array_diff(scandir($image_directory), array('.', '..')) : [];
 ?>
 
 <!DOCTYPE html>
@@ -27,15 +29,13 @@ $profile_images = array_diff($profile_images, array('.', '..'));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil użytkownika</title>
-    <link rel="stylesheet" href="profil.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        #image-options {
-            max-height: 400px;
-            width: 100%;
-            overflow-y: auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px;
+        .profile-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             color: white;

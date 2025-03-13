@@ -4,22 +4,25 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #2d3748;
-    background-color: #f8fafc;
-}
+    color: rgba(255, 255, 255, 1); /* Changed text color to white for hero title */
 
+    background: 
+        url('library-texture.jpg') no-repeat center center fixed; /* Updated background for full visibility */
+    background-size: cover; /* Ensure background covers the entire area */
+}
 
 /* Header Styles */
 header {
-    background-color: #1e293b;
-    color: #f8fafc;
+    background-color: transparent; /* Set to transparent to allow background image visibility */
+    backdrop-filter: blur(5px); /* Added blur effect to header */
+
+    color: #ffffff; /* Updated text color to match index.html */
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 
 .logo-container {
     display: flex;
@@ -31,16 +34,29 @@ header {
     margin-right: 15px;
 }
 
+nav {
+    display: flex;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
+
 nav ul li {
-    margin-left: 20px;
+    margin: 10px 0; /* Add vertical spacing */
+    padding: 10px; /* Add padding for better touch targets */
+    background-color: rgba(255, 255, 255, 0.8); /* Background color for menu items */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth background color transition */
 }
+
+nav ul li:hover {
+    background-color: rgba(255, 255, 255, 1); /* Change background on hover */
+}
+
 
 nav ul li a {
     color: #fff;
@@ -54,13 +70,61 @@ nav ul li a:hover {
     border-radius: 3px;
 }
 
+/* Hamburger Menu */
+.menu-icon {
+    display: block; /* Show hamburger icon */
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff; /* Change color for better visibility */
+    max-height: 4vh;
+}
+
+nav ul {
+    display: none; /* Hide menu by default */
+    flex-direction: column; /* Stack items vertically */
+    position: relative; /* Position it absolutely */
+    background-color: rgba(255, 255, 255, 0.9); /* Background for the menu */
+    width: 100%; /* Full width */
+    left: 0;
+    transition: max-height 0.3s ease; /* Smooth transition */
+    max-height: 0; /* Initially hidden */
+    overflow: hidden; /* Hide overflow */
+    z-index: 1000;
+}
+
+nav input[type="checkbox"]:checked + .menu-icon + ul {
+    display: flex; /* Show menu when checkbox is checked */
+    max-height: 500px; /* Set a max height for the dropdown */
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Position it absolutely */
+        background-color: rgba(255, 255, 255, 0.9); /* Background for the menu */
+        width: 100%; /* Full width */
+        left: 0;
+    }
+
+    nav input[type="checkbox"]:checked + .menu-icon + ul {
+        display: flex; /* Show menu when checkbox is checked */
+    }
+
+    .menu-icon {
+        display: block; /* Show hamburger icon */
+    }
+}
+
 /* Hero Section */
 .hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 50px 20px;
-    background-color: #ecf0f1;
+    background-color: transparent; /* Set to transparent to allow background image visibility */
 }
 
 .hero-content {
@@ -77,7 +141,7 @@ nav ul li a:hover {
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 15px;
 }
 
@@ -95,7 +159,6 @@ nav ul li a:hover {
     will-change: transform;
 }
 
-
 .btn-primary:hover, .btn-secondary:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
@@ -106,25 +169,24 @@ nav ul li a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, rgba(210, 180, 140, 0.5), rgba(166, 124, 82, 0.5)); /* Set to semi-transparent for buttons */
+
     color: #fff;
     border: 2px solid #2563eb;
 }
 
-
 .btn-secondary {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, rgba(139, 90, 43, 0.5), rgba(109, 72, 36, 0.5)); /* Set to semi-transparent for buttons */
+
     color: #fff;
     border: 2px solid #059669;
 }
 
-
 /* Features Section */
 .features {
     padding: 50px 20px;
-    background-color: #fff;
+    background-color: rgba(62, 39, 35, 0.8); /* Set to semi-transparent for features */
 }
 
 .feature-grid {
@@ -141,14 +203,13 @@ nav ul li a:hover {
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    color: #3e2723; /* Set back to original text color */
 }
-
 
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 }
-
 
 .feature-card img {
     max-width: 100px;
@@ -158,19 +219,20 @@ nav ul li a:hover {
 /* About Section */
 .about {
     padding: 50px 20px;
-    background-color: #ecf0f1;
+    background-color: rgba(62, 39, 35, 0.8); /* Set to semi-transparent for about */
 }
 
 /* Contact Section */
 .contact {
     padding: 50px 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* Set to semi-transparent for contact */
+    color: #3e2723;
 }
 
 /* Footer Styles */
 footer {
-    background-color: #2c3e50;
-    color: #fff;
+    background-color: transparent; /* Set to transparent to allow background image visibility */
+    color: #ffffff; /* Updated text color to match index.html */
     padding: 20px 0;
     text-align: center;
 }
@@ -268,7 +330,6 @@ footer ul li a {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-
     .hero {
         flex-direction: column;
         text-align: center;
@@ -293,7 +354,15 @@ footer ul li a {
         margin-top: 10px;
     }
 
-    nav ul li {
-        margin: 5px 0;
+    nav ul {
+        display: none; /* Hide menu by default */
+    }
+
+    nav input[type="checkbox"]:checked + .menu-icon + nav {
+        display: flex; /* Show menu when checkbox is checked */
+    }
+
+    .menu-icon {
+        display: block; /* Show hamburger icon */
     }
 }
