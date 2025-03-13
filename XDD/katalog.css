@@ -29,6 +29,7 @@ header > h1 {
 }
 #szukaj > input {
     width:70%;
+    height: auto;
     margin-left: 30%;
     border: 1px solid black;
     /* border-radius: 15%; */
@@ -253,12 +254,31 @@ footer {
         margin-right: 10px;
         /* width: 30%px; */
     }
+    #szukaj > input {
+        width:90%;
+        height: auto;
+        margin-left: 10%;
+        border: 1px solid black;
+        /* border-radius: 15%; */
+        
+    }
 }
 
 
 @media (min-width: 940px) {
     body{
         font-size:large;
+    }
+    #szukaj > input {
+        width:110%;
+        height: auto;
+        margin-left: 0%;
+        border: 1px solid black;
+        /* border-radius: 15%; */
+        font-size: 20px;
+    }
+    form > button {
+        font-size: 20px;
     }
     .menu-button{
         display: none;
@@ -272,8 +292,9 @@ footer {
         flex-direction: row;
         width: auto;
         justify-content: space-evenly;
-        line-height: 3vh;
-        height: 8vh;
+        height: 6%;
+        line-height: 50%;
+        font-size: 1.1em;
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(10px);
         border-radius: 30px;
@@ -308,6 +329,20 @@ footer {
 
 
 @media (min-width: 1920px) {
+    header > h1{
+        font-size: 45px;
+    }
+    #szukaj > input {
+        width:140%;
+        height: auto;
+        margin-left: 0%;
+        border: 1px solid black;
+        /* border-radius: 15%; */
+        font-size: 25px;
+    }
+    form > button {
+        font-size: 25px;
+    }
     main {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -318,5 +353,8 @@ footer {
     .card{
         width: 400px;
         height: 560px;
+    }
+    .menu-content{
+        font-size: 2em;
     }
 }
