@@ -46,3 +46,46 @@ INSERT INTO wydarzenia (tytul, opis, data, zdjecie) VALUES
 ('Klub czytelnika', 'Dyskusja na temat klasycznych dzieł literatury. Dołącz do naszej społeczności miłośników książek!', '2024-04-20', './eventy/klub_czytelnika.jpg'),
 ('Wieczór poezji', 'Romantyczna atmosfera i piękne wiersze czytane przez aktorów.', '2024-04-25', './eventy/wieczor_poezji.jpg'),
 ('Giełda książek', 'Masz książki, których już nie czytasz? Wymień je na inne w naszej bibliotece!', '2024-04-30', './eventy/gielda_ksiazek.jpg');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS rere (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    zdjecie VARCHAR(255) NOT NULL,
+    tytul VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    opis TEXT NOT NULL,
+    likes INT DEFAULT 0,
+    hearts INT DEFAULT 0,
+    claps INT DEFAULT 0
+);
+
+
+
+INSERT INTO rere (zdjecie, tytul, data, opis) VALUES
+('./eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.'),
+('./eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.');
+
+
+
