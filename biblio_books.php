@@ -3,7 +3,8 @@ session_start();
 include 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    die("Nie jesteś zalogowany.");
+    header("Location: index.html");
+    exit;
 }
 
 $user_id = $_SESSION['user_id'];
@@ -15,13 +16,14 @@ $stmt->bind_result($username, $profile_image);
 $stmt->fetch();
 $stmt->close();
 
-$profile_image_path = !empty($profile_image) ? "ni/$profile_image" : "ni/default.jpg";
+$profile_image_path = isset($profile_image) && $profile_image ? "ni/$profile_image" : "ni/default.jpg";
+
+// Pobieranie książek
 $books_sql = "SELECT b.id, b.title, b.author, b.year, u.username, bb.borrow_date, bb.due_date, bb.status
               FROM books b
               LEFT JOIN borrowed_books bb ON b.id = bb.book_id
               LEFT JOIN users u ON bb.user_id = u.id
               ORDER BY bb.borrow_date DESC";
-
 $books_result = $conn->query($books_sql);
 ?>
 
@@ -30,8 +32,9 @@ $books_result = $conn->query($books_sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Książki</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Lista książek</title>
+    <link rel="stylesheet" href="biblio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="dashboard-container">
@@ -40,11 +43,12 @@ $books_result = $conn->query($books_sql);
         <main class="dashboard-content">
             <header class="dashboard-header">
                 <div class="user-info">
-                    <img src="<?= $profile_image_path; ?>" alt="Profile Image" class="user-avatar">
-                    <span class="user-name">Witaj, <?= htmlspecialchars($username); ?>!</span>
+                    <img src="<?php echo $profile_image_path; ?>" alt="Profile Image" class="user-avatar">
+                    <span class="user-name">Witaj, <?php echo htmlspecialchars($username); ?>!</span>
                 </div>
             </header>
 
+            <!-- Tabela książek -->
             <section class="dashboard-section">
                 <h2>Lista wypożyczonych książek</h2>
                 <table class="books-table">
@@ -62,23 +66,33 @@ $books_result = $conn->query($books_sql);
                     <tbody>
                         <?php while ($row = $books_result->fetch_assoc()) : ?>
                             <tr>
-                                <td><?= htmlspecialchars($row['title']); ?></td>
-                                <td><?= htmlspecialchars($row['author']); ?></td>
-                                <td><?= htmlspecialchars($row['year']); ?></td>
-                                <td><?= $row['username'] ? htmlspecialchars($row['username']) : 'Dostępna'; ?></td>
-                                <td><?= $row['borrow_date'] ? htmlspecialchars($row['borrow_date']) : '-'; ?></td>
-                                <td><?= $row['due_date'] ? htmlspecialchars($row['due_date']) : '-'; ?></td>
-                                <td class="status-<?php echo isset($row['status']) ? $row['status'] : 'available'; ?>">
+                                <td><?php echo htmlspecialchars($row['title']); ?></td>
+                                <td><?php echo htmlspecialchars($row['author']); ?></td>
+                                <td><?php echo htmlspecialchars($row['year']); ?></td>
+                                <td><?php echo $row['username'] ? htmlspecialchars($row['username']) : 'Dostępna'; ?></td>
+                                <td><?php echo $row['borrow_date'] ? htmlspecialchars($row['borrow_date']) : '-'; ?></td>
+                                <td><?php echo $row['due_date'] ? htmlspecialchars($row['due_date']) : '-'; ?></td>
+                                <td>
                                     <?php
                                     if ($row['status'] === null) {
-                                        echo 'Dostępna';
+                                        echo '<span class="status status-available"><i class="fas fa-book"></i> Dostępna</span>';
                                     } else {
                                         switch ($row['status']) {
-                                            case 0: echo 'Oddana'; break;
-                                            case 1: echo 'Wypożyczona'; break;
-                                            case 2: echo 'Zniszczona'; break;
-                                            case 3: echo 'Zgubiona'; break;
-                                            default: echo 'Nieznany';
+                                            case 0:
+                                                echo '<span class="status status-returned"><i class="fas fa-check-circle"></i> Oddana</span>';
+                                                break;
+                                            case 1:
+                                                echo '<span class="status status-borrowed"><i class="fas fa-book-reader"></i> Wypożyczona</span>';
+                                                break;
+                                            case 2:
+                                                echo '<span class="status status-damaged"><i class="fas fa-ban"></i> Zniszczona</span>';
+                                                break;
+                                            case 3:
+                                                echo '<span class="status status-lost"><i class="fas fa-times-circle"></i> Zgubiona</span>';
+                                                break;
+                                            default:
+                                                echo '<span class="status status-unknown"><i class="fas fa-question-circle"></i> Nieznany</span>';
+                                                break;
                                         }
                                     }
                                     ?>

@@ -225,6 +225,110 @@ body {
     text-decoration: underline;
 }
 
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: white;
+    table-layout: fixed; /* Wymusza równą szerokość kolumn */
+}
+
+.books-table th, .books-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    width: calc(100% / 7); /* Dzielenie szerokości na 7 kolumn */
+}
+
+.books-table th {
+    background-color: #5d4037;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.books-table tr:nth-child(even) {
+    background-color: #f7eee3;
+}
+
+.books-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Status dostępna */
+.status-available {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-available i {
+    margin-right: 5px;
+}
+
+/* Status oddana */
+.status-returned {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.status-returned i {
+    margin-right: 5px;
+}
+
+/* Status wypożyczona */
+.status-borrowed {
+    background-color: #ffc107;
+    color: white;
+}
+
+.status-borrowed i {
+    margin-right: 5px;
+}
+
+/* Status zniszczona */
+.status-damaged {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-damaged i {
+    margin-right: 5px;
+}
+
+/* Status zgubiona */
+.status-lost {
+    background-color: #6c757d;
+    color: white;
+}
+
+.status-lost i {
+    margin-right: 5px;
+}
+
+/* Status nieznany */
+.status-unknown {
+    background-color: #f8f9fa;
+    color: black;
+}
+
+.status-unknown i {
+    margin-right: 5px;
+}
+
+
+
 @media (max-width: 768px) {
     .dashboard-container {
         flex-direction: column;

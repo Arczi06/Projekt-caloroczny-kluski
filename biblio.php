@@ -69,6 +69,10 @@ $conn->close();
                         <h3>Wypożyczone Książki</h3>
                         <p><?= $books_count; ?></p>
                     </div>
+                    <div class="card">
+                        <i class="fas fa-book"></i>
+                        <a href="event.php">UTWÓRZ EVENT!</a>
+                    </div>
                 </div>
             </section>
         </main>
