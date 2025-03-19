@@ -15,23 +15,26 @@ include 'config.php'
         <h1>Twoja Biblioteka</h1>
             <h3>Szkoła średnia 1 - 5</h3>
     </header>
-    <main>
-        <nav>
+    <div class="menu-container">
+        <button class="menu-button">☰</button>
+        <nav class="menu-content">
             <ul>
-                <ul class="small">
-                    <li><a href="core.html">Strona Główna</a></li>
-                    <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3</a></li>
-                    <li><a href="lekturyObowiązkowe45.php">Klasy 4 - 8</a></li>
-                    <li><a href="lekturyObowiązkowe15.php">Kl. średnie 1 - 5</a></li>
-                </ul>
-                <ul class="big">
-                    <li><a href="core.html">Strona Główna</a></li>
-                    <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3</a></li>
-                    <li><a href="lekturyObowiązkowe45.php">Klasy 4 - 8</a></li>
-                    <li><a href="lekturyObowiązkowe15.php">Kl. średnie 1 - 5</a></li>
-                </ul>
+                <li><a href="core.html">Strona Główna</a></li>
+                <li><a href="katalog.php">Katalog Książek</a></li>
+                <li><a href="#">Lektury Obowiązkowe</a>
+                    <ul class="submenu">
+                        <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3 szkoła podstawowa</a></li>
+                        <li><a href="lekturyObowiązkowe45.php">Klasy 4 - 8 szkoła podstawowa</a></li>
+                        <li><a href="lekturyObowiązkowe15.php">Klasy 1 - 5 szkoła średnia</a></li>
+                    </ul>
+                </li>
+                <li><a href="moje.php">Moje Książki</a></li>
+                <li><a href="eventy.php">Wydarzenia</a></li>
+                <li><a href="profil.php">Profil</a></li>
             </ul>
         </nav>
+    </div>
+    <main>
         <section>
             <div class="carousel-container">
                 <span class="arrow left-arrow" onclick="scrollCarousel('left')">&#8592;</span>
