@@ -1,0 +1,360 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-image: url(bgc2.jpg);
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #f1e0c6;
+}
+
+header > h1 {
+    text-align: center;
+    font-size: 34px;
+    text-shadow: 2px 2px 10px #000000;
+}
+#szukaj {
+    display: flex;
+    margin: 2px;
+}
+#szukaj > input {
+    width:70%;
+    height: auto;
+    margin-left: 30%;
+    border: 1px solid black;
+    /* border-radius: 15%; */
+    
+}
+
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+ 
+.menu-button {
+    cursor: pointer;
+    padding: 10px;
+    font-size: 20px;
+}
+ 
+.menu-content {
+    display: none; /* domyślnie ukryte */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 250px; /* możesz dostosować szerokość */
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 6px 6px rgba(0,0,0,0.5);
+    z-index: 1002;
+}
+ 
+.menu-content ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+ 
+.menu-content ul li {
+    padding: 5px;
+}
+ 
+.menu-content ul li a {
+    color: #000; /* możesz dostosować kolor tekstu */
+    text-decoration: none;
+}
+ 
+.menu-container:hover .menu-content {
+    display: block; /* pokazuje menu po najechaniu na kontener */
+}
+ 
+/* submenu (opcjonalnie) */
+.submenu {
+    display: none;
+    padding-left: 15px;
+}
+ 
+.menu-content ul li:hover .submenu {
+    display: block; /* submenu pojawia się po najechaniu na element nadrzędny */
+}
+
+main {
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 20px; 
+}
+
+.wrapper {
+    margin: auto;
+    /* margin: 30px; */
+    /* perspective: 3000px; */
+}
+
+.card {
+    width: 175px;
+    height: 245px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+                -5px -5px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.front-page,
+.back-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.front-page {
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+.card-info {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    color: #3c3a3a;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-subtitle {
+    margin-top: 5px;
+    color: #0fbcf9;
+}
+
+.back-page {
+    background-color: #3e2723;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+}
+
+.card-content h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card-description {
+    font-size: x-small;
+    color: #ccc;
+    /* margin-bottom: 20px; */
+    /* line-height: 1.6; */
+}
+
+.card-button {
+    margin-top: 5%;
+    background-color: #533530;
+    color: #fff;
+    padding: 2% 5%;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-button:hover {
+    background-color: transparent;
+    color: #f1e0c6;
+    border: 1px solid #694a07;
+}
+
+footer {
+    height: 40px ;
+}
+
+.popup {
+    display: none;
+    margin: auto; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #1e272e;
+    color: #fff;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #4e4e4e;
+}
+
+.close-popup:hover {
+    color: red;
+}
+
+
+
+@media (min-width: 640px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    body{
+        font-size:medium;
+    }
+    .card{
+        width: 200px;
+        height: 280px;
+    }
+    #szukaj{
+        margin-right: 10px;
+        /* width: 30%px; */
+    }
+    #szukaj > input {
+        width:90%;
+        height: auto;
+        margin-left: 10%;
+        border: 1px solid black;
+        /* border-radius: 15%; */
+        
+    }
+}
+
+
+@media (min-width: 940px) {
+    body{
+        font-size:large;
+    }
+    #szukaj > input {
+        width:110%;
+        height: auto;
+        margin-left: 0%;
+        border: 1px solid black;
+        /* border-radius: 15%; */
+        font-size: 20px;
+    }
+    form > button {
+        font-size: 20px;
+    }
+    .menu-button{
+        display: none;
+    }
+    .menu-container{
+        width: 100%;
+    }
+    .menu-content {
+        margin: auto;
+        display: block;
+        flex-direction: row;
+        width: auto;
+        justify-content: space-evenly;
+        height: 6%;
+        line-height: 50%;
+        font-size: 1.1em;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+        position: relative;
+        z-index: 1000; 
+    }
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .submenu > li {
+        background: rgba(255, 255, 255);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card{
+        width: 300px;
+        height: 420px;
+    }
+    
+}
+
+
+@media (min-width: 1920px) {
+    header > h1{
+        font-size: 45px;
+    }
+    #szukaj > input {
+        width:140%;
+        height: auto;
+        margin-left: 0%;
+        border: 1px solid black;
+        /* border-radius: 15%; */
+        font-size: 25px;
+    }
+    form > button {
+        font-size: 25px;
+    }
+    main {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    body{
+        font-size: larger;
+    }
+
+    .card{
+        width: 400px;
+        height: 560px;
+    }
+    .menu-content{
+        font-size: 2em;
+    }
+}
