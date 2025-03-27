@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
         $update_query = "UPDATE rere SET zdjecie = '$zdjecie', tytul = '$tytul', data = '$data', opis = '$opis' WHERE id = $id";
 
         if (mysqli_query($conn, $update_query)) {
-            echo "Wydarzenie zostało zaktualizowane. <a href='zarzadzanie_wydarzeniami.php'>Powrót do strony głównej</a>";
+            header("Location: zarzadzanie_wydarzeniami.php");
         } else {
             echo "Błąd aktualizacji wydarzenia: " . mysqli_error($conn);
         }

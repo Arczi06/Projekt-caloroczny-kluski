@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         $update_query = "UPDATE biblioteczka SET okładka = '$okładka', tytuł = '$tytul', autor = '$autor', krótki_opis = '$krotki_opis', streszczenie = '$streszczenie' WHERE id = $id";
 
         if (mysqli_query($conn, $update_query)) {
-            echo "Książka została zaktualizowana. <a href='zarzadzanie_ksiazkami.php'>Powrót do strony głównej</a>";
+            header("Location: zarzadzanie_ksiazkami.php");
         } else {
             echo "Błąd aktualizacji książki: " . mysqli_error($conn);
         }
