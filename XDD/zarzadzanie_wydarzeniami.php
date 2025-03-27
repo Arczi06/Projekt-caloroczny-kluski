@@ -57,7 +57,7 @@ $result = mysqli_query($conn, $query);
     <form action="?action=add" method="post">
         <label for="zdjecie">Ścieżka do zdjęcia:</label>
         <input id="path" type="text" id="zdjecie" name="zdjecie" required value="./eventy/" readonly> 
-        <input type="text" id="nazwa_pliku" name="nazwa_pliku" required placeholder="nazwa_pliku.jpg"> <br><br>
+        <input type="file" id="nazwa_pliku" name="nazwa_pliku" required placeholder="nazwa_pliku.jpg"> <br><br>
 
         <label for="tytul">Tytuł:</label>
         <input type="text" id="tytul" name="tytul" required><br><br>

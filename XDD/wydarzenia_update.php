@@ -49,8 +49,8 @@ if (isset($_GET['id'])) {
                 <h2>Edytuj Wydarzenie</h2>
                 <form action="wydarzenia_update.php?id=<?= $id ?>" method="post">
                     <label>Ścieżka do zdjęcia:</label>
-                    <input type="text" id="zdjecie" name="zdjecie" required value="./eventy/" readonly>
-                    <input type="text" id="nazwa_pliku" name="nazwa_pliku" value="<?= htmlspecialchars(basename($row['zdjecie'])) ?>" required><br><br>
+                    <input type="text" id="path" name="zdjecie" required value="./eventy/" readonly>
+                    <input type="file" id="nazwa_pliku" name="nazwa_pliku" value="<?= htmlspecialchars(basename($row['zdjecie'])) ?>" required><br><br>
 
                     <label>Tytuł: <input type="text" name="tytul" value="<?= htmlspecialchars($row['tytul']) ?>" required></label><br>
                     <label>Data: <input type="date" name="data" value="<?= htmlspecialchars($row['data']) ?>" required></label><br>
