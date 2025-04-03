@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Pobranie ID, hasła i roli użytkownika
     $sql = "SELECT id, password, role FROM users WHERE username=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
@@ -19,9 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if (password_verify($password, $hashed_password)) {
             $_SESSION['user_id'] = $id;
-            $_SESSION['role'] = $role; // Zapisanie roli w sesji
+            $_SESSION['role'] = $role;
 
-            // Logowanie aktywności
             $currentDate = date('Y-m-d');
             $sqlActivity = "SELECT login_count FROM user_activity WHERE user_id = ? AND activity_date = ?";
             $stmtActivity = $conn->prepare($sqlActivity);
@@ -45,10 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $insertStmt->execute();
             }
 
-            // 🔀 Przekierowanie na podstawie roli
             switch ($role) {
                 case 1:
-                    header("Location: przyklad1.php");
+                    header("Location: biblio.php");
                     break;
                 case 2:
                     header("Location: admin_panel.php");
@@ -62,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Invalid password or username!";
         }
     } else {
-        // Sprawdzamy, czy użytkownik jest w tabeli pending_users
         $sqlPending = "SELECT id, role, status FROM pending_users WHERE username=?";
         $stmtPending = $conn->prepare($sqlPending);
         $stmtPending->bind_param("s", $username);

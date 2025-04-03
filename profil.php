@@ -16,10 +16,9 @@ $stmt->bind_result($username, $email, $profile_image);
 $stmt->fetch();
 $stmt->close();
 
-// Pobranie dostępnych obrazów w katalogu 'ni'
-$image_directory = 'ni'; // Ścieżka do folderu z obrazkami
+$image_directory = 'ni';
 $profile_images = scandir($image_directory); 
-$profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie . i .. z tablicy
+$profile_images = array_diff($profile_images, array('.', '..'));
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +34,7 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
             max-height: 400px;
             width: 100%;
             overflow-y: auto;
-            background-color: rgba(0, 0, 0, 0.7); /* Ciemniejsze tło */
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -90,7 +89,7 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
         <a href="dashboard.php">Podgląd</a>
         <a href="profil.php" class="active">Profil</a>
         <a href="#">Ustawienia</a>
-        <a href="chat.php">Wiadomości</a>
+        <a href="recived_bmessages.php">Wiadomości</a>
         <a href="#">Strona</a>
         <a href="logout.php" id="Logout">Logout</a>
         <div class="solitaire-card">
@@ -106,19 +105,22 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
     </div>
     <div>
         <div>
-        <img src="<?php echo !empty($profile_image) && file_exists('ni/' . $profile_image) ? 'ni/' . $profile_image : 'profile.jpg'; ?>" alt="Profile Image" class="profile-img" id="profile-img">
+        <img src="ni/<?php echo isset($profile_image) && $profile_image ? $profile_image : 'default.jpg'; ?>" alt="Profile Image" class="profile-img" id="profile-img">
         <p class="email"><?php echo htmlspecialchars($email); ?></p>
     </div>
 </div>
     <button id="choose-image-btn">Wybierz nowe zdjęcie</button>
     <div id="image-options" style="display:none;">
         <h3>Dostępne zdjęcia:</h3>
+        <form id="upload-form" action="upload_profile_picture.php" method="POST" enctype="multipart/form-data" style="display:none;">
+            <input type="file" name="profile_picture" id="profile-picture-input" required>
+            <button type="submit">Prześlij zdjęcie</button>
+        </form>
         <ul>
             <?php foreach ($profile_images as $image): ?>
                 <li><img src="ni/<?php echo $image; ?>" alt="<?php echo $image; ?>" class="thumbnail" data-image="<?php echo $image; ?>"></li>
             <?php endforeach; ?>
         </ul>
-        <button id="upload-new-image-btn">Wybierz nowe zdjęcie</button>
     </div>
 
     <div class="header-buttons">
@@ -138,9 +140,13 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
 
 <script>
     document.getElementById("choose-image-btn").addEventListener("click", function() {
-        document.getElementById("image-options").style.display = "block";
+        var imageOptions = document.getElementById("image-options");
+        if (imageOptions.style.display === "block") {
+            imageOptions.style.display = "none";
+        } else {
+            imageOptions.style.display = "block";
+        }
     });
-
     document.querySelectorAll('.thumbnail').forEach(function(img) {
         img.addEventListener('click', function() {
             var selectedImage = img.getAttribute('data-image');
@@ -149,11 +155,6 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "update_profile_picture.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    alert("Zdjęcie profilowe zostało zaktualizowane.");
-                }
-            };
             xhr.send("image=" + selectedImage);
 
             document.getElementById("image-options").style.display = "none";
@@ -164,6 +165,7 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
         window.location.href = "upload_profile_picture.php";
     });
 </script>
+
 
 <script src="profil.js"></script>
 </body>

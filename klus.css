@@ -1,0 +1,368 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 1); /* Changed text color to white for hero title */
+
+    background: 
+        url('library-texture.jpg') no-repeat center center fixed; /* Updated background for full visibility */
+    background-size: cover; /* Ensure background covers the entire area */
+}
+
+/* Header Styles */
+header {
+    background-color: transparent; /* Set to transparent to allow background image visibility */
+    backdrop-filter: blur(5px); /* Added blur effect to header */
+
+    color: #ffffff; /* Updated text color to match index.html */
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+nav {
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+nav ul li {
+    margin: 10px 0; /* Add vertical spacing */
+    padding: 10px; /* Add padding for better touch targets */
+    background-color: rgba(255, 255, 255, 0.8); /* Background color for menu items */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+nav ul li:hover {
+    background-color: rgba(255, 255, 255, 1); /* Change background on hover */
+}
+
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #34495e;
+    border-radius: 3px;
+}
+
+/* Hamburger Menu */
+.menu-icon {
+    display: block; /* Show hamburger icon */
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff; /* Change color for better visibility */
+    max-height: 4vh;
+}
+
+nav ul {
+    display: none; /* Hide menu by default */
+    flex-direction: column; /* Stack items vertically */
+    position: relative; /* Position it absolutely */
+    background-color: rgba(255, 255, 255, 0.9); /* Background for the menu */
+    width: 100%; /* Full width */
+    left: 0;
+    transition: max-height 0.3s ease; /* Smooth transition */
+    max-height: 0; /* Initially hidden */
+    overflow: hidden; /* Hide overflow */
+    z-index: 1000;
+}
+
+nav input[type="checkbox"]:checked + .menu-icon + ul {
+    display: flex; /* Show menu when checkbox is checked */
+    max-height: 500px; /* Set a max height for the dropdown */
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Position it absolutely */
+        background-color: rgba(255, 255, 255, 0.9); /* Background for the menu */
+        width: 100%; /* Full width */
+        left: 0;
+    }
+
+    nav input[type="checkbox"]:checked + .menu-icon + ul {
+        display: flex; /* Show menu when checkbox is checked */
+    }
+
+    .menu-icon {
+        display: block; /* Show hamburger icon */
+    }
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: transparent; /* Set to transparent to allow background image visibility */
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    will-change: transform;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:active, .btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, rgba(210, 180, 140, 0.5), rgba(166, 124, 82, 0.5)); /* Set to semi-transparent for buttons */
+
+    color: #fff;
+    border: 2px solid #2563eb;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, rgba(139, 90, 43, 0.5), rgba(109, 72, 36, 0.5)); /* Set to semi-transparent for buttons */
+
+    color: #fff;
+    border: 2px solid #059669;
+}
+
+/* Features Section */
+.features {
+    padding: 50px 20px;
+    background-color: rgba(62, 39, 35, 0.8); /* Set to semi-transparent for features */
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.feature-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    color: #3e2723; /* Set back to original text color */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card img {
+    max-width: 100px;
+    margin-bottom: 15px;
+}
+
+/* About Section */
+.about {
+    padding: 50px 20px;
+    background-color: rgba(62, 39, 35, 0.8); /* Set to semi-transparent for about */
+}
+
+/* Contact Section */
+.contact {
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Set to semi-transparent for contact */
+    color: #3e2723;
+}
+
+/* Footer Styles */
+footer {
+    background-color: transparent; /* Set to transparent to allow background image visibility */
+    color: #ffffff; /* Updated text color to match index.html */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Forum Styles */
+.forum-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post-card {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.post-meta {
+    color: #64748b;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.replies {
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #e2e8f0;
+}
+
+.reply {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f8fafc;
+    border-radius: 4px;
+}
+
+.reply-meta {
+    color: #64748b;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+.forum-form {
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul {
+        display: none; /* Hide menu by default */
+    }
+
+    nav input[type="checkbox"]:checked + .menu-icon + nav {
+        display: flex; /* Show menu when checkbox is checked */
+    }
+
+    .menu-icon {
+        display: block; /* Show hamburger icon */
+    }
+}

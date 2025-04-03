@@ -47,9 +47,9 @@ $conn->close();
             <nav class="sidebar-nav">
                 <a href="#" class="active">Podgląd</a>
                 <a href="profil.php">Profil</a>
-                <a href="admin/index.html">Ustawienia</a>
-                <a href="chat.php">Wiadomości</a>
-                <a href="#">Strona</a>
+                <a href="./olekjan/core.html">Biblioteka</a>
+                <a href="recived_bmessages.php">Wiadomości</a>
+                <a href="user_home.php">Strona</a>
                 <a href="logout.php" id="Logout">Logout</a>
                 <div class="solitaire-card">
                     <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>
