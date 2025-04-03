@@ -1,19 +1,15 @@
-/* profile.css - Motyw inspirowany starą biblioteką */
-
-/* Globalne style */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #2a1a0b; /* Ciemne tło nawiązujące do drewna */
+    background-color: #2a1a0b;
     margin: 0;
     padding: 0;
-    color: #4e3b31; /* Ciepły brązowy tekst */
+    color: #4e3b31;
 }
 
-/* Kontener profilu */
 #user-profile {
     max-width: 900px;
     margin: 40px auto;
-    background: #f9f4e1; /* Jasne kremowe tło */
+    background: #f9f4e1;
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -24,7 +20,6 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Informacje o profilu */
 .profile-info {
     display: flex;
     align-items: center;
@@ -36,7 +31,7 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    border: 3px solid #d1b497; /* Subtelna złotawa obwódka */
+    border: 3px solid #d1b497;
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -48,7 +43,7 @@ body {
 .profile-info h1 {
     font-size: 24px;
     font-weight: 600;
-    color: #4e3b31; /* Ciepły brąz */
+    color: #4e3b31;
 }
 
 .profile-info p {
@@ -56,7 +51,6 @@ body {
     color: #4e3b31;
 }
 
-/* Tabela aktywności */
 .activity-calendar {
     margin-top: 40px;
 }
@@ -98,11 +92,10 @@ body {
     transition: background-color 0.2s ease;
 }
 
-/* Przycisk edytowania */
 .button {
     padding: 10px 20px;
     border-radius: 8px;
-    background-color: #d1b497; /* Złotawy odcień */
+    background-color: #d1b497;
     color: #2a1a0b;
     font-weight: bold;
     border: none;
@@ -115,10 +108,9 @@ body {
     transform: scale(1.05);
 }
 
-/* Przycisk profilowy */
 .profile-button {
     padding: 10px 20px;
-    background-color: #4CAF50; /* Zielony */
+    background-color: #4CAF50;
     color: #fff;
     border-radius: 30px;
     font-weight: 600;
@@ -132,7 +124,6 @@ body {
     border-color: #3d8b3f;
 }
 
-/* Responsywność */
 @media (max-width: 768px) {
     #user-profile {
         padding: 20px;
