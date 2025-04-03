@@ -1,0 +1,196 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 1); /* Changed text color to white for hero title */
+
+    background: 
+        url('library-texture.jpg') no-repeat center center fixed; /* Updated background for full visibility */
+    background-size: cover; /* Ensure background covers the entire area */
+}
+
+/* Header Styles */
+header {
+    background-color: transparent; /* Set to transparent to allow background image visibility */
+    backdrop-filter: blur(5px); /* Added blur effect to header */
+
+    color: #ffffff; /* Updated text color to match index.html */
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+header > div > img {
+    width: 100px;
+
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    width: 40vw;
+}
+
+nav {
+    padding-right: 5px;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-left: 20px; /* Add margin to position it correctly */
+}
+label{
+    display: none;
+}
+
+
+input{
+    display: none;
+}
+
+nav ul {
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 10px; /* Add vertical spacing */
+    padding: 10px; /* Add padding for better touch targets */
+    /* background-color: rgba(255, 255, 255, 0.8); Background color for menu items */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+nav ul li:hover {
+    background-color: rgba(255, 255, 255, 0.6); /* Change background on hover */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+.menu-icon {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: transparent; /* Set to transparent to allow background image visibility */
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, rgba(210, 180, 140, 0.5), rgba(166, 124, 82, 0.5)); /* Set to semi-transparent for buttons */
+    color: #fff;
+    border: 2px solid #2563eb;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, rgba(139, 90, 43, 0.5), rgba(109, 72, 36, 0.5)); /* Set to semi-transparent for buttons */
+    color: #fff;
+    border: 2px solid #059669;
+}
+
+/* Features Section */
+.features {
+    padding: 50px 20px;
+    background-color: rgba(62, 39, 35, 0.8); /* Set to semi-transparent for features */
+}
+
+/* About Section */
+.about {
+    padding: 50px 20px;
+    background-color: rgba(62, 39, 35, 0.8); /* Set to semi-transparent for about */
+}
+
+/* Contact Section */
+.contact {
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Set to semi-transparent for contact */
+    color: #3e2723;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Show hamburger icon */
+    }
+    input {
+        display: none;
+    }
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .features, .about, .contact {
+        padding: 30px 10px; /* Adjust padding for smaller screens */
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    }
+
+    nav {
+        width: 100%; /* Full width for navigation */
+        margin-left: 0; /* Remove left margin */
+        display: none;
+    }
+    div input[type="checkbox"]:checked{
+        display: flex;
+    }
+
+
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+        display: none; /*Hide menu by default */
+    }
+
+    nav input[type="checkbox"]:checked + .menu-icon + ul {
+        display: row; /* Show menu when checkbox is checked */
+    }
+
