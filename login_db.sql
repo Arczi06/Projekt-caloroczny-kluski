@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2025 at 12:18 AM
+-- Generation Time: Apr 02, 2025 at 11:47 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -81,22 +81,24 @@ INSERT INTO `borrowed_books` (`id`, `user_id`, `book_id`, `borrow_date`, `due_da
 --
 
 CREATE TABLE `messages` (
-  `id` int(250) NOT NULL,
-  `message` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `user_id` int(250) NOT NULL
+  `id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `recipient_id` int(11) NOT NULL,
+  `message_body` text NOT NULL,
+  `date_sent` timestamp NOT NULL DEFAULT current_timestamp(),
+  `read_at` timestamp NULL DEFAULT NULL,
+  `subject` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`id`, `message`, `created_at`, `user_id`) VALUES
-(66, 'siema >', '2025-02-16 15:34:57', 75),
-(67, 'hej ??', '2025-02-16 15:35:04', 75),
-(68, 'sieam', '2025-02-16 15:36:01', 74),
-(69, 'o kurde', '2025-02-16 15:51:27', 74),
-(70, 'tas', '2025-02-17 20:30:52', 74);
+INSERT INTO `messages` (`id`, `sender_id`, `recipient_id`, `message_body`, `date_sent`, `read_at`, `subject`) VALUES
+(5, 57, 43, 'co gówno', '2025-04-02 19:59:25', NULL, 'ej'),
+(6, 43, 57, 'nigger', '2025-04-02 20:01:25', NULL, 'ej '),
+(7, 43, 82, 'no', '2025-04-02 21:28:01', NULL, 'ej'),
+(8, 43, 74, 'wiem', '2025-04-02 21:28:21', NULL, 'wiesz co ?');
 
 -- --------------------------------------------------------
 
@@ -148,32 +150,32 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`, `role`, `date_registered`, `profile_image`) VALUES
-(43, 'admin@admin.com', 'admin', '$2y$10$2HYivHXJWzQMRduo/wb93Ojz6ku9RMy8p2gGis/n8RMlo9KCW95qe', '#44cb73', 2, '2025-02-15 16:10:29', NULL),
-(57, 'bilblio@gmail.com', 'biblio', '$2y$10$HurPhKNM4/OuOVD4JFHETOkGT9VnBpRL/gBIexwdtKw746TZn5R4q', '#000000', 1, '2025-02-15 16:17:50', NULL),
-(58, 'czytelnik.czytelnik@gmail.com', 'czytelnik2', '$2y$10$I53BDAQ9U2tTABNrTV1SEOnaHhYVXqY1w9fDhrbEiXQBG9FwBpNYC', '#6208ef', 0, '2025-02-15 16:32:00', NULL),
-(59, 'john123@example.com', 'John123', '$2y$10$wQw2AcVt5Y0MnP9GqEqREoTAgf6S18mFxPpRA3jLkIzgFip9MycU2', '#000000', 1, '2025-02-15 11:00:00', NULL),
-(60, 'jane456@example.com', 'Jane456', '$2y$10$JtZ2WkLr1H9zQhZhAY3K6iJZ54hvsyLvVEZG/2Xa3v9CJyMG9t8pG', '#000000', 0, '2025-02-15 11:01:00', NULL),
-(61, 'alice789@example.com', 'Alice789', '$2y$10$htnk8g4v9l6wwb5mA3NEnxDKF8K4k6Bd03zLl0gHs0JkYt.Kop8qg', '#000000', 2, '2025-02-15 11:02:00', NULL),
-(62, 'bob321@example.com', 'Bob321', '$2y$10$FQwYxDrI8RMwYdtLfNi8fUwT28OkimLx5d8A7Hw.gQ2klwZyqblW3', '#000000', 1, '2025-02-15 11:03:00', NULL),
-(63, 'charlie654@example.com', 'Charlie654', '$2y$10$8Gq0s8gPHiZc.VGhQyIWdxIA5f5vXO8TSfnJqFTYp0ioW5tZT8zXq', '#000000', 0, '2025-02-15 11:04:00', NULL),
-(64, 'david987@example.com', 'David987', '$2y$10$Fh5qu4ZgEJ96jZw6jr8nNUj4TkhlMRm5cWL1ETeq9lzHbhFplEovO', '#000000', 2, '2025-02-15 11:05:00', NULL),
-(65, 'eve543@example.com', 'Eve543', '$2y$10$0Ht55KOH7AqkSfFqF3lCVLOE5grWgF1HzgR3Op79Wy1QGm1YPf0nK', '#000000', 0, '2025-02-15 11:06:00', NULL),
-(66, 'grace876@example.com', 'Grace876', '$2y$10$YjZbD4mldxFhdfISW8E.hoXtCOcf2VvAQt2BYE1B2VxjGRmFhmuua', '#000000', 1, '2025-02-15 11:07:00', NULL),
-(67, 'heidi345@example.com', 'Heidi345', '$2y$10$uYk3TmKk8fIzwQxg.9H1PBVqTj99aRHtiBYyTW7l.RjeHvfpRgS1G', '#000000', 2, '2025-02-15 11:08:00', NULL),
-(68, 'ivy210@example.com', 'Ivy210', '$2y$10$AKPBG89lrO4odXkw4BbeFkRaDe9nYreRATzZn5Mjgh5FkDZfpYrC9', '#000000', 0, '2025-02-15 11:09:00', NULL),
-(69, 'jack543@example.com', 'Jack543', '$2y$10$ty7C0nFtXix47dTfG.Rkw1qewF5/0E.oFZSKPj8DAACuqvC0BXQ3C', '#000000', 1, '2025-02-15 11:10:00', NULL),
-(71, 'louis432@example.com', 'Louis432', '$2y$10$y2YbqE7VuzhbIZ2E6jQj7X9mfjmVLz9u.ZsQSzE3XzE.60oz6CzYK', '#000000', 2, '2025-02-15 11:12:00', NULL),
-(72, 'megan321@example.com', 'Megan321', '$2y$10$wsHmAUGYwMBi5LP6j1bCPVu8o5TQ0dTpZ8c3gIcGZCy5FScUN1vuO', '#000000', 1, '2025-02-15 11:13:00', NULL),
+(43, 'admin@admin.com', 'admin', '$2y$10$2HYivHXJWzQMRduo/wb93Ojz6ku9RMy8p2gGis/n8RMlo9KCW95qe', '#44cb73', 2, '2025-02-15 16:10:29', 'default.jpg'),
+(57, 'bilblio@gmail.com', 'biblio', '$2y$10$HurPhKNM4/OuOVD4JFHETOkGT9VnBpRL/gBIexwdtKw746TZn5R4q', '#000000', 1, '2025-02-15 16:17:50', 'default.jpg'),
+(58, 'czytelnik.czytelnik@gmail.com', 'czytelnik2', '$2y$10$I53BDAQ9U2tTABNrTV1SEOnaHhYVXqY1w9fDhrbEiXQBG9FwBpNYC', '#6208ef', 0, '2025-02-15 16:32:00', 'default.jpg'),
+(59, 'john123@example.com', 'John123', '$2y$10$wQw2AcVt5Y0MnP9GqEqREoTAgf6S18mFxPpRA3jLkIzgFip9MycU2', '#000000', 1, '2025-02-15 11:00:00', 'default.jpg'),
+(60, 'jane456@example.com', 'Jane456', '$2y$10$JtZ2WkLr1H9zQhZhAY3K6iJZ54hvsyLvVEZG/2Xa3v9CJyMG9t8pG', '#000000', 0, '2025-02-15 11:01:00', 'default.jpg'),
+(61, 'alice789@example.com', 'Alice789', '$2y$10$htnk8g4v9l6wwb5mA3NEnxDKF8K4k6Bd03zLl0gHs0JkYt.Kop8qg', '#000000', 2, '2025-02-15 11:02:00', 'default.jpg'),
+(62, 'bob321@example.com', 'Bob321', '$2y$10$FQwYxDrI8RMwYdtLfNi8fUwT28OkimLx5d8A7Hw.gQ2klwZyqblW3', '#000000', 1, '2025-02-15 11:03:00', 'default.jpg'),
+(63, 'charlie654@example.com', 'Charlie654', '$2y$10$8Gq0s8gPHiZc.VGhQyIWdxIA5f5vXO8TSfnJqFTYp0ioW5tZT8zXq', '#000000', 0, '2025-02-15 11:04:00', 'default.jpg'),
+(64, 'david987@example.com', 'David987', '$2y$10$Fh5qu4ZgEJ96jZw6jr8nNUj4TkhlMRm5cWL1ETeq9lzHbhFplEovO', '#000000', 2, '2025-02-15 11:05:00', 'default.jpg'),
+(65, 'eve543@example.com', 'Eve543', '$2y$10$0Ht55KOH7AqkSfFqF3lCVLOE5grWgF1HzgR3Op79Wy1QGm1YPf0nK', '#000000', 0, '2025-02-15 11:06:00', 'default.jpg'),
+(66, 'grace876@example.com', 'Grace876', '$2y$10$YjZbD4mldxFhdfISW8E.hoXtCOcf2VvAQt2BYE1B2VxjGRmFhmuua', '#000000', 1, '2025-02-15 11:07:00', 'default.jpg'),
+(67, 'heidi345@example.com', 'Heidi345', '$2y$10$uYk3TmKk8fIzwQxg.9H1PBVqTj99aRHtiBYyTW7l.RjeHvfpRgS1G', '#000000', 2, '2025-02-15 11:08:00', 'default.jpg'),
+(68, 'ivy210@example.com', 'Ivy210', '$2y$10$AKPBG89lrO4odXkw4BbeFkRaDe9nYreRATzZn5Mjgh5FkDZfpYrC9', '#000000', 0, '2025-02-15 11:09:00', 'default.jpg'),
+(69, 'jack543@example.com', 'Jack543', '$2y$10$ty7C0nFtXix47dTfG.Rkw1qewF5/0E.oFZSKPj8DAACuqvC0BXQ3C', '#000000', 1, '2025-02-15 11:10:00', 'default.jpg'),
+(71, 'louis432@example.com', 'Louis432', '$2y$10$y2YbqE7VuzhbIZ2E6jQj7X9mfjmVLz9u.ZsQSzE3XzE.60oz6CzYK', '#000000', 2, '2025-02-15 11:12:00', 'default.jpg'),
+(72, 'megan321@example.com', 'Megan321', '$2y$10$wsHmAUGYwMBi5LP6j1bCPVu8o5TQ0dTpZ8c3gIcGZCy5FScUN1vuO', '#000000', 1, '2025-02-15 11:13:00', 'default.jpg'),
 (74, 'nowy@gmail.com', 'nowynowy', '$2y$10$nFK/r.WgkMXTyTcUE11Oj.gJlNocWDM2tjV4.s8SvXcVHOupfT1p2', '#eb624d', 0, '2025-02-15 17:48:14', '6bdf09f8cba3c1e1ea3e68c6150bd713.jpg'),
-(75, 'bibliotekarzrzz@gmail.com', 'bibliotekarzrzz', '$2y$10$AzrsmD22onSFkDdkOek94OfyIndV/..aUdJTJHqxsLZte5cIq6woi', '#000000', 1, '2025-02-16 16:25:50', NULL),
-(76, '1111111@gmail.com', '1111', '$2y$10$WOFc.qDWuuSXsC.pVZmGZedfMKdCj6Fy9EYJA8myRW5C/p5.r7r8i', '#000000', 1, '2025-02-17 17:31:16', NULL),
-(78, 'czytelnik12@gmail.com', 'czytelnik12', '$2y$10$cSIDa8Q3z/76/MagRQNOXuwNhTUJw103gCWEn.nW5gNCehfsdQme.', '#349c41', 0, '2025-02-17 17:53:15', NULL),
+(75, 'bibliotekarzrzz@gmail.com', 'bibliotekarzrzz', '$2y$10$AzrsmD22onSFkDdkOek94OfyIndV/..aUdJTJHqxsLZte5cIq6woi', '#000000', 1, '2025-02-16 16:25:50', 'default.jpg'),
+(76, '1111111@gmail.com', '1111', '$2y$10$WOFc.qDWuuSXsC.pVZmGZedfMKdCj6Fy9EYJA8myRW5C/p5.r7r8i', '#000000', 1, '2025-02-17 17:31:16', 'default.jpg'),
+(78, 'czytelnik12@gmail.com', 'czytelnik12', '$2y$10$cSIDa8Q3z/76/MagRQNOXuwNhTUJw103gCWEn.nW5gNCehfsdQme.', '#349c41', 0, '2025-02-17 17:53:15', 'default.jpg'),
 (79, 'czytelnik88@gmail.com', 'czytelnik88', '$2y$10$rVh9WiN8AhfzQjWRJQ1IQ.UVC34./TmdP0TTn2uX7pj0hWNiDxHnO', '#98a3ab', 0, '2025-02-17 18:20:05', 'd3e3c9ab6dbf1b2d1b33a2bcdfa1062d.jpg'),
 (80, 'oli@niigger.com', 'oli123', '$2y$10$7wXUVdakL95EYZ/D5xkk5.afBGi/1QuBeBogNYqSMCbuu1HQgHwaW', '#48449a', 0, '2025-02-17 18:49:37', '5295bae7718bb0ddfe8c1ba446a908e8.jpg'),
-(81, '2222@gmail.com', '2222', '$2y$10$aJsaOAwjF9ayI7gNgai77.2xZOJ3SpD79bpLaUO2vPYp/2GKI8sLO', '#5316ca', 0, '2025-02-17 18:53:24', 'default.jpg'),
+(81, '2222@gmail.com', '2222', '$2y$10$4MMIXHNG.aduJGVfVU8L2.KvhBoVu4iBFAoEXgb3LoIuBhk7SYUjm', '#5316ca', 0, '2025-02-17 18:53:24', 'default.jpg'),
 (82, '1212@gmail.com', '121234', '$2y$10$3hm1.TOlw0eficFhybBRjeqxBr5O6/jHfiqTGwSsGdhN0ydV10I2a', '#a46e37', 1, '2025-02-17 18:54:20', 'c90e6945a097553cb4e5e1788266a0fe.jpg'),
 (83, 'przykład333@gmial.com', 'przykład33', '$2y$10$pcXjsvYAjbwnhWKtzk1dMOC3OiL5Obb1MMpYarACiGoi5X3nBZAUm', '#000000', 1, '2025-02-18 16:48:06', 'default.jpg'),
-(84, 'niger111@gmail.com', 'czarny', '$2y$10$pCL0qzkrW5Oeh8ZyI1YY9en1ytHLtL1y07dqrmpx2.LuVa8tdsbw6', '#000000', 1, '2025-02-18 16:49:05', 'default.jpg'),
+(84, 'niger111@gmail.com', 'czarny', '$2y$10$EOdB.g7B7vgNy2xTvYtWxuN8IpfxX55ocCzmf/JoSLC.enkbRcSaa', '#000000', 1, '2025-02-18 16:49:05', 'default.jpg'),
 (85, 'przyklad222@gmail.com', 'przykład22', '$2y$10$7XRQGVPZTQf2XKtVE2.JWOIka8kAtAY40paOsIeW9sU8VBQfVkSve', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg');
 
 -- --------------------------------------------------------
@@ -216,7 +218,18 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `lo
 (36, 80, '2025-02-18', '2025-02-18 15:54:39', 4, 'Login'),
 (37, 84, '2025-02-18', '2025-02-18 16:58:55', 1, 'Login'),
 (38, 43, '2025-02-26', '2025-02-26 22:01:05', 1, 'Login'),
-(39, 85, '2025-02-26', '2025-02-26 22:01:37', 2, 'Login');
+(39, 85, '2025-02-26', '2025-02-26 22:01:37', 2, 'Login'),
+(40, 43, '2025-03-12', '2025-03-12 18:32:12', 4, 'Login'),
+(41, 81, '2025-03-12', '2025-03-12 18:35:06', 2, 'Login'),
+(42, 84, '2025-03-12', '2025-03-12 18:49:22', 1, 'Login'),
+(43, 57, '2025-03-12', '2025-03-12 19:04:50', 1, 'Login'),
+(44, 57, '2025-03-19', '2025-03-19 21:44:46', 1, 'Login'),
+(45, 57, '2025-03-25', '2025-03-25 11:47:37', 4, 'Login'),
+(46, 43, '2025-03-25', '2025-03-25 12:04:08', 3, 'Login'),
+(47, 74, '2025-03-25', '2025-03-25 14:19:57', 1, 'Login'),
+(48, 43, '2025-04-02', '2025-04-02 18:56:42', 6, 'Login'),
+(49, 57, '2025-04-02', '2025-04-02 19:55:25', 3, 'Login'),
+(50, 74, '2025-04-02', '2025-04-02 21:28:55', 1, 'Login');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -241,7 +254,8 @@ ALTER TABLE `borrowed_books`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `sender_id` (`sender_id`),
+  ADD KEY `recipient_id` (`recipient_id`);
 
 --
 -- Indeksy dla tabeli `pending_users`
@@ -284,7 +298,7 @@ ALTER TABLE `borrowed_books`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pending_users`
@@ -302,7 +316,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables
@@ -314,6 +328,13 @@ ALTER TABLE `user_activity`
 ALTER TABLE `borrowed_books`
   ADD CONSTRAINT `borrowed_books_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `borrowed_books_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

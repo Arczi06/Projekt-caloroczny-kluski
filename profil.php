@@ -89,7 +89,7 @@ $profile_images = array_diff($profile_images, array('.', '..'));
         <a href="dashboard.php">Podgląd</a>
         <a href="profil.php" class="active">Profil</a>
         <a href="#">Ustawienia</a>
-        <a href="chat.php">Wiadomości</a>
+        <a href="recived_bmessages.php">Wiadomości</a>
         <a href="#">Strona</a>
         <a href="logout.php" id="Logout">Logout</a>
         <div class="solitaire-card">

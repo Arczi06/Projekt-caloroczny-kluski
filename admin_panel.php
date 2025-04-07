@@ -15,6 +15,7 @@
             <li><a href="users.php">Użytkownicy</a></li>
             <li><a href="#books">Książki</a></li>
             <li><a href="#roles">Rola do zaakceptowania</a></li>
+            <li><a href="recived_bmessages.php">Wiadomości</a></li>
         </ul>
         <a href="logout.php" class="logout-btn">Logout</a>
     </nav>

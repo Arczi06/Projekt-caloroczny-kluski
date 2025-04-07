@@ -1,8 +1,8 @@
 /* Ogólny styl dla całej strony */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #2c3e50;
+    color: #ecf0f1;
     margin: 0;
     padding: 0;
 }
@@ -15,8 +15,8 @@ body {
 /* Sidebar */
 .users-sidebar {
     width: 20%;
-    background-color: #2c3e50;
-    color: white;
+    background-color: #34495e;
+    color: #ecf0f1;
     padding: 15px;
     margin-right: 20px;
     border-radius: 8px;
@@ -34,24 +34,25 @@ body {
 
 .sidebar-link {
     text-decoration: none;
-    color: white;
+    color: #ecf0f1;
     padding: 10px;
     margin: 5px 0;
-    background-color: #34495e;
+    background-color: #16a085;
     border-radius: 4px;
     text-align: center;
 }
 
 .sidebar-link:hover {
-    background-color: #16a085;
+    background-color: #1abc9c;
 }
 
 /* Główna sekcja wiadomości */
 .message-area {
     flex: 1;
-    background-color: white;
+    background-color: #34495e;
     padding: 20px;
     border-radius: 8px;
+    color: #ecf0f1;
 }
 
 h3 {
@@ -66,7 +67,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #ecf0f1;
 }
 
 th, td {
@@ -75,11 +76,11 @@ th, td {
 }
 
 th {
-    background-color: #ecf0f1;
+    background-color: #2c3e50;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #2c3e50;
 }
 
 /* Formularz wysyłania wiadomości */
@@ -101,7 +102,7 @@ form select, form textarea {
 
 form button {
     padding: 10px;
-    background-color: #3498db;
+    background-color: #16a085;
     color: white;
     border: none;
     border-radius: 4px;
@@ -109,14 +110,14 @@ form button {
 }
 
 form button:hover {
-    background-color: #2980b9;
+    background-color: #1abc9c;
 }
 
 /* Styl dla powiadomienia użytkownika */
 .user-info {
     display: flex;
     align-items: center;
-    background-color: #ecf0f1;
+    background-color: #2c3e50;
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -136,7 +137,7 @@ form button:hover {
 
 .back-button {
     padding: 8px 16px;
-    background-color: #3498db;
+    background-color: #1abc9c;
     color: white;
     border: none;
     border-radius: 4px;
@@ -145,7 +146,7 @@ form button:hover {
 }
 
 .back-button:hover {
-    background-color: #2980b9;
+    background-color: #16a085;
 }
 
 /* --- POP-UP --- */
@@ -161,7 +162,7 @@ form button:hover {
 }
 
 .popup-content {
-    background: #fff;
+    background: #34495e;
     padding: 20px;
     border-radius: 10px;
     width: 60%;
@@ -180,7 +181,7 @@ form button:hover {
     right: 15px;
     font-size: 28px;
     cursor: pointer;
-    color: #444;
+    color: #ecf0f1;
 }
 
 .close-btn:hover {
@@ -191,7 +192,7 @@ form button:hover {
 .user-groups h3 {
     margin-top: 15px;
     font-size: 18px;
-    color: #333;
+    color: #ecf0f1;
     text-align: left;
     padding-left: 10px;
 }
@@ -207,7 +208,7 @@ form button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f8f8f8;
+    background: #2c3e50;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -217,7 +218,7 @@ form button:hover {
 
 .user-tile:hover {
     transform: scale(1.05);
-    background: #e0e0e0;
+    background: #34495e;
 }
 
 .user-tile img {
@@ -225,13 +226,13 @@ form button:hover {
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #ccc;
+    border: 2px solid #16a085;
     margin-bottom: 8px;
 }
 
 .user-tile span {
     font-size: 14px;
-    color: #222;
+    color: #ecf0f1;
 }
 
 /* --- ANIMACJA --- */
