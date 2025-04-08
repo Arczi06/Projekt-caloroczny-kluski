@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2025 at 11:47 PM
+-- Generation Time: Apr 08, 2025 at 04:09 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -20,6 +20,42 @@ SET time_zone = "+00:00";
 --
 -- Database: `login_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `biblioteczka`
+--
+
+CREATE TABLE `biblioteczka` (
+  `id` int(11) NOT NULL,
+  `okładka` varchar(50) DEFAULT NULL,
+  `tytuł` varchar(50) DEFAULT NULL,
+  `autor` varchar(50) DEFAULT NULL,
+  `krótki_opis` text DEFAULT NULL,
+  `streszczenie` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `biblioteczka`
+--
+
+INSERT INTO `biblioteczka` (`id`, `okładka`, `tytuł`, `autor`, `krótki_opis`, `streszczenie`) VALUES
+(1, './biblioteka/HP.jpg', 'Harry Potter i Kamień Filozoficzny', 'J.K. Rowling', 'Młody Harry Potter dowiaduje się, że jest czarodziejem i rozpoczyna naukę w Hogwarcie.', 'Pierwsza część sagi o Harrym Potterze, opowiadająca o jego odkryciu magicznych zdolności, przyjaźni z Ronem i Hermioną oraz walce z Lordem Voldemortem.'),
+(2, './biblioteka/LOTR.jpg', 'Władca Pierścieni: Drużyna Pierścienia', 'J.R.R. Tolkien', 'Frodo Baggins dziedziczy Pierścień Władzy i musi go zniszczyć, aby zapobiec panowaniu Saurona.', 'Pierwsza część epickiej sagi fantasy o Władcy Pierścieni, opowiadająca o podróży Froda i jego towarzyszy, aby zniszczyć Pierścień Władzy.'),
+(3, './biblioteka/1984.jpg', 'Rok 1984', 'George Orwell', 'W totalitarnym państwie Oceania Winston Smith buntuje się przeciwko systemowi.', 'Dystopijna powieść o totalitarnym państwie, w którym rząd kontroluje wszystkie aspekty życia.'),
+(4, './biblioteka/PD.jpg', 'Przeminęło z wiatrem', 'Margaret Mitchell', 'Historia miłości Scarlett O\'Hary i Rhett Butlera w czasie wojny secesyjnej.', 'Epicka powieść historyczna o miłości, wojnie i życiu na Południu w czasie wojny secesyjnej.'),
+(5, './biblioteka/AL.jpg', 'Alicja w Krainie Czarów', 'Lewis Carroll', 'Młoda Alicja wpada do dziury króliczej i trafia do fantastycznej krainy.', 'Klasyczna powieść dla dzieci o przygodach Alicji w magicznej krainie.'),
+(6, './biblioteka/Z.jpg', 'Zwierzęta z farmy', 'George Orwell', 'Zwierzęta na farmie obalają człowieka i tworzą własne społeczeństwo.', 'Satyryczna powieść o rewolucji i władzy, przedstawiona w alegorycznej formie historii zwierząt.'),
+(7, './biblioteka/D.jpg', 'Duma i uprzedzenie', 'Jane Austen', 'Historia miłości Elizabeth Bennet i pana Darcy.', 'Klasyczna powieść romantyczna o miłości, społeczeństwie i uprzedzeniach.'),
+(8, './biblioteka/MS.jpg', 'Mistrz i Małgorzata', 'Michaił Bułhakow', 'Diabeł odwiedza Moskwę i wywraca miasto do góry nogami.', 'Powieść łącząca satyrę, realizm magiczny i filozofię, ukazująca walkę dobra ze złem.'),
+(9, './biblioteka/BB.jpg', 'Bracia Karamazow', 'Fiodor Dostojewski', 'Historia trzech braci o różnych osobowościach i ich konfliktu z ojcem.', 'Głęboka powieść filozoficzna o wierze, moralności i rodzinnych relacjach.'),
+(10, './biblioteka/SH.jpg', 'Sherlock Holmes: Studium w szkarłacie', 'Arthur Conan Doyle', 'Detektyw Sherlock Holmes rozwiązuje tajemniczą zbrodnię w Londynie.', 'Pierwsza powieść o Sherlocku Holmesie, w której poznajemy jego niezwykłe metody dedukcji.'),
+(11, './biblioteka/PP.jpg', 'Proces', 'Franz Kafka', 'Josef K. zostaje aresztowany, ale nie wie, za co.', 'Powieść o absurdzie biurokracji i poczuciu winy w świecie bez wyjaśnień.'),
+(12, './biblioteka/WT.jpg', 'Wojna i pokój', 'Lew Tołstoj', 'Epopeja historyczna o wojnach napoleońskich i losach rosyjskiej arystokracji.', 'Jedna z najważniejszych powieści wszech czasów, łącząca fikcję z historią.'),
+(13, './biblioteka/HG.jpg', 'Igrzyska śmierci', 'Suzanne Collins', 'Katniss Everdeen bierze udział w brutalnej grze o przetrwanie.', 'Dystopijna powieść o totalitarnym państwie zmuszającym młodych ludzi do walki na śmierć i życie.'),
+(14, './biblioteka/DC.jpg', 'Don Kichot', 'Miguel de Cervantes', 'Szlachcic z La Manchy postanawia zostać wędrownym rycerzem.', 'Satyrystyczna powieść o iluzji, marzeniach i starciu z rzeczywistością.'),
+(15, './biblioteka/RJ.jpg', 'Romeo i Julia', 'William Shakespeare', 'Tragiczna miłość dwojga młodych kochanków z wrogich rodów.', 'Jedna z najsłynniejszych tragedii o miłości, nienawiści i przeznaczeniu.');
 
 -- --------------------------------------------------------
 
@@ -73,6 +109,91 @@ INSERT INTO `borrowed_books` (`id`, `user_id`, `book_id`, `borrow_date`, `due_da
 (3, 71, 5, '2025-02-12', '2025-03-03', 3),
 (4, 58, 2, '2025-01-31', '2025-03-28', 4),
 (5, 59, 2, '2025-02-22', '2025-03-28', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `dane_ksiazek`
+--
+
+CREATE TABLE `dane_ksiazek` (
+  `id` int(11) NOT NULL,
+  `autor_imie` char(50) NOT NULL,
+  `autor_nazwisko` char(100) NOT NULL,
+  `tytul` varchar(100) NOT NULL,
+  `klasa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dane_ksiazek`
+--
+
+INSERT INTO `dane_ksiazek` (`id`, `autor_imie`, `autor_nazwisko`, `tytul`, `klasa`) VALUES
+(1, 'Julian', 'Tuwim', 'Lokomotywa', 1),
+(2, 'Jan', 'Brzechwa', 'Kaczka Dziwaczka', 1),
+(3, 'Czesław', 'Janczarski', 'Jak Wojtek został strażakiem', 1),
+(4, 'Maria', 'Konopnicka', 'Stefek Burczymucha', 1),
+(5, 'Jan', 'Brzechwa', 'Na straganie', 1),
+(6, 'Jan', 'Brzechwa', 'Akademia Pana Kleksa', 2),
+(7, 'Astrid', 'Lindgren', 'Dzieci z Bullerbyn', 2),
+(8, 'Wanda', 'Chotomska', 'Dwa Michały', 2),
+(9, 'Grzegorz', 'Kasdepke', 'Detektyw Pozytywka', 2),
+(10, 'Maria', 'Konopnicka', 'O krasnoludkach i sierotce Marysi', 2),
+(11, 'Hugh', 'Lofting', 'Doktor Dolittle i jego zwierzęta', 3),
+(12, 'Renata', 'Piątkowska', 'Na wszystko jest sposób', 3),
+(13, 'Julian', 'Tuwim', 'Ptasie radio', 3),
+(14, 'Jan', 'Brzechwa', 'Samochwała', 3),
+(15, 'Wanda', 'Chotomska', 'Kurczę blade', 3),
+(16, 'Henryk', 'Sienkiewicz', 'W pustyni i w puszczy', 4),
+(17, 'Adam', 'Mickiewicz', 'Pan Tadeusz (fragmenty)', 4),
+(18, 'Lucy', 'Maud Montgomery', 'Ania z Zielonego Wzgórza', 4),
+(19, 'Mark', 'Twain', 'Przygody Tomka Sawyera', 4),
+(20, 'Kornel', 'Makuszyński', 'Szatan z siódmej klasy', 4),
+(21, 'Bolesław', 'Prus', 'Katarynka', 5),
+(22, 'Stefan', 'Żeromski', 'Syzyfowe prace', 5),
+(23, 'Juliusz', 'Słowacki', 'Balladyna', 5),
+(24, 'Ignacy', 'Krasicki', 'Żona modna', 5),
+(25, 'Aleksander', 'Fredro', 'Zemsta', 5),
+(26, 'Henryk', 'Sienkiewicz', 'Latarnik', 6),
+(27, 'Lucy', 'Maud Montgomery', 'Ania z Avonlea', 6),
+(28, 'Jules', 'Verne', 'W 80 dni dookoła świata', 6),
+(29, 'John', 'Tolkien', 'Hobbit, czyli tam i z powrotem', 6),
+(30, 'Edmund', 'Niziurski', 'Sposób na Alcybiadesa', 6),
+(31, 'Adam', 'Mickiewicz', 'Reduta Ordona', 7),
+(32, 'Aleksander', 'Fredro', 'Zemsta', 7),
+(33, 'Juliusz', 'Verne', 'Podróż do wnętrza Ziemi', 7),
+(34, 'Homer', '', 'Odyseja (fragmenty)', 7),
+(35, 'Lucy', 'Maud Montgomery', 'Ania na uniwersytecie', 7),
+(36, 'Henryk', 'Sienkiewicz', 'Krzyżacy', 8),
+(37, 'Juliusz', 'Słowacki', 'Balladyna', 8),
+(38, 'Stefan', 'Żeromski', 'Syzyfowe prace', 8),
+(39, 'George', 'Orwell', 'Folwark zwierzęcy', 8),
+(40, 'Fiodor', 'Dostojewski', 'Zbrodnia i kara (fragmenty)', 8),
+(41, 'Adam', 'Mickiewicz', 'Dziady cz. II', 9),
+(42, 'William', 'Shakespeare', 'Makbet', 9),
+(43, 'Bolesław', 'Prus', 'Lalka', 9),
+(44, 'Eliza', 'Orzeszkowa', 'Nad Niemnem', 9),
+(45, 'Joseph', 'Conrad', 'Jądro ciemności', 9),
+(46, 'Adam', 'Mickiewicz', 'Pan Tadeusz', 10),
+(47, 'Juliusz', 'Słowacki', 'Kordian', 10),
+(48, 'Henryk', 'Sienkiewicz', 'Quo Vadis', 10),
+(49, 'Stanisław', 'Wyspiański', 'Wesele', 10),
+(50, 'Franz', 'Kafka', 'Proces', 10),
+(51, 'Fiodor', 'Dostojewski', 'Zbrodnia i kara', 11),
+(52, 'Albert', 'Camus', 'Dżuma', 11),
+(53, 'George', 'Orwell', 'Rok 1984', 11),
+(54, 'Zofia', 'Nałkowska', 'Medaliony', 11),
+(55, 'Gustaw', 'Herling-Grudziński', 'Inny świat', 11),
+(56, 'Tadeusz', 'Borowski', 'Proszę państwa do gazu', 12),
+(57, 'Hanna', 'Krall', 'Zdążyć przed Panem Bogiem', 12),
+(58, 'Miron', 'Białoszewski', 'Pamiętnik z powstania warszawskiego', 12),
+(59, 'Wisława', 'Szymborska', 'Wybór wierszy', 12),
+(60, 'Czesław', 'Miłosz', 'Zniewolony umysł', 12),
+(61, 'Gabriel', 'Garcia Marquez', 'Sto lat samotności', 13),
+(62, 'Umberto', 'Eco', 'Imię róży', 13),
+(63, 'Milan', 'Kundera', 'Nieznośna lekkość bytu', 13),
+(64, 'Olga', 'Tokarczuk', 'Prawiek i inne czasy', 13),
+(65, 'Ryszard', 'Kapuściński', 'Cesarz', 13);
 
 -- --------------------------------------------------------
 
@@ -131,6 +252,42 @@ INSERT INTO `pending_users` (`id`, `username`, `email`, `password`, `role`, `sta
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `rere`
+--
+
+CREATE TABLE `rere` (
+  `id` int(11) NOT NULL,
+  `zdjecie` varchar(255) NOT NULL,
+  `tytul` varchar(255) NOT NULL,
+  `data` date NOT NULL,
+  `opis` text NOT NULL,
+  `likes` int(11) DEFAULT 0,
+  `hearts` int(11) DEFAULT 0,
+  `claps` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rere`
+--
+
+INSERT INTO `rere` (`id`, `zdjecie`, `tytul`, `data`, `opis`, `likes`, `hearts`, `claps`) VALUES
+(1, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 2, 0),
+(2, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 1, 1, 0),
+(3, '', '', '0000-00-00', '', 0, 1, 1),
+(4, '', '', '0000-00-00', '', 1, 1, 0),
+(5, '', '', '0000-00-00', '', 1, 1, 0),
+(6, '', '', '0000-00-00', '', 0, 1, 1),
+(7, '', '', '0000-00-00', '', 0, 1, 0),
+(8, '', '', '0000-00-00', '', 2, 0, 0),
+(9, '', '', '0000-00-00', '', 0, 1, 1),
+(10, '', '', '0000-00-00', '', 0, 1, 1),
+(11, '', '', '0000-00-00', '', 1, 0, 1),
+(12, '', '', '0000-00-00', '', 0, 1, 1),
+(13, '', '', '0000-00-00', '', 0, 1, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `users`
 --
 
@@ -176,7 +333,9 @@ INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`, `ro
 (82, '1212@gmail.com', '121234', '$2y$10$3hm1.TOlw0eficFhybBRjeqxBr5O6/jHfiqTGwSsGdhN0ydV10I2a', '#a46e37', 1, '2025-02-17 18:54:20', 'c90e6945a097553cb4e5e1788266a0fe.jpg'),
 (83, 'przykład333@gmial.com', 'przykład33', '$2y$10$pcXjsvYAjbwnhWKtzk1dMOC3OiL5Obb1MMpYarACiGoi5X3nBZAUm', '#000000', 1, '2025-02-18 16:48:06', 'default.jpg'),
 (84, 'niger111@gmail.com', 'czarny', '$2y$10$EOdB.g7B7vgNy2xTvYtWxuN8IpfxX55ocCzmf/JoSLC.enkbRcSaa', '#000000', 1, '2025-02-18 16:49:05', 'default.jpg'),
-(85, 'przyklad222@gmail.com', 'przykład22', '$2y$10$7XRQGVPZTQf2XKtVE2.JWOIka8kAtAY40paOsIeW9sU8VBQfVkSve', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg');
+(85, 'przyklad222@gmail.com', 'przykład22', '$2y$10$7XRQGVPZTQf2XKtVE2.JWOIka8kAtAY40paOsIeW9sU8VBQfVkSve', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg'),
+(86, 'lolek@gmail.com', 'lolek', '$2y$10$SyzM1bhCj9ENNk3sHTYK5uC6hyYv5658xTDjxRQP2D5W9cepPzCUa', '#434c9b', 0, '2025-04-08 12:42:28', 'default.jpg'),
+(87, 'xd@gmail.com', 'xd', '$2y$10$62BVZA6Qj7khm4dPki8ZU.P0neo2JpEvnAOElE5BhI.wYuyJaCn0e', '#bdd2d3', 0, '2025-04-08 13:39:38', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -229,11 +388,90 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `lo
 (47, 74, '2025-03-25', '2025-03-25 14:19:57', 1, 'Login'),
 (48, 43, '2025-04-02', '2025-04-02 18:56:42', 6, 'Login'),
 (49, 57, '2025-04-02', '2025-04-02 19:55:25', 3, 'Login'),
-(50, 74, '2025-04-02', '2025-04-02 21:28:55', 1, 'Login');
+(50, 74, '2025-04-02', '2025-04-02 21:28:55', 1, 'Login'),
+(51, 43, '2025-04-03', '2025-04-03 06:11:38', 1, 'Login'),
+(52, 74, '2025-04-03', '2025-04-03 06:12:46', 2, 'Login'),
+(53, 86, '2025-04-08', '2025-04-08 12:42:39', 1, 'Login'),
+(54, 87, '2025-04-08', '2025-04-08 13:39:59', 1, 'Login');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `user_reactions`
+--
+
+CREATE TABLE `user_reactions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `reaction` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_reactions`
+--
+
+INSERT INTO `user_reactions` (`id`, `user_id`, `event_id`, `reaction`) VALUES
+(1, 86, 3, '❤️'),
+(2, 86, 1, '❤️'),
+(3, 86, 2, '❤️'),
+(4, 86, 4, '👍'),
+(5, 86, 5, '👍'),
+(6, 86, 6, '❤️'),
+(7, 86, 7, '❤️'),
+(8, 86, 8, '👍'),
+(9, 86, 9, '❤️'),
+(10, 86, 10, '👏'),
+(11, 86, 11, '👍'),
+(12, 86, 12, '❤️'),
+(13, 87, 4, '❤️'),
+(14, 87, 5, '❤️'),
+(15, 87, 3, '👏'),
+(16, 87, 6, '👏'),
+(17, 87, 8, '👍'),
+(18, 87, 12, '👏'),
+(19, 87, 11, '👏'),
+(20, 87, 10, '❤️'),
+(21, 87, 2, '👍'),
+(22, 87, 9, '👏'),
+(23, 87, 1, '❤️'),
+(24, 87, 13, '❤️');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wydarzenia`
+--
+
+CREATE TABLE `wydarzenia` (
+  `id` int(11) NOT NULL,
+  `tytul` varchar(255) NOT NULL,
+  `opis` text NOT NULL,
+  `data` date NOT NULL,
+  `zdjecie` varchar(255) NOT NULL,
+  `reakcje` text DEFAULT '{}'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wydarzenia`
+--
+
+INSERT INTO `wydarzenia` (`id`, `tytul`, `opis`, `data`, `zdjecie`, `reakcje`) VALUES
+(1, 'Spotkanie autorskie', 'Zapraszamy na spotkanie z popularnym autorem, który opowie o swojej najnowszej książce.', '2024-04-10', './eventy/spotkanie_autorskie.jpg', '{}'),
+(2, 'Warsztaty dla dzieci', 'Zabawa i nauka w jednym! Zapraszamy wszystkie dzieci na kreatywne warsztaty.', '2024-04-15', './eventy/warsztaty_dzieci.jpg', '{}'),
+(3, 'Klub czytelnika', 'Dyskusja na temat klasycznych dzieł literatury. Dołącz do naszej społeczności miłośników książek!', '2024-04-20', './eventy/klub_czytelnika.jpg', '{}'),
+(4, 'Wieczór poezji', 'Romantyczna atmosfera i piękne wiersze czytane przez aktorów.', '2024-04-25', './eventy/wieczor_poezji.jpg', '{}'),
+(5, 'Giełda książek', 'Masz książki, których już nie czytasz? Wymień je na inne w naszej bibliotece!', '2024-04-30', './eventy/gielda_ksiazek.jpg', '{}');
 
 --
 -- Indeksy dla zrzutów tabel
 --
+
+--
+-- Indeksy dla tabeli `biblioteczka`
+--
+ALTER TABLE `biblioteczka`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `books`
@@ -248,6 +486,12 @@ ALTER TABLE `borrowed_books`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `book_id` (`book_id`);
+
+--
+-- Indeksy dla tabeli `dane_ksiazek`
+--
+ALTER TABLE `dane_ksiazek`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `messages`
@@ -266,6 +510,12 @@ ALTER TABLE `pending_users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indeksy dla tabeli `rere`
+--
+ALTER TABLE `rere`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `users`
 --
 ALTER TABLE `users`
@@ -279,8 +529,28 @@ ALTER TABLE `user_activity`
   ADD UNIQUE KEY `user_id` (`user_id`,`activity_date`);
 
 --
+-- Indeksy dla tabeli `user_reactions`
+--
+ALTER TABLE `user_reactions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_reaction` (`user_id`,`event_id`),
+  ADD KEY `event_id` (`event_id`);
+
+--
+-- Indeksy dla tabeli `wydarzenia`
+--
+ALTER TABLE `wydarzenia`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `biblioteczka`
+--
+ALTER TABLE `biblioteczka`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `books`
@@ -295,6 +565,12 @@ ALTER TABLE `borrowed_books`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `dane_ksiazek`
+--
+ALTER TABLE `dane_ksiazek`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
@@ -307,16 +583,34 @@ ALTER TABLE `pending_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `rere`
+--
+ALTER TABLE `rere`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT for table `user_reactions`
+--
+ALTER TABLE `user_reactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `wydarzenia`
+--
+ALTER TABLE `wydarzenia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -335,6 +629,13 @@ ALTER TABLE `borrowed_books`
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_reactions`
+--
+ALTER TABLE `user_reactions`
+  ADD CONSTRAINT `user_reactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `user_reactions_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `rere` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
