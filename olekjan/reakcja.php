@@ -1,18 +1,15 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    echo json_encode(["success" => false, "error" => "Użytkownik niezalogowany."]);
-    exit();
-}
-
-$user_id = $_SESSION['user_id'];
+header("Content-Type: application/json");
 
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "login_db";
+$dbname = "lektury";
 
+// Połączenie z bazą danych
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Sprawdzenie połączenia
 if ($conn->connect_error) {
     die(json_encode(["success" => false, "error" => "Błąd połączenia: " . $conn->connect_error]));
 }
@@ -21,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $eventId = isset($_POST["id"]) ? intval($_POST["id"]) : 0;
     $reactionType = isset($_POST["reaction"]) ? $_POST["reaction"] : "";
 
+    // Mapowanie reakcji na kolumny w bazie danych
     $columns = [
         "👍" => "likes",
         "❤️" => "hearts",
@@ -30,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($eventId > 0 && isset($columns[$reactionType])) {
         $column = $columns[$reactionType];
 
-        // Sprawdzenie, czy wydarzenie istnieje
-        $checkEventSql = "SELECT COUNT(*) FROM rere WHERE id = ?";
+        // Sprawdzenie, czy event istnieje
+        $checkEventSql = "SELECT COUNT(*) AS count FROM rere WHERE id = ?";
         $stmt = $conn->prepare($checkEventSql);
         $stmt->bind_param("i", $eventId);
         $stmt->execute();
@@ -40,55 +38,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->close();
 
         if ($eventExists > 0) {
-            // Sprawdzamy, czy użytkownik już dodał reakcję
-            $checkReactionSql = "SELECT reaction FROM user_reactions WHERE user_id = ? AND event_id = ?";
-            $stmt = $conn->prepare($checkReactionSql);
-            $stmt->bind_param("ii", $user_id, $eventId);
-            $stmt->execute();
-            $stmt->bind_result($existingReaction);
-            $reactionExists = $stmt->fetch();
-            $stmt->close();
-
-            if ($reactionExists) {
-                echo json_encode(["success" => false, "error" => "Już oddałeś reakcję na to wydarzenie."]);
+            // Aktualizacja liczby reakcji w bazie danych
+            $sql = "UPDATE rere SET $column = $column + 1 WHERE id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $eventId);
+            if ($stmt->execute()) {
+                // Pobranie aktualnej wartości reakcji
+                $result = $conn->query("SELECT $column FROM rere WHERE id = $eventId");
+                $row = $result->fetch_assoc();
+                echo json_encode(["success" => true, "count" => $row[$column]]);
             } else {
-                // Zapisujemy reakcję
-                $insertReactionSql = "INSERT INTO user_reactions (user_id, event_id, reaction) VALUES (?, ?, ?)";
-                $stmt = $conn->prepare($insertReactionSql);
-                $stmt->bind_param("iis", $user_id, $eventId, $reactionType);
-
-                if ($stmt->execute()) {
-                    // Aktualizujemy licznik reakcji w tabeli rere
-                    $updateCountSql = "UPDATE rere SET $column = $column + 1 WHERE id = ?";
-                    $stmtUpdate = $conn->prepare($updateCountSql);
-                    $stmtUpdate->bind_param("i", $eventId);
-                    $stmtUpdate->execute();
-                    $stmtUpdate->close();
-
-                    // Pobieramy nowe liczniki reakcji
-                    $stmt = $conn->prepare("SELECT likes, hearts, claps FROM rere WHERE id = ?");
-                    $stmt->bind_param("i", $eventId);
-                    $stmt->execute();
-                    $stmt->bind_result($likes, $hearts, $claps);
-                    $stmt->fetch();
-                    $stmt->close();
-
-                    // Zwracamy liczniki reakcji w odpowiedzi
-                    echo json_encode([
-                        "success" => true,
-                        "counts" => [
-                            "👍" => $likes,
-                            "❤️" => $hearts,
-                            "👏" => $claps
-                        ]
-                    ]);
-                } else {
-                    echo json_encode(["success" => false, "error" => "Nie udało się zapisać reakcji."]);
-                }
-                $stmt->close();
+                echo json_encode(["success" => false, "error" => "Nie udało się zaktualizować reakcji."]);
             }
+            $stmt->close();
         } else {
-            echo json_encode(["success" => false, "error" => "Nie znaleziono wydarzenia."]);
+            echo json_encode(["success" => false, "error" => "Nie znaleziono zdarzenia o podanym identyfikatorze."]);
         }
     } else {
         echo json_encode(["success" => false, "error" => "Niepoprawne dane wejściowe."]);
