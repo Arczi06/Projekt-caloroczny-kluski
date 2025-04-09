@@ -37,6 +37,7 @@ $conn->close();
     <title>Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dashboard.css?v=1.0">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     <div class="dashboard-container">
@@ -45,15 +46,16 @@ $conn->close();
                 <h2>Dashboard</h2>
             </div>
             <nav class="sidebar-nav">
-                <a href="#" class="active">Podgląd</a>
-                <a href="profil.php">Profil</a>
-                <a href="admin/index.html">Ustawienia</a>
-                <a href="chat.php">Wiadomości</a>
-                <a href="#">Strona</a>
-                <a href="logout.php" id="Logout">Logout</a>
-                <div class="solitaire-card">
-                    <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>
-                    <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
+                <a href="#" class="active"><i class="ph ph-house-line"></i> Podgląd</a>
+                <a href="profil.php"><i class="ph ph-user-circle"></i> Profil</a>
+                <a href="recived_bmessages.php"><i class="ph ph-chat-circle-dots"></i> Wiadomości</a>
+                <a href="#"><i class="ph ph-globe"></i> Strona</a>
+                <a href="logout.php" id="Logout"><i class="ph ph-sign-out"></i> Logout</a>
+                <div class="sidebar-bottom">
+                    <div class="solitaire-card">
+                        <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>
+                        <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
+                    </div>
                 </div>
             </nav>
         </aside>
@@ -65,10 +67,44 @@ $conn->close();
                     <span class="user-name">Witaj <?php echo htmlspecialchars($user['username']); ?>!</span>
                 </div>
             </header>
-            <section class="dashboard-section">
-            </section>
-            <section class="dashboard-section">
-                <div class="chart-container">
+            <section class="dashboard-section">  
+                <div class="window-card">
+                    <a href="./olekjan/katalog.php">
+                        <div class="window-content">
+                            <img src="katalog-removebg-preview.png" alt="KATALOG KSIĄŻEK" class="icon"/>    
+                        </div>
+                    </a>
+                    <div class="description">KATALOG KSIĄŻEK</div>
+                </div>
+                <div class="window-card">
+                    <a href="./olekjan/lekturyObowiązkowe13.php">
+                        <div class="window-content">
+                            <img src="lektury-removebg-preview.png" alt="Biblioteka" class="icon" />
+                        </div>
+                    </a>
+                    <div class="description">LEKTURY OBOWIĄZKOWE</div>
+                </div>
+                <div class="window-card">
+                        <div class="window-content">
+                            <img src="logo.png" alt="KATALOG KSIĄŻEK" class="icon"/>    
+                        </div>
+                    </a>
+                </div>  
+                <div class="window-card">
+                    <a href="./olekjan/moje.php">
+                        <div class="window-content">
+                            <img src="moje-removebg-preview.png" alt="Wyszukiwanie" class="icon" />
+                        </div>
+                    </a>
+                    <div class="description">MOJE KSIĄŻKI</div>
+                </div>
+                <div class="window-card">
+                    <a href="./olekjan/eventy.php">
+                        <div class="window-content">
+                            <img src="event-removebg-preview.png" alt="Ulubione" class="icon" />
+                        </div>
+                    </a>
+                    <div class="description">EVENTY</div>
                 </div>
             </section>
         </main>

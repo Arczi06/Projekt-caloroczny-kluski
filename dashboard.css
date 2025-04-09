@@ -1,268 +1,413 @@
-body {
-    font-family: 'Georgia', serif; 
-    background-color: #3e2723;
-    color: #f1e0c6; 
+/* Reset i font */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background: url('library-texture.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    min-height: 100vh;
+    color: #e6e0d4;
+}
+
+/* Przyciemnienie tła */
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 30, 20, 0.7); /* Ciemniejsze przyciemnienie */
+    backdrop-filter: blur(3px);
+    z-index: -1;
+}
+
+/* Kontener główny */
 .dashboard-container {
     display: flex;
-    height: 100%;
-    width: 100%;
-}
-
-.sidebar {
-    width: 250px;
-    background-color: #4e342e;
+    min-height: 100vh;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    transition: all 0.3s ease-in-out;
-    flex-direction: column;
-    justify-content: space-between;
+    gap: 20px;
 }
 
-.sidebar:hover {
-    background-color: #3e2723; 
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5); 
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
+    color: #f8e5c0;
+    padding: 20px;
+    border-radius: 20px;
+    justify-content: space-between;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 1px solid #b99160;
+    animation: fadeInLeft 0.8s ease;
 }
 
 .sidebar-header h2 {
-    font-size: 24px;
+    font-size: 26px;
+    font-weight: 600;
     text-align: center;
-    color: #f1e0c6; 
-    margin-bottom: 30px;
-    animation: fadeInText 2s ease-in-out;
-}
-
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    color: #e2c68d;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #000;
 }
 
 .sidebar-nav a {
-    display: block;
-    padding: 15px;
-    margin-bottom: 10px;
-    color: #f1e0c6; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    margin: 6px 0;
     text-decoration: none;
+    color: #f8e5c0;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.sidebar-nav a::before {
+    display: inline-block;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: rgba(255, 235, 170, 0.1);
+    color: #ffda8a;
+    transform: scale(1.03);
+    border-left: 3px solid #ffcc70;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #a78050;
+}
+
+/* Solitaire box */
+.solitaire-card {
+    background-color: rgba(240, 210, 160, 0.2);
+    padding: 14px;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #e3c27b;
+    animation: fadeIn 1s ease;
+}
+
+.pasjanszagraj {
     font-size: 16px;
-    background: #3e444b; 
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #fff0c2;
 }
 
-.sidebar-nav a:hover, .sidebar-nav a.active {
-    background-color: #815a0c; 
-    color: white;
-    transform: scale(1.02); 
+.solitaire-btn {
+    background-color: #a67c52;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.solitaire-btn:hover {
+    background-color: #c69c6d;
+    transform: scale(1.05);
+}
+
+/* Główna zawartość */
 .dashboard-content {
     flex: 1;
-    padding: 30px;
-    margin-left: 250px; 
-    overflow-y: auto;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
-    border-radius: 15px;
+    animation: fadeInUp 0.8s ease;
 }
 
+/* Header */
 .dashboard-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .user-info {
     display: flex;
     align-items: center;
-    animation: fadeIn 1s ease-in-out;
+    gap: 15px;
+    background-color: rgba(255, 248, 220, 0.15); /* Ciemniejsze tło */
+    padding: 10px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(3px);
+    border: 1px solid #e4c590;
+    box-shadow: 0 0 8px rgba(255, 255, 220, 0.05);
 }
 
 .user-avatar {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    margin-right: 15px;
-    border: 2px solid #f1e0c6;
-    background-color: #818068;
-    position: relative;
-    top: 5px; 
-    animation: avatarPulse 3s ease-in-out infinite;
+    border: 2px solid #ffcc70;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-@keyframes avatarPulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
+.user-avatar:hover {
+    transform: rotate(2deg) scale(1.05);
 }
 
 .user-name {
-    font-size: 18px;
     font-weight: 600;
-    color: #f1e0c6;
+    font-size: 18px;
+    color: #f8ddaa;
 }
 
+/* Lepsze rozmieszczenie kart */
 .dashboard-section {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr); /* 5 kolumn, każda o równej szerokości */
+    gap: 20px; /* Odstęp między elementami */
+    justify-items: center; /* Wyśrodkowanie elementów w poziomie */
+    max-width: 1200px; /* Maksymalna szerokość kontenera */
+    margin: 0 auto; /* Wyśrodkowanie kontenera */
+    padding: 20px; /* Odstęp od krawędzi */
+    justify-content: center; /* Wyśrodkowanie w poziomie */
+    min-height: 70vh; /* Dodajemy minimalną wysokość, aby kontener nie był za niski */
+    align-content: center; /* Wyśrodkowanie w pionie */
 }
 
-.card {
-    background-color: #3e444b;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    text-align: center;
+/* Większe i bardziej klimatyczne karty */
+.window-card {
+    height: 350px; /* Przywrócenie poprzedniej wysokości karty */
+    width: 250px; /* Przywrócenie poprzedniej szerokości karty */
+    border-radius: 20px;
+    background: url('wood-pattern.jpg'), linear-gradient(to bottom, rgba(90, 60, 30, 0.95), rgba(80, 55, 20, 0.95)); /* Ciemniejsze drewno */
+    background-size: cover;
+    background-blend-mode: multiply;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #f1e0c6;
-}
-
-.card p {
-    font-size: 14px;
-    font-weight: bold;
-    color: #dfe1e3;
-}
-
-.solitaire-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-.solitaire-card {
-    background: linear-gradient(135deg, #694a07, #775a09);
-    color: #fff;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Zapewnia przestrzeń między zawartością */
     overflow: hidden;
-    border-radius: 12px;
-    animation: float 1.5s infinite ease-in-out;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #d8b88f;
+    position: relative;
+    margin: 0 auto; /* Wyśrodkowanie karty */
 }
 
-.solitaire-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 10%, transparent 10.5%);
-    background-size: 10px 10px;
-    transform: rotate(45deg);
-    animation: backgroundMove 8s linear infinite;
+/* Efekt hover dla kart */
+.window-card:hover {
+    transform: scale(1.05); /* Zwiększenie efektu powiększenia */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
-.solitaire-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+/* Zawartość karty */
+.window-content {
+    padding: 25px 15px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Wyśrodkowanie tekstu */
 }
 
-.solitaire-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 24px;
-    font-size: 16px;
-    color: white;
-    background: linear-gradient(45deg, #f0a500, #d58f00);
-    border: none;
-    border-radius: 8px;
+/* Styl dla obrazków w kartach */
+.icon {
+    width: 80%; /* Zwiększenie szerokości obrazka, ale wciąż mniejsza od kontenera */
+    height: auto; /* Automatyczna wysokość, zachowująca proporcje */
+    object-fit: contain; /* Obrazek wypełnia przestrzeń, zachowując proporcje */
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4)); /* Cień pod obrazkiem */
+    margin-bottom: 12px; /* Odstęp od opisu */
+}
+
+/* Opis karty */
+.description {
+    background-color: rgba(255, 245, 200, 0.3); /* Jaśniejsza */
+    padding: 14px;
+    font-weight: 600;
+    font-size: 16px; /* Zwiększona czcionka */
+    text-shadow: 0 1px 2px #000;
+    border-top: 1px solid #a37542;
+    color: #ffe9ae;
+    margin-top: auto; /* Przyciągnięcie do dołu karty */
+}
+
+/* Poprawiony efekt hover dla obrazków */
+.window-card:hover .icon {
+    transform: scale(1.1); /* Powiększenie ikony na hover */
+}
+
+/* Zmiana koloru tła dla .description przy hover */
+.window-card:hover .description {
+    background-color: rgba(255, 215, 150, 0.4); /* Jaśniejsza w trakcie hover */
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-header {
+        justify-content: center;
+    }
+
+    .dashboard-section {
+        justify-content: center;
+    }
+}
+
+/* Ulepszone linki nawigacji z ikonami */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    margin: 2px 0;
     text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #f6e2c5;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.03); /* Bardziej subtelny */
 }
 
-.solitaire-btn:hover {
-    background: linear-gradient(45deg, #d58f00, #f0a500);
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+.sidebar-nav a i {
+    font-size: 20px;
+    color: #ffcc70;
+    min-width: 20px;
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffe9ae;
+    transform: translateX(3px);
+    border-left: 3px solid #ffcc70;
 }
 
-@keyframes backgroundMove {
-    0% {
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(405deg);
-    }
+/* Pasjans przeniesiony na dół */
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #a78050;
 }
 
+/* Animacje */
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* Animacja fadeIn */
+@keyframes fadeIn {
+    to {
         opacity: 1;
     }
 }
 
-@media (max-width: 768px) {
-    .dashboard-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .sidebar {
-        width: 200px;
-    }
-
-    .user-avatar {
-        width: 40px;
-        height: 40px;
-    }
-
-    .solitaire-container {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+/* Nagłówek profilu */
+.profile-header h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
 }
 
+/* Obrazek profilowy */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px 0;
+}
+
+/* Email */
+.email {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Przyciski */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+/*Gmail?*/
+
+/* Styl dla tabeli wiadomości */
+.message-area table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.message-area table, 
+.message-area th, 
+.message-area td {
+    border: 1px solid #ddd; /* Kolor obramowania */
+}
+
+.message-area th, 
+.message-area td {
+    padding: 10px;
+    text-align: left;
+}
+
+.message-area th {
+    background-color: #ecf0f1; /* Kolor tła nagłówka */
+    font-weight: bold;
+}
+
+.message-area tr:nth-child(even) {
+    background-color: #f9f9f9; /* Kolor tła dla parzystych wierszy */
+}
+
+.message-area tr:hover {
+    background-color: rgba(255, 215, 150, 0.4); /* Kolor tła dla wiersza na hover */
+}
+
+/* Dodatkowe style */
+.message-area h3 {
+    margin-bottom: 20px; /* Margines dla nagłówka sekcji */
+}

@@ -16,10 +16,9 @@ $stmt->bind_result($username, $email, $profile_image);
 $stmt->fetch();
 $stmt->close();
 
-// Pobranie dostępnych obrazów w katalogu 'ni'
-$image_directory = 'ni'; // Ścieżka do folderu z obrazkami
+$image_directory = 'ni';
 $profile_images = scandir($image_directory); 
-$profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie . i .. z tablicy
+$profile_images = array_diff($profile_images, array('.', '..'));
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +28,14 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil użytkownika</title>
     <link rel="stylesheet" href="profil.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         #image-options {
             max-height: 400px;
             width: 100%;
             overflow-y: auto;
-            background-color: rgba(0, 0, 0, 0.7); /* Ciemniejsze tło */
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -79,68 +79,93 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
         #upload-new-image-btn:hover {
             background-color: #45a049;
         }
+
+        .dashboard-container {
+            display: flex;
+            position: fixed;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .profile-container {
+            flex: 1; /* Zajmuje pozostałą przestrzeń */
+            padding: 20px; /* Opcjonalne - aby dodać odstępy */
+            border-radius: 8px; /* Opcjonalne - dla wizualnej estetyki */
+            background: rgba(255, 255, 255, 0.8); /* Opcjonalne - dla tła */
+        }
     </style>
 </head>
 <body>
-<aside class="sidebar">
-    <div class="sidebar-header">
-        <h2>Dashboard</h2>
-    </div>
-    <nav class="sidebar-nav">
-        <a href="dashboard.php">Podgląd</a>
-        <a href="profil.php" class="active">Profil</a>
-        <a href="#">Ustawienia</a>
-        <a href="chat.php">Wiadomości</a>
-        <a href="#">Strona</a>
-        <a href="logout.php" id="Logout">Logout</a>
-        <div class="solitaire-card">
-            <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>
-            <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Dashboard</h2>
         </div>
-    </nav>
-</aside>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php"><i class="ph ph-house-line"></i> Podgląd</a>
+            <a href="profil.php" class="active"><i class="ph ph-user-circle"></i> Profil</a>
+            <a href="recived_bmessages.php"><i class="ph ph-chat-circle-dots"></i> Wiadomości</a>
+            <a href="#"><i class="ph ph-globe"></i> Strona</a>
+            <a href="logout.php" id="Logout"><i class="ph ph-sign-out"></i> Logout</a>
+            <div class="sidebar-bottom">
+                <div class="solitaire-card">
+                    <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>
+                    <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
+                </div>
+            </div>
+        </nav>
+    </aside>
 
-<div class="profile-container">
-    <div class="profile-header">
-        <h1><?php echo htmlspecialchars($username); ?></h1>
-    </div>
-    <div>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1><?php echo htmlspecialchars($username); ?></h1>
+        </div>
         <div>
-        <img src="<?php echo !empty($profile_image) && file_exists('ni/' . $profile_image) ? 'ni/' . $profile_image : 'profile.jpg'; ?>" alt="Profile Image" class="profile-img" id="profile-img">
-        <p class="email"><?php echo htmlspecialchars($email); ?></p>
-    </div>
-</div>
-    <button id="choose-image-btn">Wybierz nowe zdjęcie</button>
-    <div id="image-options" style="display:none;">
-        <h3>Dostępne zdjęcia:</h3>
-        <ul>
-            <?php foreach ($profile_images as $image): ?>
-                <li><img src="ni/<?php echo $image; ?>" alt="<?php echo $image; ?>" class="thumbnail" data-image="<?php echo $image; ?>"></li>
-            <?php endforeach; ?>
-        </ul>
-        <button id="upload-new-image-btn">Wybierz nowe zdjęcie</button>
-    </div>
-
-    <div class="header-buttons">
-        <a href="dashboard.php" class="btn-back">Powrót</a>
-    </div>
-
-    <div class="activity-calendar">
-        <h2>Aktywność</h2>
-        <div id="calendar-month-year"></div>
-        <div class="calendar-navigation">
-            <button id="prev-month" class="calendar-btn">Poprzedni miesiąc</button>
-            <button id="next-month" class="calendar-btn">Następny miesiąc</button>
+            <div>
+                <img src="ni/<?php echo isset($profile_image) && $profile_image ? $profile_image : 'default.jpg'; ?>" alt="Profile Image" class="profile-img" id="profile-img">
+                <p class="email"><?php echo htmlspecialchars($email); ?></p>
+            </div>
         </div>
-        <div class="calendar-container"></div>
+        <button id="choose-image-btn">Wybierz nowe zdjęcie</button>
+        <div id="image-options" style="display:none;">
+            <h3>Dostępne zdjęcia:</h3>
+            <form id="upload-form" action="upload_profile_picture.php" method="POST" enctype="multipart/form-data" style="display:none;">
+                <input type="file" name="profile_picture" id="profile-picture-input" required>
+                <button type="submit">Prześlij zdjęcie</button>
+            </form>
+            <ul>
+                <?php foreach ($profile_images as $image): ?>
+                    <li><img src="ni/<?php echo $image; ?>" alt="<?php echo $image; ?>" class="thumbnail" data-image="<?php echo $image; ?>"></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+
+        <div class="header-buttons">
+            <a href="dashboard.php" class="btn-back">Powrót</a>
+        </div>
+
+        <div class="activity-calendar">
+            <h2>Aktywność</h2>
+            <div id="calendar-month-year"></div>
+            <div class="calendar-navigation">
+                <button id="prev-month" class="calendar-btn">Poprzedni miesiąc</button>
+                <button id="next-month" class="calendar-btn">Następny miesiąc</button>
+            </div>
+            <div class="calendar-container"></div>
+        </div>
     </div>
 </div>
 
 <script>
     document.getElementById("choose-image-btn").addEventListener("click", function() {
-        document.getElementById("image-options").style.display = "block";
+        var imageOptions = document.getElementById("image-options");
+        if (imageOptions.style.display === "block") {
+            imageOptions.style.display = "none";
+        } else {
+            imageOptions.style.display = "block";
+        }
     });
-
     document.querySelectorAll('.thumbnail').forEach(function(img) {
         img.addEventListener('click', function() {
             var selectedImage = img.getAttribute('data-image');
@@ -149,19 +174,10 @@ $profile_images = array_diff($profile_images, array('.', '..')); // Usunięcie .
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "update_profile_picture.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    alert("Zdjęcie profilowe zostało zaktualizowane.");
-                }
-            };
             xhr.send("image=" + selectedImage);
 
             document.getElementById("image-options").style.display = "none";
         });
-    });
-
-    document.getElementById('upload-new-image-btn').addEventListener('click', function() {
-        window.location.href = "upload_profile_picture.php";
     });
 </script>
 

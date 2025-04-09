@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Playfair+Display:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c0a085;
+    color: #3b1f1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background: #4e290e;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 6px double #8b5a2b;
+    text-align: center;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -15px; 
+    left: -15px;
+    width: calc(100% + 30px);
+    height: calc(100% + 30px);
+    background-color: #ecdec0;
+    border: 8px solid #5c4033;
+    border-radius: 16px;
+    z-index: -1;
+}
+
+h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-family: 'Marcellus', serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color:  #8b5a2b;
+    border-bottom: 3px solid #8b5a2b;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #8b5a2b;
+    font-size: 18px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 3px solid #8b5a2b;
+    background: #fcf5e5;
+    color: #3b1f1f;
+    font-size: 17px;
+    transition: 0.3s;
+    font-family: 'Playfair Display', serif;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #cfa67e;
+    outline: none;
+    background: #fffdf5;
+}
+
+.btn {
+    background: linear-gradient(145deg, #8b5a2b, #5c4033);
+    color: #f9f3e7;
+    padding: 12px 20px;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Marcellus', serif;
+    border: 3px solid #5c4033;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #a67c52, #8b5a2b);
+}
+
+#message {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.success {
+    color: #4caf50;
+}
+
+.error {
+    color: #ff3333;
+}
+
+.back-link {
+    margin-top: 15px;
+}
+
+.back-link a {
+    color: #8b5a2b;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    font-family: 'Marcellus', serif;
+    font-size: 18px;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+    color: #cfa67e;
+}
+

@@ -41,49 +41,52 @@
         </form>
 
         <table>
-            <thead>
-                <tr>
-                    <th>Login</th>
-                    <th>Email</th>
-                    <th>Rola</th>
-                    <th>Data Rejestracji</th>
-                    <th>Akcje</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $search = isset($_GET['search']) ? $_GET['search'] : '';
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Email</th>
+            <th>Rola</th>
+            <th>Data Rejestracji</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-                $sql = "SELECT * FROM users WHERE username LIKE ? OR email LIKE ? ORDER BY id DESC";
-                $stmt = $conn->prepare($sql);
-                $search_term = "%$search%";
-                $stmt->bind_param("ss", $search_term, $search_term);
-                $stmt->execute();
-                $result = $stmt->get_result();
+        $sql = "SELECT id, username, email, role, date_registered FROM users WHERE username LIKE ? OR email LIKE ? ORDER BY id DESC";
+        $stmt = $conn->prepare($sql);
+        $search_term = "%$search%";
+        $stmt->bind_param("ss", $search_term, $search_term);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $role = $row["role"] == 1 ? "Bibliotekarz" : ($row["role"] == 2 ? "Administrator" : "Czytelnik");
-                        echo "<tr>";
-                        
-                        echo "<td><a href='profilee.php?id=" . $row["id"] . "'>" . $row["username"] . "</a></td>";
-                        
-                        echo "<td>" . $row["email"] . "</td>";
-                        
-                        echo "<td>" . $role . "</td>";
-                        
-                        echo "<td>
-                                <a href='edit_user_panel.php?id=" . $row["id"] . "'>Edytuj</a> | 
-                                <a href='delete_user.php?id=" . $row["id"] . "'>Usuń</a>
-                            </td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='5'>Brak użytkowników.</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $role = $row["role"] == 1 ? "Bibliotekarz" : ($row["role"] == 2 ? "Administrator" : "Czytelnik");
+                echo "<tr>";
+                
+                echo "<td><a href='profilee.php?id=" . $row["id"] . "'>" . $row["username"] . "</a></td>";
+                
+                echo "<td>" . $row["email"] . "</td>";
+                
+                echo "<td>" . $role . "</td>";
+                
+                echo "<td>" . ($row["date_registered"] ? $row["date_registered"] : "Brak danych") . "</td>";
+                
+                echo "<td>
+                        <a href='edit_user.php?id=" . $row["id"] . "'>Edytuj</a> | 
+                        <a href='delete_user.php?id=" . $row["id"] . "'>Usuń</a>
+                    </td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='5'>Brak użytkowników.</td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
+
     </section>
 
 </body>

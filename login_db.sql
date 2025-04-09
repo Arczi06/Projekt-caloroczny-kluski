@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2025 at 08:28 AM
+-- Generation Time: Apr 10, 2025 at 01:30 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -272,7 +272,9 @@ CREATE TABLE `rere` (
 
 INSERT INTO `rere` (`id`, `zdjecie`, `tytul`, `data`, `opis`, `likes`, `hearts`, `claps`) VALUES
 (1, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 0, 0),
-(2, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0);
+(2, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0),
+(3, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 0, 0),
+(4, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -376,8 +378,8 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `lo
 (48, 43, '2025-04-02', '2025-04-02 18:56:42', 6, 'Login'),
 (49, 57, '2025-04-02', '2025-04-02 19:55:25', 3, 'Login'),
 (50, 74, '2025-04-02', '2025-04-02 21:28:55', 1, 'Login'),
-(51, 43, '2025-04-03', '2025-04-03 06:11:38', 1, 'Login'),
-(52, 74, '2025-04-03', '2025-04-03 06:12:46', 2, 'Login');
+(51, 74, '2025-04-03', '2025-04-02 22:09:43', 2, 'Login'),
+(52, 74, '2025-04-09', '2025-04-09 14:30:28', 1, 'Login');
 
 -- --------------------------------------------------------
 
@@ -404,6 +406,27 @@ INSERT INTO `wydarzenia` (`id`, `tytul`, `opis`, `data`, `zdjecie`, `reakcje`) V
 (3, 'Klub czytelnika', 'Dyskusja na temat klasycznych dzieł literatury. Dołącz do naszej społeczności miłośników książek!', '2024-04-20', './eventy/klub_czytelnika.jpg', '{}'),
 (4, 'Wieczór poezji', 'Romantyczna atmosfera i piękne wiersze czytane przez aktorów.', '2024-04-25', './eventy/wieczor_poezji.jpg', '{}'),
 (5, 'Giełda książek', 'Masz książki, których już nie czytasz? Wymień je na inne w naszej bibliotece!', '2024-04-30', './eventy/gielda_ksiazek.jpg', '{}');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wypozyczenia`
+--
+
+CREATE TABLE `wypozyczenia` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `biblioteczka_id` int(11) DEFAULT NULL,
+  `data_wypozyczenia` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wypozyczenia`
+--
+
+INSERT INTO `wypozyczenia` (`id`, `user_id`, `biblioteczka_id`, `data_wypozyczenia`) VALUES
+(6, 74, 1, '2025-04-10 00:17:07'),
+(11, 74, 11, '2025-04-10 00:26:25');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -477,6 +500,13 @@ ALTER TABLE `wydarzenia`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `wypozyczenia`
+--
+ALTER TABLE `wypozyczenia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `biblioteczka_id` (`biblioteczka_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -520,7 +550,7 @@ ALTER TABLE `pending_users`
 -- AUTO_INCREMENT for table `rere`
 --
 ALTER TABLE `rere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -541,6 +571,12 @@ ALTER TABLE `wydarzenia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `wypozyczenia`
+--
+ALTER TABLE `wypozyczenia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -557,6 +593,12 @@ ALTER TABLE `borrowed_books`
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `wypozyczenia`
+--
+ALTER TABLE `wypozyczenia`
+  ADD CONSTRAINT `wypozyczenia_ibfk_1` FOREIGN KEY (`biblioteczka_id`) REFERENCES `biblioteczka` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

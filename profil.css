@@ -1,193 +1,328 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #3e2723;
-    color: #f1e0c6; 
+/* Reset i font */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    background-image: url('background-books.jpg');
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('library-texture.jpg') no-repeat center center fixed;
     background-size: cover;
-    transition: background-color 0.3s ease;
+    position: relative;
+    min-height: 100vh;
+    color: #e6e0d4;
 }
 
-.profile-container {
-    background-color: rgba(40, 44, 50, 0.9); 
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+/* Przyciemnienie tła */
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 30, 20, 0.7); /* Ciemniejsze przyciemnienie */
+    backdrop-filter: blur(3px);
+    z-index: -1;
+}
+
+/* Kontener główny */
+.dashboard-container {
+    display: flex;
+    position: fixed;
+    height: 100%;
     width: 100%;
-    max-width: 500px;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
+    color: #f8e5c0;
+    padding: 20px;
+    border-radius: 20px;
+    justify-content: space-between;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 1px solid #b99160;
+    animation: fadeInLeft 0.8s ease;
+}
+
+.sidebar-header h2 {
+    font-size: 26px;
+    font-weight: 600;
     text-align: center;
-    opacity: 0;
-    animation: fadeIn 1s forwards, scaleUp 1s 0.5s forwards;
+    color: #e2c68d;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #000;
 }
 
-.profile-header h1 {
-    font-size: 28px;
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    margin: 6px 0;
+    text-decoration: none;
+    color: #f8e5c0;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.sidebar-nav a::before {
+    display: inline-block;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: rgba(255, 235, 170, 0.1);
+    color: #ffda8a;
+    transform: scale(1.03);
+    border-left: 3px solid #ffcc70;
+}
+
+/* Solitaire box */
+.solitaire-card {
+    background-color: rgba(240, 210, 160, 0.2);
+    padding: 14px;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #e3c27b;
+    animation: fadeIn 1s ease;
+}
+
+.pasjanszagraj {
+    font-size: 16px;
     margin-bottom: 10px;
-    color: #b38e5d; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-    opacity: 0;
-    animation: fadeIn 1s 0.5s forwards;
+    font-weight: 600;
+    color: #fff0c2;
 }
 
-.profile-header .email {
-    font-size: 14px;
-    color: #dfe1e3; 
-    opacity: 0;
-    animation: fadeIn 1s 1s forwards;
+.solitaire-btn {
+    background-color: #a67c52;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.solitaire-btn:hover {
+    background-color: #c69c6d;
+    transform: scale(1.05);
+}
+
+/* Główna zawartość */
+.dashboard-content {
+    flex: 1;
+    animation: fadeInUp 0.8s ease;
+}
+
+/* Header */
+.dashboard-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Kontener profilu */
+.profile-container {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgb(53, 41, 30); /* Kolor tła zdefiniowany dokładnie */
+    color: #e6e0d4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-size: cover; /* Zabezpieczenie na wypadek, gdybyś chciał dodać obrazek w tle */
+    background-position: center center; /* Ustawienie na środek */
+    background-repeat: no-repeat; /* Zapewnia, że obrazek w tle się nie powtarza */
+}
+
+/* Nagłówek profilu */
+.profile-header h1 {
+    font-size: 30px;
+    color: #e2c68d;
+    text-align: center;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Obrazek profilu */
 .profile-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    margin-bottom: 15px;
-    border: 3px solid #b38e5d;
     object-fit: cover;
-    opacity: 0;
-    animation: scaleUp 1s 0.5s forwards, fadeIn 1s 0.5s forwards;
+    margin: 0 auto;
+    border: 3px solid #b99160;
 }
 
-.header-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+/* Email */
+.email {
+    text-align: center;
+    font-size: 18px;
+    color: #f8e5c0;
 }
 
-.btn-back {
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
+/* Przycisk wyboru zdjęcia */
+#choose-image-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #8a6e4d; /* Stonowany kolor drewna */
     color: white;
-    background-color: #704214; 
-    padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(112, 66, 20, 0.3);
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-back:hover {
-    background-color: #5b3617;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(112, 66, 20, 0.5); 
-}
-
-.activity-calendar {
-    margin-top: 40px;
-}
-
-.calendar-container {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-top: 20px;
-    opacity: 0;
-    animation: fadeIn 1s 1s forwards;
-}
-
-.calendar-day {
-    width: 35px;
-    height: 35px;
-    background-color: #3e444b; 
+    text-align: center;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    color: #110b02; /* Jasny kolor tekstu */
+    transition: background 0.3s ease;
+    border: none;
     cursor: pointer;
-    opacity: 0;
-    animation: fadeIn 1s 0.5s forwards;
 }
 
-.calendar-day.active {
-    background-color: #b38e5d; 
-    color: #fff;
-    transform: scale(1.1);
+#choose-image-btn:hover {
+    background-color: #6d4f30; /* Ciemniejszy odcień drewna */
 }
 
-.activity-calendar h2 {
-    color: #b38e5d;
+/* Opcje zdjęcia */
+#image-options {
+    display: none;
+    text-align: center;
+}
+
+#image-options h3 {
     margin-bottom: 10px;
-    font-size: 24px;
-    font-weight: 600;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #e2c68d;
+}
+
+#upload-form {
+    margin-bottom: 20px;
+}
+
+#upload-form input[type="file"] {
+    padding: 10px;
+    background-color: #f8e5c0;
+    border: 1px solid #b99160;
+    border-radius: 5px;
+}
+
+#image-options ul {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+#image-options ul li {
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Przycisk powrotu */
+.header-buttons .btn-back {
+    padding: 10px 20px;
+    background-color: #8a6e4d; /* Stonowany kolor drewna */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+.header-buttons .btn-back:hover {
+    background-color: #6d4f30; /* Ciemniejszy odcień drewna */
+}
+
+/* Kalendarz aktywności */
+.activity-calendar {
+    background: rgba(85, 65, 45, 0.9); /* Tło w odcieniach drewna */
+    padding: 20px;
+    border-radius: 8px;
+    color: #e6e0d4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#calendar-month-year {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #e2c68d;
 }
 
 .calendar-navigation {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .calendar-btn {
-    background-color: #b38e5d;
-    color: #fff;
+    padding: 8px 20px;
+    background-color: #8a6e4d; /* Kolor drewna */
+    color: white;
     border: none;
-    padding: 12px 18px;
-    font-size: 16px;
-    border-radius: 8px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .calendar-btn:hover {
-    background-color: #7f6037; 
-    transform: translateY(-3px);
+    background-color: #6d4f30; /* Ciemniejszy odcień drewna */
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    justify-items: center;
 }
 
-@keyframes scaleUp {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-#image-options {
-    max-height: 400px; /* Określenie maksymalnej wysokości dla kontenera */
-    width: 100%;
-    overflow-y: auto; /* Dodanie przewijania w pionie */
-    background-color: #f0f0f0; /* Opcjonalnie tło dla lepszej widoczności */
-    padding: 10px;
+.calendar-day {
+    padding: 12px;
+    background-color: rgba(240, 210, 160, 0.2); /* Jasny odcień drewna */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcjonalny cień dla efektu */
-}
-
-#image-options ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Odstępy między miniaturkami */
-}
-
-#image-options li {
-    list-style-type: none;
-    max-width: 100px; /* Maksymalna szerokość miniaturki */
-}
-
-.thumbnail {
-    width: 100%;
-    height: auto;
-    max-width: 100px; /* Ustalony rozmiar miniaturki */
-    border-radius: 4px;
+    text-align: center;
+    color: #34495e;
+    font-weight: bold;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-.thumbnail:hover {
-    transform: scale(1.1); /* Efekt powiększenia przy najechaniu */
+.calendar-day.active {
+    background-color: rgb(240, 180, 60); /* Aktywność z lekką intensywnością */
 }
 
-.modal {
-    background-color: rgba(0, 0, 0, 0.8); /* ciemniejsze tło */
-    /* Inne style */
+.calendar-day:hover {
+    background-color: rgba(240, 180, 60, 0.7);
+}
+
+/* Styl dla dni z aktywnością */
+.calendar-day[data-activity="1"] {
+    background-color: rgb(240, 180, 60); /* Aktywność z lekką intensywnością */
+}
+
+.calendar-day[data-activity="2"] {
+    background-color: rgb(255, 130, 0); /* Aktywność z średnią intensywnością */
+}
+
+.calendar-day[data-activity="3"] {
+    background-color: rgb(255, 50, 0); /* Aktywność z dużą intensywnością */
+}
+
+/* Przestrzeń dla kalendarza - aby nie przeszkadzał */
+.activity-calendar .calendar-container {
+    min-height: 250px;
+    max-height: 350px;
+    overflow-y: auto;
 }

@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$id = $_GET['id'];  // Pobierz ID użytkownika z URL
+$id = $_GET['id'];
 $sql = "SELECT * FROM users WHERE id = $id";
 $result = $conn->query($sql);
 
@@ -33,8 +33,6 @@ if ($result->num_rows > 0) {
             <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
             <p><strong>Rola:</strong> <?php echo $role; ?></p>
         </div>
-
-        <!-- Kalendarz aktywności (przykładowo, możesz dodać dane z tabeli logów) -->
         <div class="activity-calendar">
             <h2>Aktywność użytkownika</h2>
             <table>
@@ -46,7 +44,6 @@ if ($result->num_rows > 0) {
                 </thead>
                 <tbody>
                     <?php
-                    // Przykład pobierania aktywności użytkownika z tabeli logów (możesz dostosować do swojej struktury)
                     $activitySql = "SELECT * FROM user_activity WHERE user_id = $id ORDER BY activity_date DESC";
                     $activityResult = $conn->query($activitySql);
 
