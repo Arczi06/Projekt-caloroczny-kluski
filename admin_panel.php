@@ -15,6 +15,7 @@
             <li><a href="users.php">Użytkownicy</a></li>
             <li><a href="#books">Książki</a></li>
             <li><a href="#roles">Rola do zaakceptowania</a></li>
+            <li><a href="recived_bmessages.php">Wiadomości</a></li>
         </ul>
         <a href="logout.php" class="logout-btn">Logout</a>
     </nav>
@@ -118,18 +119,29 @@
     </section>
 
     <section id="pendingUsers">
-    <h2>Oczekujący użytkownicy</h2>
+    <h2 id="pendingTitle">Oczekujący użytkownicy</h2>
     <div class="pending-cards">
         <?php
-        // Pobieramy wszystkich oczekujących użytkowników, pomijając tych z status 'rejected'
-        $sql = "SELECT * FROM pending_users WHERE status != 'rejected'";
+        $sql_total = "SELECT COUNT(*) as total FROM pending_users WHERE status != 'rejected'";
+        $result_total = $conn->query($sql_total);
+        $total_pending = $result_total->fetch_assoc()['total'];
+
+        if ($total_pending > 3) {
+            echo "<script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        let title = document.getElementById('pendingTitle');
+                        title.classList.add('alert-title');
+                    });
+                  </script>";
+        }
+
+        $sql = "SELECT * FROM pending_users WHERE status != 'rejected' LIMIT 3";
         $result = $conn->query($sql);
+
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                // Określamy rolę użytkownika
                 $role = $row["role"] == 1 ? "Bibliotekarz" : ($row["role"] == 2 ? "Administrator" : "Czytelnik");
 
-                // Generujemy kafelek dla każdego oczekującego użytkownika
                 echo "<div class='pending-card'>";
                 echo "<h3>" . $row["username"] . "</h3>";
                 echo "<p>Email: " . $row["email"] . "</p>";
@@ -138,14 +150,19 @@
                 echo "<div class='actions'>";
                 echo "<a href='accept_user.php?id=" . $row["id"] . "' class='accept-btn'>Akceptuj</a>";
                 echo "<a href='reject_user.php?id=" . $row["id"] . "' class='reject-btn'>Odrzuć</a>";
-                echo "</div>";  // Akcje (Akceptuj, Odrzuć)
-                echo "</div>";  // Kafelek użytkownika
+                echo "</div>";
+                echo "</div>";
             }
         } else {
             echo "<p>Brak oczekujących użytkowników.</p>";
         }
         ?>
     </div>
+</section>
+
+
+</div>
+
 </section>
 
 </body>

@@ -9,14 +9,14 @@ nav {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Wyrównanie do lewej */
-    z-index: 1000; /* Zapewnia, że pasek będzie na wierzchu */
+    justify-content: flex-start;
+    z-index: 1000;
 }
 
 nav .logo {
     width: 40px;
     height: 40px;
-    background-image: url('logo.png'); /* Ścieżka do logo */
+    background-image: url('logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -32,43 +32,42 @@ nav ul {
 
 nav ul li {
     margin: 0 15px;
-    position: relative; /* Aby umożliwić efekty podświetlenia */
+    position: relative;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif; /* Elegancki font */
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     padding: 10px 20px;
     display: block;
-    border-radius: 30px; /* Zaokrąglone rogi dla bardziej profesjonalnego wyglądu */
-    transition: all 0.3s ease-in-out; /* Gładkie przejścia */
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
 }
 
 nav ul li a:hover ,nav ul li a.active{
     background-color: #d1b497;
     color: #333;
-    transform: scale(1.05); /* Powiększenie na hover */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Efekt podświetlenia */
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 nav ul li a:focus {
     outline: none;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Złote podświetlenie po kliknięciu */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
 }
 
-/* Styl główny dla strony */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    margin-top: 80px; /* Umożliwia miejsce dla nawigacji na górze */
+    margin-top: 80px;
     padding: 0;
 }
 
-/* Styl główny dla dashboardu */
+
 .dashboard {
     display: flex;
     justify-content: space-around;
@@ -101,7 +100,6 @@ body {
     color: #4e3b31;
 }
 
-/* Styl dla sekcji */
 section {
     background-color: #fff;
     padding: 30px;
@@ -119,7 +117,6 @@ section h2 {
     margin-bottom: 20px;
 }
 
-/* Input wyszukiwania */
 input[type="text"] {
     width: 100%;
     padding: 12px;
@@ -132,7 +129,6 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-/* Styl dla tabel */
 table {
     width: 100%;
     margin-top: 20px;
@@ -156,7 +152,6 @@ td {
     background-color: #fafafa;
 }
 
-/* Przycisk "Zobacz więcej" */
 .btn-more {
     background-color: #2a1a0b;
     color: white;
@@ -176,7 +171,6 @@ td {
     background-color: #d1b497;
 }
 
-/* Tabela z filtrami i opcjami */
 .filter-section {
     display: flex;
     justify-content: space-between;
@@ -202,7 +196,6 @@ td {
     background-color: #d1b497;
 }
 
-/* Drobne poprawki dla przycisków i linków */
 a {
     color: #2a1a0b;
     text-decoration: none;
@@ -213,7 +206,6 @@ a:hover {
     color: #d1b497;
 }
 
-/* Ustawienia dla mniejszych ekranów (responsive) */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -247,7 +239,7 @@ a:hover {
 }
 
 .pending-card {
-    width: calc(33% - 20px);
+    width: calc(33% - 60px);
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -301,13 +293,12 @@ a:hover {
     background-color: #e53935;
 }
 
-/* Styl dla przycisku logout */
 .logout-btn {
     position: fixed;
     top: 10px;
     right: 10px;
-    background-color: #f44336;  /* Czerwony kolor tła */
-    color: white;  /* Kolor tekstu */
+    background-color: #f44336;
+    color: white;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -318,9 +309,72 @@ a:hover {
 }
 
 .logout-btn:hover {
-    background-color: #d32f2f;  /* Ciemniejszy czerwony przy najechaniu */
+    background-color: #d32f2f;
 }
 
 .logout-btn:focus {
-    outline: none;  /* Usunięcie obramowania przy kliknięciu */
+    outline: none;
 }
+
+#pendingTitle {
+    font-size: 24px;
+    transition: all 0.5s ease-in-out;
+    display: inline-block;
+    position: relative;
+}
+
+.alert-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2d6781;
+    animation: pulse 1.5s infinite alternate;
+}
+
+.alert-title::after {
+    content: " ⚠";
+    color: #2d6781;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    right: -30px;
+    top: 0;
+    animation: shake 1s infinite alternate;
+    cursor: pointer;
+}
+
+.alert-title:hover::before {
+    content: "Jest więcej niż 3 użytkowników do zaakceptowania. Przejdź do 'Rola do zaakceptowania'.";
+    position: absolute;
+    top: -30px;
+    left: 100%;
+    transform: translateX(-50%);
+    background-color: #2d6781;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.alert-title:hover::after {
+    animation: none;
+}
+
+.alert-title:hover::before {
+    opacity: 1;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(2px); }
+}
+
