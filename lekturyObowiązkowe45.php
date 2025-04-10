@@ -1,103 +1,56 @@
-<?php
-include 'config.php'
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="lekturyObowiązkowe.css">
 </head>
 <body>
     <header>
         <h1>Twoja Biblioteka</h1>
-            <h3>Klasy 4 - 8</h3>
+            <h3>Klasy podstawowe 4 - 8</h3>
     </header>
-    <div class="menu-container">
-        <button class="menu-button">☰</button>
-        <nav class="menu-content">
+    <main>
+        <nav>
             <ul>
+                <li><a href="lekturyObowiązkowe13.php">Klasy podstawowe 1 - 3</a></li>
                 <li><a href="core.html">Strona Główna</a></li>
-                <li><a href="katalog.php">Katalog Książek</a></li>
-                <li><a href="#">Lektury Obowiązkowe</a>
-                    <ul class="submenu">
-                        <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3 szkoła podstawowa</a></li>
-                        <li><a href="lekturyObowiązkowe45.php">Klasy 4 - 8 szkoła podstawowa</a></li>
-                        <li><a href="lekturyObowiązkowe15.php">Klasy 1 - 5 szkoła średnia</a></li>
-                    </ul>
-                </li>
-                <li><a href="moje.php">Moje Książki</a></li>
-                <li><a href="eventy.php">Wydarzenia</a></li>
-                <li><a href="profil.php">Profil</a></li>
+                <li><a href="lekturyObowiązkowe15.php">Klasy średnie 1 - 5</a></li>
             </ul>
         </nav>
-    </div>
-    <main >
         <section>
             <div class="carousel-container">
                 <span class="arrow left-arrow" onclick="scrollCarousel('left')">&#8592;</span>
                 <div class="carousel">
                     <div class="carousel-item">
                         <header>
-                            <h4>KLASA IV</h4>
+                            <h4>KLASA I</h4>
                         </header>
-                        <?php
-                            if ($result4->num_rows > 0) {
-                                while($row4 = $result4->fetch_assoc()) {
-                                    echo "Book: " . $row4["tytul"]. " - Author: " . " " . $row4["autor_imie"] . " " . $row4["autor_nazwisko"] ."<br>";
-                                }
-                            }
-                        ?>
+                        <p>Julian Tuwim – Wybór wierszy</p>
+                        <p>Jan Brzechwa – Wybór wierszy</p>
+                        <p>Czesław Janczarski – Jak Wojtek został strażakiem</p>
+                        <p>Maria Konopnicka – Wybór utworów</p>
                     </div>
                     <div class="carousel-item"> 
                         <header>
-                            <h4>KLASA V</h4>
+                            <h4>KLASA II</h4>
                         </header>                       
-                        <?php
-                            if ($result5->num_rows > 0) {
-                                while($row5 = $result5->fetch_assoc()) {
-                                    echo "Book: " . $row5["tytul"]. " - Author: " . " " . $row5["autor_imie"] . " " . $row5["autor_nazwisko"] ."<br>";
-                                }
-                            }
-                        ?>
+                        <p>Lektura 1 </p>
+                        <p>Lektura 2</p>
+                        <p>Lektura 3</p>
+                        <p>Lektura 4</p>
+                        <p>Lektura 5</p>
                     </div>
                     <div class="carousel-item">
                         <header>
-                            <h4>KLASA VI</h4>
+                            <h4>KLASA III</h4>
                         </header>
-                        <?php
-                            if ($result6->num_rows > 0) {
-                                while($row6 = $result6->fetch_assoc()) {
-                                    echo "Book: " . $row6["tytul"]. " - Author: " . " " . $row6["autor_imie"] . " " . $row6["autor_nazwisko"] ."<br>";
-                                }
-                            }
-                        ?>  
-                    </div>
-                    <div class="carousel-item"> 
-                        <header>
-                            <h4>KLASA VII</h4>
-                        </header>                       
-                        <?php
-                            if ($result7->num_rows > 0) {
-                                while($row7 = $result7->fetch_assoc()) {
-                                    echo "Book: " . $row7["tytul"]. " - Author: " . " " . $row7["autor_imie"] . " " . $row7["autor_nazwisko"] ."<br>";
-                                }
-                            }
-                        ?>
-                    </div>
-                    <div class="carousel-item">
-                        <header>
-                            <h4>KLASA VIII</h4>
-                        </header>
-                        <?php
-                            if ($result8->num_rows > 0) {
-                                while($row8 = $result8->fetch_assoc()) {
-                                    echo "Book: " . $row8["tytul"]. " - Author: " . " " . $row8["autor_imie"] . " " . $row8["autor_nazwisko"] ."<br>";
-                                }
-                            }
-                        ?>   
+                        <p>Lektura 1 </p>
+                        <p>Lektura 2</p>
+                        <p>Lektura 3</p>
+                        <p>Lektura 4</p>
+                        <p>Lektura 5</p>
                     </div>
                 </div>
                 <span class="arrow right-arrow" onclick="scrollCarousel('right')">&#8594;</span>

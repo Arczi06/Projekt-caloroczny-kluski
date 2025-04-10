@@ -32,31 +32,41 @@ header > div > img {
 .logo-container {
     display: flex;
     align-items: center;
+    width: 40vw;
 }
 
 nav {
-    padding-right: 5;
+    padding-right: 5px;
     display: flex;
     align-items: center; /* Align items vertically */
     margin-left: 20px; /* Add margin to position it correctly */
 }
+label{
+    display: none;
+}
+
+
+input{
+    display: none;
+}
 
 nav ul {
+    flex-direction: row;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 nav ul li {
-    margin: 10px 0; /* Add vertical spacing */
+    margin: 10px 10px; /* Add vertical spacing */
     padding: 10px; /* Add padding for better touch targets */
-    background-color: rgba(255, 255, 255, 0.8); /* Background color for menu items */
+    /* background-color: rgba(255, 255, 255, 0.8); Background color for menu items */
     border-radius: 5px; /* Rounded corners */
     transition: background-color 0.3s; /* Smooth background color transition */
 }
 
 nav ul li:hover {
-    background-color: rgba(255, 255, 255, 1); /* Change background on hover */
+    background-color: rgba(255, 255, 255, 0.6); /* Change background on hover */
 }
 
 nav ul li a {
@@ -64,6 +74,9 @@ nav ul li a {
     text-decoration: none;
     padding: 5px 10px;
     transition: background-color 0.3s;
+}
+.menu-icon {
+    display: none;
 }
 
 /* Hero Section */
@@ -130,8 +143,15 @@ nav ul li a {
     color: #3e2723;
 }
 
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Show hamburger icon */
+    }
+    input {
+        display: none;
+    }
     .hero {
         flex-direction: column;
         text-align: center;
@@ -151,22 +171,26 @@ nav ul li a {
         text-align: center;
     }
 
+    }
+
     nav {
         width: 100%; /* Full width for navigation */
         margin-left: 0; /* Remove left margin */
+        display: none;
     }
+    div input[type="checkbox"]:checked{
+        display: flex;
+    }
+
+
 
     nav ul {
         flex-direction: column;
         margin-top: 10px;
-        display: none; /* Hide menu by default */
+        display: none; /*Hide menu by default */
     }
 
     nav input[type="checkbox"]:checked + .menu-icon + ul {
-        display: flex; /* Show menu when checkbox is checked */
+        display: row; /* Show menu when checkbox is checked */
     }
 
-    .menu-icon {
-        display: block; /* Show hamburger icon */
-    }
-}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2025 at 04:09 PM
+-- Generation Time: Apr 10, 2025 at 10:53 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -247,7 +247,8 @@ INSERT INTO `pending_users` (`id`, `username`, `email`, `password`, `role`, `sta
 (3, 'bibliotekarzrz', 'bibliotekarzrz@gmail.com', '$2y$10$SX7OevMQSv0h8GB0vKhkWuyEVq785lmN.Ss7QH232hnwE1I3OAqmK', 1, 'rejected', '#4e0740', '2025-02-16 16:24:54'),
 (10, 'przykład44', 'przykład444@gmail.com', '$2y$10$RcsV5LqsWNFfThrjhAaxD.eYBRf7BC/lLDNbt4iHzXgaGRHvoohTi', 1, 'pending', '#4a44dc', '2025-02-18 16:32:32'),
 (11, 'przykład55', 'przyukąłsd', '$2y$10$b0tta7c.VK3FSqUS6LQi6.8KzsSfOc3PbC.Ll0.r21hNie/dlPQma', 1, 'pending', '#4fc82b', '2025-02-18 16:51:17'),
-(12, 'przykład66', 'wfwa', '$2y$10$iV7yTJ.fVkc.ytOE04E8TeWVcXtGQ9C6xTJO9oD8eV82c9XfOGop.', 1, 'pending', '#6b51d4', '2025-02-18 16:51:31');
+(12, 'przykład66', 'wfwa', '$2y$10$iV7yTJ.fVkc.ytOE04E8TeWVcXtGQ9C6xTJO9oD8eV82c9XfOGop.', 1, 'pending', '#6b51d4', '2025-02-18 16:51:31'),
+(13, 'lolekbiblio', 'lolekbiblio', '$2y$10$lY5S0nGsdAq4Pgm.kz7XnOyruybtp4db2Q3YmQ5sG0HoRfGgrJr52', 1, 'pending', '#3fdba3', '2025-04-10 06:36:49');
 
 -- --------------------------------------------------------
 
@@ -271,19 +272,14 @@ CREATE TABLE `rere` (
 --
 
 INSERT INTO `rere` (`id`, `zdjecie`, `tytul`, `data`, `opis`, `likes`, `hearts`, `claps`) VALUES
-(1, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 2, 0),
-(2, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 1, 1, 0),
-(3, '', '', '0000-00-00', '', 0, 1, 1),
-(4, '', '', '0000-00-00', '', 1, 1, 0),
-(5, '', '', '0000-00-00', '', 1, 1, 0),
-(6, '', '', '0000-00-00', '', 0, 1, 1),
-(7, '', '', '0000-00-00', '', 0, 1, 0),
-(8, '', '', '0000-00-00', '', 2, 0, 0),
-(9, '', '', '0000-00-00', '', 0, 1, 1),
-(10, '', '', '0000-00-00', '', 0, 1, 1),
-(11, '', '', '0000-00-00', '', 1, 0, 1),
-(12, '', '', '0000-00-00', '', 0, 1, 1),
-(13, '', '', '0000-00-00', '', 0, 1, 0);
+(1, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 0, 0),
+(2, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0),
+(3, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 0, 0),
+(4, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0),
+(5, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie xdxdxdxd', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0),
+(6, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 0, 0),
+(7, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.0,0,0', 0, 0, 0),
+(8, '', '', '0000-00-00', '', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -307,8 +303,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`, `role`, `date_registered`, `profile_image`) VALUES
-(43, 'admin@admin.com', 'admin', '$2y$10$2HYivHXJWzQMRduo/wb93Ojz6ku9RMy8p2gGis/n8RMlo9KCW95qe', '#44cb73', 2, '2025-02-15 16:10:29', 'default.jpg'),
-(57, 'bilblio@gmail.com', 'biblio', '$2y$10$HurPhKNM4/OuOVD4JFHETOkGT9VnBpRL/gBIexwdtKw746TZn5R4q', '#000000', 1, '2025-02-15 16:17:50', 'default.jpg'),
+(43, 'admin@admin.com', 'admin', '$2y$10$taTANUeNC9JZkUdd86BFZOInlit3Q3DLMu0jXDEZZJ33HqWWjO36W', '#44cb73', 2, '2025-02-15 16:10:29', 'default.jpg'),
+(57, 'bilblio@gmail.com', 'biblio', '$2y$10$Xnz9Fn6k.x33h/JTCWeOWeO0Qcj7AZom90EdM2dFpk0fuRijDpmxy', '#000000', 1, '2025-02-15 16:17:50', 'default.jpg'),
 (58, 'czytelnik.czytelnik@gmail.com', 'czytelnik2', '$2y$10$I53BDAQ9U2tTABNrTV1SEOnaHhYVXqY1w9fDhrbEiXQBG9FwBpNYC', '#6208ef', 0, '2025-02-15 16:32:00', 'default.jpg'),
 (59, 'john123@example.com', 'John123', '$2y$10$wQw2AcVt5Y0MnP9GqEqREoTAgf6S18mFxPpRA3jLkIzgFip9MycU2', '#000000', 1, '2025-02-15 11:00:00', 'default.jpg'),
 (60, 'jane456@example.com', 'Jane456', '$2y$10$JtZ2WkLr1H9zQhZhAY3K6iJZ54hvsyLvVEZG/2Xa3v9CJyMG9t8pG', '#000000', 0, '2025-02-15 11:01:00', 'default.jpg'),
@@ -334,8 +330,8 @@ INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`, `ro
 (83, 'przykład333@gmial.com', 'przykład33', '$2y$10$pcXjsvYAjbwnhWKtzk1dMOC3OiL5Obb1MMpYarACiGoi5X3nBZAUm', '#000000', 1, '2025-02-18 16:48:06', 'default.jpg'),
 (84, 'niger111@gmail.com', 'czarny', '$2y$10$EOdB.g7B7vgNy2xTvYtWxuN8IpfxX55ocCzmf/JoSLC.enkbRcSaa', '#000000', 1, '2025-02-18 16:49:05', 'default.jpg'),
 (85, 'przyklad222@gmail.com', 'przykład22', '$2y$10$7XRQGVPZTQf2XKtVE2.JWOIka8kAtAY40paOsIeW9sU8VBQfVkSve', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg'),
-(86, 'lolek@gmail.com', 'lolek', '$2y$10$SyzM1bhCj9ENNk3sHTYK5uC6hyYv5658xTDjxRQP2D5W9cepPzCUa', '#434c9b', 0, '2025-04-08 12:42:28', 'default.jpg'),
-(87, 'xd@gmail.com', 'xd', '$2y$10$62BVZA6Qj7khm4dPki8ZU.P0neo2JpEvnAOElE5BhI.wYuyJaCn0e', '#bdd2d3', 0, '2025-04-08 13:39:38', 'default.jpg');
+(86, 'lolekl@gmail.com', 'lolekl', '$2y$10$n22Nral5682cF8e6BkHaZeygtlPr9r.ocRaANdzOB0wsAG9mwbEOW', '#434c9b', 0, '2025-04-10 08:04:23', 'default.jpg'),
+(87, 'michałek.skowronek@gmai.com', 'lolek', '$2y$10$avVDKkWaXoLxAPImeOht3u5tRIXiSXRh5J2dAQfklH9RtkgjUf/Ei', '#bdd2d3', 0, '2025-04-10 08:24:38', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -389,10 +385,12 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `lo
 (48, 43, '2025-04-02', '2025-04-02 18:56:42', 6, 'Login'),
 (49, 57, '2025-04-02', '2025-04-02 19:55:25', 3, 'Login'),
 (50, 74, '2025-04-02', '2025-04-02 21:28:55', 1, 'Login'),
-(51, 43, '2025-04-03', '2025-04-03 06:11:38', 1, 'Login'),
-(52, 74, '2025-04-03', '2025-04-03 06:12:46', 2, 'Login'),
-(53, 86, '2025-04-08', '2025-04-08 12:42:39', 1, 'Login'),
-(54, 87, '2025-04-08', '2025-04-08 13:39:59', 1, 'Login');
+(51, 74, '2025-04-03', '2025-04-02 22:09:43', 2, 'Login'),
+(52, 74, '2025-04-09', '2025-04-09 14:30:28', 1, 'Login'),
+(53, 43, '2025-04-10', '2025-04-10 06:37:14', 1, 'Login'),
+(54, 57, '2025-04-10', '2025-04-10 06:38:44', 1, 'Login'),
+(55, 86, '2025-04-10', '2025-04-10 08:04:28', 2, 'Login'),
+(56, 87, '2025-04-10', '2025-04-10 08:24:44', 1, 'Login');
 
 -- --------------------------------------------------------
 
@@ -412,30 +410,7 @@ CREATE TABLE `user_reactions` (
 --
 
 INSERT INTO `user_reactions` (`id`, `user_id`, `event_id`, `reaction`) VALUES
-(1, 86, 3, '❤️'),
-(2, 86, 1, '❤️'),
-(3, 86, 2, '❤️'),
-(4, 86, 4, '👍'),
-(5, 86, 5, '👍'),
-(6, 86, 6, '❤️'),
-(7, 86, 7, '❤️'),
-(8, 86, 8, '👍'),
-(9, 86, 9, '❤️'),
-(10, 86, 10, '👏'),
-(11, 86, 11, '👍'),
-(12, 86, 12, '❤️'),
-(13, 87, 4, '❤️'),
-(14, 87, 5, '❤️'),
-(15, 87, 3, '👏'),
-(16, 87, 6, '👏'),
-(17, 87, 8, '👍'),
-(18, 87, 12, '👏'),
-(19, 87, 11, '👏'),
-(20, 87, 10, '❤️'),
-(21, 87, 2, '👍'),
-(22, 87, 9, '👏'),
-(23, 87, 1, '❤️'),
-(24, 87, 13, '❤️');
+(0, 86, 8, '❤️');
 
 -- --------------------------------------------------------
 
@@ -461,7 +436,29 @@ INSERT INTO `wydarzenia` (`id`, `tytul`, `opis`, `data`, `zdjecie`, `reakcje`) V
 (2, 'Warsztaty dla dzieci', 'Zabawa i nauka w jednym! Zapraszamy wszystkie dzieci na kreatywne warsztaty.', '2024-04-15', './eventy/warsztaty_dzieci.jpg', '{}'),
 (3, 'Klub czytelnika', 'Dyskusja na temat klasycznych dzieł literatury. Dołącz do naszej społeczności miłośników książek!', '2024-04-20', './eventy/klub_czytelnika.jpg', '{}'),
 (4, 'Wieczór poezji', 'Romantyczna atmosfera i piękne wiersze czytane przez aktorów.', '2024-04-25', './eventy/wieczor_poezji.jpg', '{}'),
-(5, 'Giełda książek', 'Masz książki, których już nie czytasz? Wymień je na inne w naszej bibliotece!', '2024-04-30', './eventy/gielda_ksiazek.jpg', '{}');
+(5, 'Giełda książek', 'Masz książki, których już nie czytasz? Wymień je na inne w naszej bibliotece!', '2024-04-30', './eventy/gielda_ksiazek.jpg', '{}'),
+(6, 'Spotkanie autorskie', 'Zapraszamy na spotkanie z popularnym autorem, który opowie o swojej najnowszej książce.', '2024-04-10', './eventy/spotkanie_autorskie.jpg', '{}');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wypozyczenia`
+--
+
+CREATE TABLE `wypozyczenia` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `biblioteczka_id` int(11) DEFAULT NULL,
+  `data_wypozyczenia` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wypozyczenia`
+--
+
+INSERT INTO `wypozyczenia` (`id`, `user_id`, `biblioteczka_id`, `data_wypozyczenia`) VALUES
+(6, 74, 1, '2025-04-10 00:17:07'),
+(11, 74, 11, '2025-04-10 00:26:25');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -529,18 +526,17 @@ ALTER TABLE `user_activity`
   ADD UNIQUE KEY `user_id` (`user_id`,`activity_date`);
 
 --
--- Indeksy dla tabeli `user_reactions`
---
-ALTER TABLE `user_reactions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_reaction` (`user_id`,`event_id`),
-  ADD KEY `event_id` (`event_id`);
-
---
 -- Indeksy dla tabeli `wydarzenia`
 --
 ALTER TABLE `wydarzenia`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `wypozyczenia`
+--
+ALTER TABLE `wypozyczenia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `biblioteczka_id` (`biblioteczka_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -580,13 +576,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `pending_users`
 --
 ALTER TABLE `pending_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `rere`
 --
 ALTER TABLE `rere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -598,19 +594,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
--- AUTO_INCREMENT for table `user_reactions`
---
-ALTER TABLE `user_reactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `wydarzenia`
 --
 ALTER TABLE `wydarzenia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `wypozyczenia`
+--
+ALTER TABLE `wypozyczenia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -631,11 +627,10 @@ ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `user_reactions`
+-- Constraints for table `wypozyczenia`
 --
-ALTER TABLE `user_reactions`
-  ADD CONSTRAINT `user_reactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `user_reactions_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `rere` (`id`);
+ALTER TABLE `wypozyczenia`
+  ADD CONSTRAINT `wypozyczenia_ibfk_1` FOREIGN KEY (`biblioteczka_id`) REFERENCES `biblioteczka` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

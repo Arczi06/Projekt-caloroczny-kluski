@@ -13,9 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
         profileContainer.classList.add("fadeIn");
     }, 100);
 
+    // Usuwamy manipulację tłem i dodajemy preventDefault, aby sprawdzić, czy to pomoże
     const backButton = document.querySelector('.btn-back');
-    backButton.addEventListener('click', () => {
-        document.body.style.backgroundColor = '#34495e';
+    backButton.addEventListener('click', (event) => {
+        // Zapobiegamy domyślnym akcjom
+        event.preventDefault();
+        // Możesz później dodać inne akcje, jeśli chcesz
+        // document.body.style.backgroundColor = '#34495e'; // Można to przywrócić później, jeśli konieczne
     });
 
     const fetchActivityData = async () => {
@@ -32,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const generateCalendar = async (year, month) => {
         const calendarContainer = document.querySelector('.calendar-container');
         const monthYearDisplay = document.getElementById('calendar-month-year');
-        calendarContainer.innerHTML = '';
+        calendarContainer.innerHTML = ''; // Czyszczenie kontenera
 
         const firstDayOfMonth = new Date(year, month, 1);
         const lastDayOfMonth = new Date(year, month + 1, 0);
@@ -94,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         generateCalendar(currentYear, currentMonth);
     });
 });
+
 document.getElementById('choose-image-btn').addEventListener('click', function() {
     document.getElementById('upload-form').style.display = 'block'; // Pokazuje formularz
 });
