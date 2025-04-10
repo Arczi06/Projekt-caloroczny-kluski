@@ -24,11 +24,11 @@ $result_received = $stmt->get_result();
 
 <?php include 'header.php'; ?>
 
-<div class="user-info">
+<!-- <div class="user-info">
     <img src="<?php echo $profile_image_path; ?>" alt="Avatar" class="user-avatar">
     <p class="greeting-message">Witaj, <?php echo $username; ?>!</p>
     <a href="<?php echo $_SESSION['previous_page']; ?>" class="back-button">Powrót</a>
-</div>
+</div> -->
 
 <body>
     <div class="container">

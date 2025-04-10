@@ -58,10 +58,10 @@ $return_page = ($user_id === $sender_id) ? "sent_bmessages.php" : "recived_bmess
 </head>
 <?php include 'header.php'; ?>
 
-<div class="user-info">
+<!-- <div class="user-info">
     <img src="<?php echo $profile_image_path; ?>" alt="Avatar" class="user-avatar">
     <p class="greeting-message">Witaj, <?php echo $username; ?>!</p>
-</div>
+</div> -->
 
 <body>
     <div class="container">

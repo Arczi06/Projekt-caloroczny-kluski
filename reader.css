@@ -1,154 +1,181 @@
-/* Ogólny styl dla całej strony */
+/* --- OGÓLNE --- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Georgia', serif;
+    background: url('blackwood.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #e6d9c5;
     margin: 0;
     padding: 0;
 }
 
 .container {
     display: flex;
-    padding: 20px;
+    padding: 40px;
+    gap: 40px;
 }
 
-/* Sidebar */
+/* --- SIDEBAR --- */
 .users-sidebar {
-    width: 20%;
-    background-color: #2c3e50;
-    color: white;
-    padding: 15px;
-    margin-right: 20px;
-    border-radius: 8px;
+    width: 280px;
+    background: rgba(30, 20, 10, 0.95);
+    color: #f0e6cc;
+    padding: 30px;
+    border-radius: 16px;
+    border: 2px solid #7a5c3e;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.6);
 }
 
 .users-sidebar h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 22px;
+    border-bottom: 2px solid #ad8a56;
+    padding-bottom: 10px;
+    color: #e0c48f;
 }
 
 .sidebar-links {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 .sidebar-link {
     text-decoration: none;
-    color: white;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #34495e;
-    border-radius: 4px;
+    color: #f0e6cc;
+    background: #4a3422;
+    padding: 14px 18px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-weight: bold;
     text-align: center;
 }
 
 .sidebar-link:hover {
-    background-color: #16a085;
+    background: #70563c;
+    transform: scale(1.05);
 }
 
-/* Główna sekcja wiadomości */
+/* --- MAIN --- */
 .message-area {
     flex: 1;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
+    background: rgba(45, 35, 25, 0.95);
+    padding: 35px;
+    border-radius: 16px;
+    border: 2px solid #a8834f;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.6);
 }
 
 h3 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 22px;
+    border-bottom: 1px solid #c9a66b;
+    padding-bottom: 8px;
+    color: #f4e7c1;
 }
 
-/* Tabela wiadomości */
+/* --- TABELA --- */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 25px;
+    font-size: 15px;
+    background-color: rgba(250, 235, 215, 0.05);
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #ad8a56;
 }
 
 th, td {
-    padding: 10px;
+    padding: 14px;
     text-align: left;
+    color: #e6d9c5;
 }
 
 th {
-    background-color: #ecf0f1;
+    background-color: #5e4329;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Formularz wysyłania wiadomości */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
+/* --- FORMULARZE --- */
 form label {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #e8d9b0;
 }
 
 form select, form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #a67c52;
+    background: #3a2a1a;
+    color: #f2e5c8;
+    font-family: inherit;
 }
 
 form button {
-    padding: 10px;
-    background-color: #3498db;
+    padding: 14px;
+    background-color: #a67c52;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 form button:hover {
-    background-color: #2980b9;
+    background-color: #8b5e3c;
 }
 
-/* Styl dla powiadomienia użytkownika */
+/* --- PROFIL --- */
 .user-info {
     display: flex;
     align-items: center;
-    background-color: #ecf0f1;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
 }
 
 .user-avatar {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 20px;
+    border: 2px solid #a67c52;
+    object-fit: cover;
 }
 
 .greeting-message {
     font-size: 18px;
-    margin-right: 20px;
+    font-style: italic;
+    color: #f5e6ca;
 }
 
 .back-button {
-    padding: 8px 16px;
-    background-color: #3498db;
+    margin-left: auto;
+    padding: 10px 18px;
+    background-color: #a67c52;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     text-decoration: none;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .back-button:hover {
-    background-color: #2980b9;
+    background-color: #8b5e3c;
 }
 
-/* --- POP-UP --- */
+/* --- POPUP --- */
 .popup {
     display: none;
     position: fixed;
@@ -161,63 +188,57 @@ form button:hover {
 }
 
 .popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 60%;
-    height: 70%;
+    background: #2c1f14;
+    padding: 30px;
+    border-radius: 14px;
+    width: 70%;
+    height: 80%;
     overflow-y: auto;
     text-align: center;
-    position: relative;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ad8a56;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     animation: fadeIn 0.3s ease-in-out;
+    color: #f0e6cc;
 }
 
-/* Zamknięcie pop-upu */
 .close-btn {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 28px;
+    font-size: 30px;
     cursor: pointer;
-    color: #444;
+    color: #d5c2a1;
 }
 
 .close-btn:hover {
-    color: red;
+    color: darkred;
 }
 
-/* --- KAFELKI UŻYTKOWNIKÓW --- */
-.user-groups h3 {
-    margin-top: 15px;
-    font-size: 18px;
-    color: #333;
-    text-align: left;
-    padding-left: 10px;
-}
-
+/* --- KAFELKI --- */
 .user-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 25px;
 }
 
 .user-tile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f8f8f8;
-    padding: 10px;
-    border-radius: 10px;
+    background: #3a2a1a;
+    padding: 18px;
+    border-radius: 14px;
     cursor: pointer;
-    width: 120px;
-    transition: transform 0.2s ease-in-out;
+    width: 140px;
+    border: 1px solid #ad8a56;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .user-tile:hover {
     transform: scale(1.05);
-    background: #e0e0e0;
+    background: #4f3927;
 }
 
 .user-tile img {
@@ -225,13 +246,13 @@ form button:hover {
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #ccc;
-    margin-bottom: 8px;
+    border: 2px solid #a67c52;
+    margin-bottom: 12px;
 }
 
 .user-tile span {
-    font-size: 14px;
-    color: #222;
+    font-size: 15px;
+    color: #e6d9c5;
 }
 
 /* --- ANIMACJA --- */
