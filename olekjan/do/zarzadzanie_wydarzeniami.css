@@ -10,14 +10,64 @@ body {
     background-color: #c0a085; 
     color: #3b1f1f; 
     font-family: 'Playfair Display', serif;
-    display: flex;
+    display:block;
     flex-direction: column;
-    /* justify-content: space-evenly; */
-    align-items: center;
-    padding: 20px;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* padding: 20px; */
     margin: auto;
 }
-/* div{
+/* .sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #3e2723, #5d4037);
+    padding: 20px;
+    color: #f5f1e3;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-header {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    border-bottom: 2px solid #795548;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sidebar-nav a {
+    display: block;
+    color: #f5f1e3;
+    text-decoration: none;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.sidebar-nav a.active,
+.sidebar-nav a:hover {
+    background-color: #6d4c41;
+}
+
+
+.dashboard-content {
+    flex: 1;
+    padding: 25px;
+    overflow: hidden;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #6d4c41;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #f5f1e3;
+} */
+div{
     margin: auto;
     margin-inline: 20px;
 }
@@ -25,11 +75,14 @@ body {
     display: none;
 }
 .usun{
-    max-width: 50%;
+    /* max-width: 50%; */
+    margin: auto;
+    top: 40px;
 }
 .dodaj{
-    margin-top: 0;
-} */
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 h2 {
     font-size: 26px;
     text-align: center;
@@ -79,6 +132,7 @@ input[type="path"]{
 }
 input[type="text"],
 input[type="date"],
+input[type="file"],
 textarea {
     width: 100%;
     padding: 10px;
@@ -155,27 +209,18 @@ a:hover {
 
 @media (min-width: 640px) {
     body {
-        background-color: #c0a085; 
-        color: #3b1f1f; 
-        font-family: 'Playfair Display', serif;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        align-items: center;
-        padding: 20px;
-        margin: auto;
-    }
-    div{
-        margin: auto;
-        margin-inline: 20px;
-    }
-    #path{
-        display: none;
     }
     .usun{
         max-width: 50%;
+        margin: auto;
+        padding: 30px;
     }
     .dodaj{
-        margin-top: 0;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 0;
     }
 }

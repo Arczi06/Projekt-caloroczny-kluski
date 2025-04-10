@@ -19,7 +19,7 @@ include 'config.php'
         <button class="menu-button">☰</button>
         <nav class="menu-content">
             <ul>
-            <li><a href="../dashboard.php">Dashboard</a></li>
+                <li><a href="core.html">Strona Główna</a></li>
                 <li><a href="katalog.php">Katalog Książek</a></li>
                 <li><a href="#">Lektury Obowiązkowe</a>
                     <ul class="submenu">
