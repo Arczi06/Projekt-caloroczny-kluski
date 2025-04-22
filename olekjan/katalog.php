@@ -47,7 +47,7 @@
         }
 
         $search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
-        $sql = "SELECT * FROM biblioteczka WHERE tytuł LIKE '%$search%' OR autor LIKE '%$search%'";
+        $sql = "SELECT * FROM biblioteczka WHERE tytuł LIKE '%$search%' OR autor LIKE '%$search%' OR tematyka LIKE '%$search'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

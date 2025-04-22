@@ -19,8 +19,9 @@ if (isset($_GET['id'])) {
         $autor = mysqli_real_escape_string($conn, $_POST['autor']);
         $krotki_opis = mysqli_real_escape_string($conn, $_POST['krotki_opis']);
         $streszczenie = mysqli_real_escape_string($conn, $_POST['streszczenie']);
+        $tematyka = mysqli_real_escape_string($conn, $_POST['tematyka']);
 
-        $update_query = "UPDATE biblioteczka SET tytuł = '$tytul', autor = '$autor', krótki_opis = '$krotki_opis', streszczenie = '$streszczenie' WHERE id = $id";
+        $update_query = "UPDATE biblioteczka SET tytuł = '$tytul', autor = '$autor', krótki_opis = '$krotki_opis', streszczenie = '$streszczenie', tematyka = '$tematyka' WHERE id = $id";
 
         if (mysqli_query($conn, $update_query)) {
             echo "Książka została zaktualizowana. <a href='zarzadzanie_ksiazkami.php'>Powrót do strony głównej</a>";
@@ -52,6 +53,7 @@ if (isset($_GET['id'])) {
                     <label>Autor: <input type="text" name="autor" value="<?= htmlspecialchars($row['autor']) ?>" required></label><br>
                     <label>Krótki Opis: <textarea name="krotki_opis" required><?= htmlspecialchars($row['krótki_opis']) ?></textarea></label><br>
                     <label>Streszczenie: <textarea name="streszczenie" required><?= htmlspecialchars($row['streszczenie']) ?></textarea></label><br>
+                    <label>Tematyka: <input type="text" name="tematyka" value="<?= htmlspecialchars($row['tematyka']) ?>"></label><br>
                     <button type="submit">Zapisz zmiany</button>
                 </form>
                 </div>

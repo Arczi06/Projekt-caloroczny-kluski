@@ -22,9 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     $autor = mysqli_real_escape_string($conn, $_POST['autor']);
     $krotki_opis = mysqli_real_escape_string($conn, $_POST['krotki_opis']);
     $streszczenie = mysqli_real_escape_string($conn, $_POST['streszczenie']);
+    $tematyka = mysqli_real_escape_string($conn, $_POST['tematyka']);
 
-    $query = "INSERT INTO biblioteczka (okładka, tytuł, autor, krótki_opis, streszczenie) VALUES ('$okladka', '$tytul', '$autor', '$krotki_opis', '$streszczenie')";
-    
+
+    $query = "INSERT INTO biblioteczka (okładka, tytuł, autor, krótki_opis, streszczenie, tematyka) 
+    VALUES ('$okladka', '$tytul', '$autor', '$krotki_opis', '$streszczenie', '$tematyka')";
+        
     if (mysqli_query($conn, $query)) {
         // echo "Książka została dodana!";
     } else {
@@ -80,6 +83,9 @@ $result = mysqli_query($conn, $query);
 
             <label for="streszczenie">Streszczenie:</label>
             <textarea id="streszczenie" name="streszczenie" required></textarea><br><br>
+
+            <label for="tematyka">Tematyka (oddzielone przecinkami):</label>
+            <input type="text" id="tematyka" name="tematyka" placeholder="np. fantasy, edukacyjna"><br><br>
 
             <button type="submit">Dodaj książkę</button>
         </form>
