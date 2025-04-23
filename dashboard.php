@@ -61,6 +61,8 @@ $conn->close();
         </aside>
 
         <main class="dashboard-content">
+        <div class="hamburger">&#9776;</div> <!-- Ikona burgera -->
+
             <header class="dashboard-header">
                 <div class="user-info">
                     <img src="<?php echo $profile_image; ?>" alt="Profile Image" class="user-avatar" id="user-avatar">
@@ -111,4 +113,14 @@ $conn->close();
     </div>
     <script src="dashboard.js"></script>
 </body>
+<script>
+    const burger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
+
+    burger.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+    });
+</script>
+
+
 </html>

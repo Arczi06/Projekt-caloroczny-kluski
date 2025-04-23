@@ -19,7 +19,7 @@ body::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(45, 30, 20, 0.7); /* Ciemniejsze przyciemnienie */
+    background: rgba(45, 30, 20, 0.7);
     backdrop-filter: blur(3px);
     z-index: -1;
 }
@@ -35,7 +35,7 @@ body::before {
 /* Sidebar */
 .sidebar {
     width: 260px;
-    background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
+    background: rgba(85, 65, 45, 0.3);
     color: #f8e5c0;
     padding: 20px;
     border-radius: 20px;
@@ -54,29 +54,37 @@ body::before {
     text-shadow: 1px 1px 2px #000;
 }
 
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .sidebar-nav a {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    margin: 6px 0;
+    gap: 12px;
+    padding: 10px 16px;
+    margin: 2px 0;
     text-decoration: none;
-    color: #f8e5c0;
+    color: #f6e2c5;
     border-radius: 10px;
-    transition: background 0.3s ease, transform 0.2s ease;
     font-weight: 500;
-    position: relative;
+    transition: background 0.3s ease, transform 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
-.sidebar-nav a::before {
-    display: inline-block;
+.sidebar-nav a i {
+    font-size: 20px;
+    color: #ffcc70;
+    min-width: 20px;
 }
 
 .sidebar-nav a:hover,
 .sidebar-nav a.active {
-    background-color: rgba(255, 235, 170, 0.1);
-    color: #ffda8a;
-    transform: scale(1.03);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffe9ae;
+    transform: translateX(3px);
     border-left: 3px solid #ffcc70;
 }
 
@@ -137,7 +145,7 @@ body::before {
     display: flex;
     align-items: center;
     gap: 15px;
-    background-color: rgba(255, 248, 220, 0.15); /* Ciemniejsze tło */
+    background-color: rgba(255, 248, 220, 0.15);
     padding: 10px 20px;
     border-radius: 25px;
     backdrop-filter: blur(3px);
@@ -165,182 +173,88 @@ body::before {
     color: #f8ddaa;
 }
 
-/* Lepsze rozmieszczenie kart */
+/* Sekcja dashboard */
 .dashboard-section {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 kolumn, każda o równej szerokości */
-    gap: 20px; /* Odstęp między elementami */
-    justify-items: center; /* Wyśrodkowanie elementów w poziomie */
-    max-width: 1200px; /* Maksymalna szerokość kontenera */
-    margin: 0 auto; /* Wyśrodkowanie kontenera */
-    padding: 20px; /* Odstęp od krawędzi */
-    justify-content: center; /* Wyśrodkowanie w poziomie */
-    min-height: 70vh; /* Dodajemy minimalną wysokość, aby kontener nie był za niski */
-    align-content: center; /* Wyśrodkowanie w pionie */
+    gap: 20px;
+    justify-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: center;
+    align-content: center;
+    min-height: 70vh;
+    grid-template-columns: repeat(5, 1fr);
 }
 
-/* Większe i bardziej klimatyczne karty */
+/* Karty */
 .window-card {
-    height: 350px; /* Przywrócenie poprzedniej wysokości karty */
-    width: 250px; /* Przywrócenie poprzedniej szerokości karty */
+    width: 100%;
+    max-width: 240px;
+    height: 350px;
     border-radius: 20px;
-    background: url('wood-pattern.jpg'), linear-gradient(to bottom, rgba(90, 60, 30, 0.95), rgba(80, 55, 20, 0.95)); /* Ciemniejsze drewno */
+    background: url('wood-pattern.jpg'), linear-gradient(to bottom, rgba(90, 60, 30, 0.95), rgba(80, 55, 20, 0.95));
     background-size: cover;
     background-blend-mode: multiply;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Zapewnia przestrzeń między zawartością */
+    justify-content: space-between;
     overflow: hidden;
     border: 1px solid #d8b88f;
     position: relative;
-    margin: 0 auto; /* Wyśrodkowanie karty */
+    margin: 0 auto;
 }
 
-/* Efekt hover dla kart */
 .window-card:hover {
-    transform: scale(1.05); /* Zwiększenie efektu powiększenia */
+    transform: scale(1.05);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* Zawartość karty */
 .window-content {
     padding: 25px 15px;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Wyśrodkowanie tekstu */
+    text-align: center;
 }
 
-/* Styl dla obrazków w kartach */
 .icon {
-    width: 80%; /* Zwiększenie szerokości obrazka, ale wciąż mniejsza od kontenera */
-    height: auto; /* Automatyczna wysokość, zachowująca proporcje */
-    object-fit: contain; /* Obrazek wypełnia przestrzeń, zachowując proporcje */
-    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4)); /* Cień pod obrazkiem */
-    margin-bottom: 12px; /* Odstęp od opisu */
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+    margin-bottom: 12px;
 }
 
-/* Opis karty */
 .description {
-    background-color: rgba(255, 245, 200, 0.3); /* Jaśniejsza */
+    background-color: rgba(255, 245, 200, 0.3);
     padding: 14px;
     font-weight: 600;
-    font-size: 16px; /* Zwiększona czcionka */
+    font-size: 16px;
     text-shadow: 0 1px 2px #000;
     border-top: 1px solid #a37542;
     color: #ffe9ae;
-    margin-top: auto; /* Przyciągnięcie do dołu karty */
-}
-
-/* Poprawiony efekt hover dla obrazków */
-.window-card:hover .icon {
-    transform: scale(1.1); /* Powiększenie ikony na hover */
-}
-
-/* Zmiana koloru tła dla .description przy hover */
-.window-card:hover .description {
-    background-color: rgba(255, 215, 150, 0.4); /* Jaśniejsza w trakcie hover */
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-    .dashboard-container {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .sidebar {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .dashboard-header {
-        justify-content: center;
-    }
-
-    .dashboard-section {
-        justify-content: center;
-    }
-}
-
-/* Ulepszone linki nawigacji z ikonami */
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.sidebar-nav a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 16px;
-    margin: 2px 0;
-    text-decoration: none;
-    color: #f6e2c5;
-    border-radius: 10px;
-    font-weight: 500;
-    transition: background 0.3s ease, transform 0.2s ease;
-    background-color: rgba(255, 255, 255, 0.03); /* Bardziej subtelny */
-}
-
-.sidebar-nav a i {
-    font-size: 20px;
-    color: #ffcc70;
-    min-width: 20px;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #ffe9ae;
-    transform: translateX(3px);
-    border-left: 3px solid #ffcc70;
-}
-
-/* Pasjans przeniesiony na dół */
-.sidebar-bottom {
     margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid #a78050;
 }
 
-/* Animacje */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.window-card:hover .icon {
+    transform: scale(1.1);
 }
 
-@keyframes fadeInLeft {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
+.window-card:hover .description {
+    background-color: rgba(255, 215, 150, 0.4);
 }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-
-
-/* Animacja fadeIn */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Nagłówek profilu */
+/* Profil */
 .profile-header h1 {
     font-size: 2rem;
     color: #333;
     margin-bottom: 15px;
 }
 
-/* Obrazek profilowy */
 .profile-img {
     width: 150px;
     height: 150px;
@@ -349,7 +263,6 @@ body::before {
     margin: 10px 0;
 }
 
-/* Email */
 .email {
     font-size: 1rem;
     color: #666;
@@ -372,42 +285,184 @@ button:hover {
     background-color: #45a049;
 }
 
-
-/*Gmail?*/
-
-/* Styl dla tabeli wiadomości */
+/* Tabela wiadomości */
 .message-area table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.message-area table, 
-.message-area th, 
+.message-area table,
+.message-area th,
 .message-area td {
-    border: 1px solid #ddd; /* Kolor obramowania */
+    border: 1px solid #ddd;
 }
 
-.message-area th, 
+.message-area th,
 .message-area td {
     padding: 10px;
     text-align: left;
 }
 
 .message-area th {
-    background-color: #ecf0f1; /* Kolor tła nagłówka */
+    background-color: #ecf0f1;
     font-weight: bold;
 }
 
 .message-area tr:nth-child(even) {
-    background-color: #f9f9f9; /* Kolor tła dla parzystych wierszy */
+    background-color: #f9f9f9;
 }
 
 .message-area tr:hover {
-    background-color: rgba(255, 215, 150, 0.4); /* Kolor tła dla wiersza na hover */
+    background-color: rgba(255, 215, 150, 0.4);
 }
 
-/* Dodatkowe style */
 .message-area h3 {
-    margin-bottom: 20px; /* Margines dla nagłówka sekcji */
+    margin-bottom: 20px;
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: rgba(80, 50, 30, 0.8);
+    border: 2px solid #e3c27b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffda8a;
+    backdrop-filter: blur(2px);
+}
+
+/* Animacje */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1200px) and (min-width: 960px) {
+    .dashboard-section {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .window-card {
+        max-width: 170px;
+        height: 300px;
+    }
+    .window-card {
+        height: 270px; /* niższe karty */
+    }
+}
+
+@media (max-width: 959px) and (min-width: 768px) {
+    .dashboard-section {
+        grid-template-columns: 1fr;
+    }
+
+    .window-card {
+        max-width: 80%;
+    }
+    .icon {
+        width: 60%; /* mniejsze ikony */
+    }
+}
+
+@media (max-width: 767px) {
+    .dashboard-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-header {
+        justify-content: center;
+    }
+
+    .dashboard-section {
+        grid-template-columns: 1fr;
+    }
+
+    .window-card {
+        max-width: 95%;
+    }
+
+    .user-avatar {
+        width: 42px;
+        height: 42px;
+    }
+
+    .sidebar-header h2 {
+        font-size: 18px;
+    }
+
+    .sidebar-nav a {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    .user-name {
+        font-size: 14px;
+    }
+
+    .user-info {
+        padding: 8px 12px;
+    }
+
+    .solitaire-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        width: 260px;
+        background-color: rgba(45, 30, 20, 0.98);
+        z-index: 1000;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        padding-bottom: 40px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+    .icon {
+        width: 50%; /* jeszcze mniejsze ikony, jak na 380px */
+    }
+}
+
+@media (min-width: 1201px) {
+    .dashboard-section {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .window-card {
+        max-width: 240px;
+    }
 }
