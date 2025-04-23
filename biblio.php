@@ -31,7 +31,11 @@ $sql_users = "SELECT COUNT(*) AS count FROM users";
 $sql_books = "SELECT COUNT(*) AS count FROM borrowed_books";
 
 $users_count = $conn->query($sql_users)->fetch_assoc()['count'] ?? 0;
-$books_count = $conn->query($sql_books)->fetch_assoc()['count'] ?? 0;
+
+$sql = "SELECT COUNT(*) AS total FROM wypozyczenia";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$books_count = $row['total'];
 
 $conn->close();
 ?>
@@ -77,14 +81,6 @@ $conn->close();
                 <div class="card">
                     <h3>Wypożyczenia</h3>
                     <p><?= $books_count ?></p>
-                </div>
-                <div class="card">
-                    <h3>Nowe książki</h3>
-                    <p>+12</p>
-                </div>
-                <div class="card">
-                    <h3>Do zwrotu</h3>
-                    <p>5</p>
                 </div>
             </div>
 

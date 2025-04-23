@@ -343,7 +343,7 @@ a:hover {
 }
 
 .alert-title:hover::before {
-    content: "Jest więcej niż 3 użytkowników do zaakceptowania. Przejdź do 'Rola do zaakceptowania'.";
+    content: "Jest więcej niż 3 użytkowników do zaakceptowania!!!";
     position: absolute;
     top: -30px;
     left: 100%;

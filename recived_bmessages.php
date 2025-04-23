@@ -11,6 +11,34 @@ $stmt->bind_param('i', $user_id);
 $stmt->execute();
 $result_received = $stmt->get_result();
 
+$powrot = "#"; // Domyślnie coś neutralnego
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    
+    $stmt = $conn->prepare("SELECT role FROM users WHERE id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($role);
+}  
+    if ($stmt->fetch()) {
+        switch ($role) {
+            case 0:
+                $powrot = "dashboard.php";
+                break;
+            case 1:
+                $powrot = "biblio.php";
+                break;
+            case 2:
+                $powrot = "admin_panel.php";
+                break;
+            default:
+                $powrot = "index.php";
+        }
+    } else {
+        $powrot = "index.php"; // Na wypadek gdyby nie znaleziono użytkownika
+    }
+    $stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +70,7 @@ $result_received = $stmt->get_result();
         </aside>
 
         <div class="message-area">
-        <a href="biblio.php" class="powrut-link">Powrót</a>
+        <a href="<?= $powrot ?>" class="powrut-link">Powrót</a>
             <h3>Odebrane wiadomości</h3>
             <table>
                 <tr>

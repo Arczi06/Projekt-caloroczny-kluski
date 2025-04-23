@@ -13,8 +13,8 @@
         <ul>
             <li><a href="admin_panel.php">Admin Panel</a></li>
             <li><a href="users.php" class="active">Użytkownicy</a></li>
-            <li><a href="#books">Książki</a></li>
-            <li><a href="#roles">Rola do zaakceptowania</a></li>
+            <li><a href="bookss.php">Książki</a></li>
+            <li><a href="recived_bmessages.php">Wiadomości</a></li>
         </ul>
     </nav>
 

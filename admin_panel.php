@@ -13,8 +13,7 @@
         <ul>
             <li><a href="admin_panel.php" class="active">Admin Panel</a></li>
             <li><a href="users.php">Użytkownicy</a></li>
-            <li><a href="#books">Książki</a></li>
-            <li><a href="#roles">Rola do zaakceptowania</a></li>
+            <li><a href="bookss.php">Książki</a></li>
             <li><a href="recived_bmessages.php">Wiadomości</a></li>
         </ul>
         <a href="logout.php" class="logout-btn">Logout</a>
@@ -33,15 +32,19 @@
             </span></p>
         </div>
         <div class="card">
-            <h3>Książki</h3>
-            <p>Liczba: <span id="bookCount">
-                <?php
-                    $result = $conn->query("SELECT COUNT(*) AS count FROM borrowed_books");
-                    $row = $result->fetch_assoc();
-                    echo $row['count'];
-                ?>
-            </span></p>
-        </div>
+    <h3>Książki</h3>
+    <p>Liczba: <span id="bookCount">
+        <?php
+            $result = $conn->query("SELECT COUNT(*) AS count FROM biblioteczka");
+            if ($result && $row = $result->fetch_assoc()) {
+                echo $row['count'];
+            } else {
+                echo "0";
+            }
+        ?>
+    </span></p>
+</div>
+
     </div>
 
     <section id="users">
@@ -85,38 +88,42 @@
     </section>
 
     <section id="books">
-        <h2>Zarządzanie Książkami</h2>
-        <p>Wyświetlane są 5 najnowsze książki:</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tytuł</th>
-                    <th>Autor</th>
-                    <th>Data Wypożyczenia</th>
-                    <th>Status</th>
-                    <th>Akcje</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = "SELECT * FROM borrowed_books ORDER BY borrow_date DESC LIMIT 5";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["title"] . "</td>";
-                        echo "<td>" . $row["author"] . "</td>";
-                        echo "<td>" . $row["borrow_date"] . "</td>";
-                        echo "<td>" . $row["status"] . "</td>";
-                        echo "<td><a href='update_book_status.php?id=" . $row["id"] . "'>Zaktualizuj</a></td>";
-                        echo "</tr>";
-                    }
+    <h2>Zarządzanie Książkami</h2>
+    <p>Wyświetlane są wszystkie książki:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Tytuł</th>
+                <th>Autor</th>
+                <th>Krótki opis</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Pobranie wszystkich książek z tabeli biblioteczka
+            $sql = "SELECT * FROM biblioteczka ORDER BY id DESC";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    // Wyświetlanie okładki książki
+
+                    echo "<td>" . htmlspecialchars($row["tytuł"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["autor"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["krótki_opis"]) . "</td>";
+                    echo "<td><a href='edit_book.php?id=" . $row["id"] . "'>Edytuj</a> | <a href='delete_book.php?id=" . $row["id"] . "'>Usuń</a></td>";
+                    echo "</tr>";
                 }
-                ?>
-            </tbody>
-        </table>
-        <button class="btn-more" onclick="window.location.href='books.html'">Zobacz więcej</button>
-    </section>
+            } else {
+                echo "<tr><td colspan='5'>Brak książek w bazie.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    <button class="btn-more" onclick="window.location.href='bookss.php'">Zobacz więcej</button>
+</section>
+
 
     <section id="pendingUsers">
     <h2 id="pendingTitle">Oczekujący użytkownicy</h2>

@@ -240,3 +240,27 @@ form button:hover {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
+
+
+.powrut-link {
+    color: #e6d9c5; /* Kolor tekstu */
+    text-decoration: none; /* Usuwamy domyślne podkreślenie */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #a67c52; /* Obramowanie */
+    border-radius: 8px;
+    background-color: #4a3422; /* Tło */
+    transition: all 0.3s ease;
+    display: inline-block; /* Umożliwia padding */
+    text-align: center;
+    width: 20%; /* Zajmuje 20% szerokości */
+    margin-left: auto; /* Wyrównuje do prawej */
+    margin-right: 0; /* Zapewnia brak marginesu z prawej */
+}
+
+.powrut-link:hover {
+    background-color: #70563c; /* Zmiana tła przy najechaniu */
+    color: #f0e6cc; /* Zmiana koloru tekstu */
+    transform: scale(1.05); /* Efekt powiększenia */
+}

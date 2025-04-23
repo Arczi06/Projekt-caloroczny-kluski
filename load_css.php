@@ -15,7 +15,7 @@ function loadCSS($conn) {
             } elseif ($role == 1) {
                 return 'librarian.css';
             } elseif ($role == 2) {
-                return 'adminn.css';
+                return 'librarian.css';
             } else {
                 return 'b_messages.css';
             }
