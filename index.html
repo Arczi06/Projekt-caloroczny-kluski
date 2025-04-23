@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Register - Book Style</title>
     <link rel="stylesheet" href="loginRegister.css">
+    <script>
+        function redirectIfNotLoggedIn() {
+  // Przykład: sprawdzamy, czy istnieje token autoryzacyjny w localStorage
+  const token = localStorage.getItem('authToken');
+  
+  if (!token) {
+    // Jeśli tokenu nie ma, przekierowujemy na stronę logowania
+    window.location.href = 'landing.html'; // lub inny adres
+  }
+}
+
+// Wywołaj funkcję np. na początku ładowania strony
+redirectIfNotLoggedIn();
+    </script>
 </head>
 <body>
 
