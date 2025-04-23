@@ -37,11 +37,39 @@ $stmt->close();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+<!-- <div class="menu-container"> -->
+
+<!-- </div> -->
+
     <div class="container">
         <header class="header">
             <h1>Moje Książki</h1>
             <p>Oto lista wypożyczonych książek</p>
         </header>
+        <div class="menu-container">
+            <nav class="menu-content">
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="menu-list">
+                    <li><a href="../dashboard.php">Dashboard</a></li>
+                    <li><a href="katalog.php">Katalog Książek</a></li>
+                    <li><a href="#">Lektury Obowiązkowe</a>
+                        <ul class="submenu">
+                            <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3 szkoła podstawowa</a></li>
+                            <li><a href="lekturyObowiązkowe45.php">Klasy 4 - 8 szkoła podstawowa</a></li>
+                            <li><a href="lekturyObowiązkowe15.php">Klasy 1 - 5 szkoła średnia</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="moje.php" class="active">Moje Książki</a></li>
+                    <li><a href="eventy.php">Wydarzenia</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                </ul>
+            </nav>
+        </div>
+
 
         <div class="books-container" id="books-container">
             <?php if (empty($books)): ?>
@@ -134,7 +162,16 @@ window.onclick = function(event) {
         closeSuccessModalFunc();
     }
 }
-    </script>
+
+function toggleMenu() {
+    const menu = document.querySelector('.menu-content ul');
+    const hamburger = document.querySelector('.hamburger-menu');
+    menu.classList.toggle('show');
+    hamburger.classList.toggle('open');
+}
+
+
+</script>
 <!-- Modal zwrotu -->
 <div id="returnModal" class="modal">
     <div class="modal-content">

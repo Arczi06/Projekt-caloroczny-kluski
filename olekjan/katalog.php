@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twoja Biblioteka</title>
     <link rel="stylesheet" href="user.css"> 
+    <link rel="stylesheet" href="menu.css">
 </head>
 <body class='katalog'>
     <header>
@@ -14,24 +15,28 @@
         </form>
     </header>
     <div class="menu-container">
-        <button class="menu-button">☰</button>
-        <nav class="menu-content">
-            <ul>
-                <li><a href="../dashboard.php">Dashboard</a></li>
-                <li><a href="katalog.php">Katalog Książek</a></li>
-                <li><a href="#">Lektury Obowiązkowe</a>
-                    <ul class="submenu">
-                        <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3 szkoła podstawowa</a></li>
-                        <li><a href="lekturyObowiązkowe45.php">Klasy 4 - 8 szkoła podstawowa</a></li>
-                        <li><a href="lekturyObowiązkowe15.php">Klasy 1 - 5 szkoła średnia</a></li>
-                    </ul>
-                </li>
-                <li><a href="moje.php">Moje Książki</a></li>
-                <li><a href="eventy.php">Wydarzenia</a></li>
-                <li><a href="../profil.php">Profil</a></li>
-            </ul>
-        </nav>
-    </div>
+            <nav class="menu-content">
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="menu-list">
+                    <li><a href="../dashboard.php">Dashboard</a></li>
+                    <li><a href="katalog.php" class="active">Katalog Książek</a></li>
+                    <li><a href="#">Lektury Obowiązkowe</a>
+                        <ul class="submenu">
+                            <li><a href="lekturyObowiązkowe13.php">Klasy 1 - 3 szkoła podstawowa</a></li>
+                            <li><a href="lekturyObowiązkowe45.php">Klasy 4 - 8 szkoła podstawowa</a></li>
+                            <li><a href="lekturyObowiązkowe15.php">Klasy 1 - 5 szkoła średnia</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="moje.php">Moje Książki</a></li>
+                    <li><a href="eventy.php">Wydarzenia</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                </ul>
+            </nav>
+        </div>
         <div id="notifications" class="notifications"></div>
     <main class="katalog">
         <?php
@@ -165,6 +170,13 @@ function wypozyczKsiegi(biblioteczka_id) {
             }
         });
     });
+
+    function toggleMenu() {
+    const menu = document.querySelector('.menu-content ul');
+    const hamburger = document.querySelector('.hamburger-menu');
+    menu.classList.toggle('show');
+    hamburger.classList.toggle('open');
+}
     </script>
     <footer>
         

@@ -19,6 +19,10 @@ body {
     min-height: 100vh;
 }
 
+.active {
+    background-color: #e3c27b;
+    color: #333;
+}
 /* Przyciemnienie tła - naprawione */
 body::before {
     content: '';
@@ -165,6 +169,188 @@ body::before {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Styl podstawowy menu */
+.menu-container {
+    position: relative;
+}
+
+.menu-content {
+    background-color: rgba(85, 65, 45, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Pasek menu w wersji desktopowej */
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-content ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+/* Linki menu */
+.menu-content ul li a {
+    color: #f8e5c0;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+/* Efekt hover na głównych linkach */
+.menu-content ul li a:hover {
+    background-color: #e3c27b;
+    color: #333;
+}
+
+/* Submenu */
+.menu-content .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(85, 65, 45, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+    padding: 10px 0;
+}
+
+.menu-content ul li:hover .submenu {
+    display: block;
+}
+
+/* Linki submenu */
+.menu-content .submenu li a {
+    font-size: 1rem;
+    padding: 10px 15px;
+    color: #e6e0d4;
+    font-weight: normal;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Efekt hover na submenu */
+.menu-content .submenu li a:hover {
+    background-color: #d6b17d;
+    color: #333;
+}
+
+/* Styl dla przycisku hamburgera */
+.hamburger-menu {
+    font-size: 30px;
+    color: #f8e5c0;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 30px;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 4px;
+    background-color: #f8e5c0;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Styl w wersji mobilnej */
+@media (max-width: 960px) {
+    /* Zwiększenie wysokości paska na telefonie */
+    .menu-content {
+        padding: 30px;
+    }
+
+    .menu-content ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-content ul li {
+        margin: 10px 0;
+    }
+
+    .menu-content .submenu {
+        position: static;
+        box-shadow: none;
+        padding: 0;
+        display: block;
+    }
+
+    /* Animacja menu w wersji mobilnej */
+    .menu-content ul.show {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
+    }
+
+    /* Wyświetlanie hamburgera tylko na telefonie */
+    .hamburger-menu {
+        display: flex; /* Na telefonach hamburger jest widoczny */
+    }
+
+    .hamburger-menu.open .bar:nth-child(1) {
+        transform: rotate(45deg);
+        position: relative;
+        top: 8px;
+    }
+
+    .hamburger-menu.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.open .bar:nth-child(3) {
+        transform: rotate(-45deg);
+        position: relative;
+        top: -8px;
+    }
+
+    /* Wyrównanie hamburgera na środku */
+    .hamburger-menu {
+        left: 50%; /* Wyśrodkowanie hamburgera */
+        transform: translateX(-50%); /* Naprawienie wyśrodkowania */
+    }
+}
+
+/* Animacja dla menu rozwijanego */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ukrycie hamburgera powyżej 960px */
+@media (min-width: 961px) {
+    .hamburger-menu {
+        display: none; /* Ukrycie hamburgera na większych ekranach */
+    }
+}
+
 /* Tablet 640px+: 2 karty po 205px */
 @media (min-width: 640px) {
     .books-container {
