@@ -45,18 +45,21 @@ if (isset($_GET['id'])) {
                 <link rel="stylesheet" href="zarzadzanie_wydarzeniami.css">
             </head>
             <body>
-                <div>
-                <h2>Edytuj Wydarzenie</h2>
-                <form action="wydarzenia_update.php?id=<?= $id ?>" method="post">
-                    <label>Ścieżka do zdjęcia:</label>
-                    <input type="text" id="zdjecie" name="zdjecie" required value="./eventy/" readonly>
-                    <input type="text" id="nazwa_pliku" name="nazwa_pliku" value="<?= htmlspecialchars(basename($row['zdjecie'])) ?>" required><br><br>
+                <div class="top-bar">
+                    <a href="../../biblio.php" class="btn-return">← Powrót</a>
+                </div>
+                <div class="update">
+                    <h2>Edytuj Wydarzenie</h2>
+                    <form action="wydarzenia_update.php?id=<?= $id ?>" method="post">
+                        <label>Ścieżka do zdjęcia:</label>
+                        <input type="text" id="zdjecie" name="zdjecie" required value="./eventy/" readonly>
+                        <input type="text" id="nazwa_pliku" name="nazwa_pliku" value="<?= htmlspecialchars(basename($row['zdjecie'])) ?>" required><br><br>
 
-                    <label>Tytuł: <input type="text" name="tytul" value="<?= htmlspecialchars($row['tytul']) ?>" required></label><br>
-                    <label>Data: <input type="date" name="data" value="<?= htmlspecialchars($row['data']) ?>" required></label><br>
-                    <label>Opis: <textarea name="opis" required><?= htmlspecialchars($row['opis']) ?></textarea></label><br>
-                    <button type="submit">Zapisz zmiany</button>
-                </form>
+                        <label>Tytuł: <input type="text" name="tytul" value="<?= htmlspecialchars($row['tytul']) ?>" required></label><br>
+                        <label>Data: <input type="date" name="data" value="<?= htmlspecialchars($row['data']) ?>" required></label><br>
+                        <label>Opis: <textarea name="opis" required><?= htmlspecialchars($row['opis']) ?></textarea></label><br>
+                        <button type="submit">Zapisz zmiany</button>
+                    </form>
                 </div>
 
             </body>

@@ -46,16 +46,19 @@ if (isset($_GET['id'])) {
                 <link rel="stylesheet" href="zarzadzanie_wydarzeniami.css">
             </head>
             <body>
-                <div>
-                <h2>Edytuj Książkę</h2>
-                <form action="ksiazki_update.php?id=<?= $id ?>" method="post">
-                    <label>Tytuł: <input type="text" name="tytul" value="<?= htmlspecialchars($row['tytuł']) ?>" required></label><br>
-                    <label>Autor: <input type="text" name="autor" value="<?= htmlspecialchars($row['autor']) ?>" required></label><br>
-                    <label>Krótki Opis: <textarea name="krotki_opis" required><?= htmlspecialchars($row['krótki_opis']) ?></textarea></label><br>
-                    <label>Streszczenie: <textarea name="streszczenie" required><?= htmlspecialchars($row['streszczenie']) ?></textarea></label><br>
-                    <label>Tematyka: <input type="text" name="tematyka" value="<?= htmlspecialchars($row['tematyka']) ?>"></label><br>
-                    <button type="submit">Zapisz zmiany</button>
-                </form>
+                <div class="top-bar">
+                    <a href="../../biblio.php" class="btn-return">← Powrót</a>
+                </div>
+                <div class="update">
+                    <h2>Edytuj Książkę</h2>
+                    <form action="ksiazki_update.php?id=<?= $id ?>" method="post">
+                        <label>Tytuł: <input type="text" name="tytul" value="<?= htmlspecialchars($row['tytuł']) ?>" required></label><br>
+                        <label>Autor: <input type="text" name="autor" value="<?= htmlspecialchars($row['autor']) ?>" required></label><br>
+                        <label>Krótki Opis: <textarea name="krotki_opis" required><?= htmlspecialchars($row['krótki_opis']) ?></textarea></label><br>
+                        <label>Streszczenie: <textarea name="streszczenie" required><?= htmlspecialchars($row['streszczenie']) ?></textarea></label><br>
+                        <label>Tematyka: <input type="text" name="tematyka" value="<?= htmlspecialchars($row['tematyka']) ?>"></label><br>
+                        <button type="submit">Zapisz zmiany</button>
+                    </form>
                 </div>
 
             </body>

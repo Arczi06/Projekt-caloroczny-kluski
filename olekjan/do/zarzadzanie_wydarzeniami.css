@@ -10,96 +10,54 @@ body {
     background-color: #c0a085; 
     color: #3b1f1f; 
     font-family: 'Playfair Display', serif;
-    display:block;
-    flex-direction: column;
-    justify-content: space-between;
-    /* align-items: center; */
-    /* padding: 20px; */
-    margin: auto;
-}
-/* .sidebar {
-    width: 280px;
-    background: linear-gradient(180deg, #3e2723, #5d4037);
-    padding: 20px;
-    color: #f5f1e3;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar-header {
-    text-align: center;
-    font-size: 1.8em;
-    font-weight: bold;
-    border-bottom: 2px solid #795548;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+.top-bar {
+    width: 100%;
+    background-color: #5d4037;
+    padding: 15px 25px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.sidebar-nav a {
-    display: block;
-    color: #f5f1e3;
+.btn-return {
     text-decoration: none;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
+    background-color: #795548;
+    color: #f5f1e3;
     font-weight: bold;
-    transition: background 0.3s;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
 }
 
-.sidebar-nav a.active,
-.sidebar-nav a:hover {
-    background-color: #6d4c41;
+.btn-return:hover {
+    background-color: #a1887f;
 }
 
-
-.dashboard-content {
-    flex: 1;
-    padding: 25px;
-    overflow: hidden;
-}
-
-.dashboard-header {
+.container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: #6d4c41;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #f5f1e3;
-} */
-div{
-    margin: auto;
-    margin-inline: 20px;
+    gap: 30px;
+    padding: 30px;
+    flex-wrap: wrap;
 }
-#path{
-    display: none;
+
+.dodaj, .usun {
+    flex: 1 1 48%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
 }
-.usun{
-    /* max-width: 50%; */
-    margin: auto;
-    top: 40px;
-}
-.dodaj{
-    margin-top: 20px;
-    margin-bottom: 40px;
-}
-h2 {
-    font-size: 26px;
+
+.dodaj h2, .usun h2 {
     text-align: center;
-    margin: auto;
-    font-family: 'Marcellus', serif; 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color:  #8b5a2b; 
-    border-bottom: 3px solid #8b5a2b;
-    padding-bottom: 8px;
+    color: #8b5a2b;
+    margin-bottom: 20px;
 }
 
 form {
     width: 100%;
-    max-width: 550px;
-    background-color: #4e290e; 
-    padding: 15px;
+    background-color: #4e290e;
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border: 6px double #8b5a2b;
@@ -114,48 +72,41 @@ form::before {
     left: -15px;
     width: calc(100% + 30px);
     height: calc(100% + 30px);
-    background-color: #ecdec0; /* Kolor tła za formularzem - jasny beż */
-    border: 8px solid #5c4033; /* Kolor obramowania - ciemniejszy brąz */
+    background-color: #ecdec0;
+    border: 8px solid #5c4033;
     border-radius: 16px;
     z-index: -1;
 }
 
 label {
-    display: block;
     font-weight: bold;
-    margin: auto;
-    color: #8b5a2b; /* Kolor etykiet - brązowy */
-    font-size: 18px;
-}
-input[type="path"]{
-    display: none;
-}
-input[type="text"],
-input[type="date"],
-input[type="file"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 3px solid #8b5a2b; /* Kolor obramowania - brązowy */
-    background: #fcf5e5; /* Kolor tła pól - kremowy */
-    color: #3b1f1f; /* Kolor tekstu w polach - brązowy */
-    font-size: 15px;
-    transition: 0.3s;
-    margin: auto;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 15px;
 }
 
-input[type="text"]:focus,
-input[type="date"]:focus,
-textarea:focus {
-    border-color: #cfa67e; /* Kolor obramowania po fokusowaniu - jasny brąz */
-    outline: none;
-    background: #fffdf5; /* Kolor tła po fokusowaniu - jaśniejszy kremowy */
+input[type="text"],
+input[type="date"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 3px solid #8b5a2b;
+    background: #fcf5e5;
+    color: #3b1f1f;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
 }
 
 button[type="submit"] {
-    background: linear-gradient(145deg, #8b5a2b, #5c4033); /* Gradient tła przycisku - brązowy */
-    color: #f9f3e7; /* Kolor tekstu przycisku - kremowy */
+    background: linear-gradient(145deg, #8b5a2b, #5c4033);
+    color: #f9f3e7;
     padding: 12px 20px;
     border: none;
     width: 100%;
@@ -164,63 +115,61 @@ button[type="submit"] {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
-    font-family: 'Marcellus', serif; /* Czcionka przycisku - Marcellus */
-    border: 3px solid #5c4033; /* Kolor obramowania przycisku - ciemniejszy brąz */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
 }
 
 button[type="submit"]:hover {
-    background: linear-gradient(145deg, #a67c52, #8b5a2b); /* Gradient tła po najechaniu myszką - jaśniejszy brąz */
+    background: linear-gradient(145deg, #a67c52, #8b5a2b);
 }
 
 ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
 }
 
 li {
-    background-color: #f9f3e7; /* Kolor tła listy - kremowy */
+    background-color: #f9f3e7;
     padding: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-left: 6px solid #8b5a2b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 li strong {
-    font-weight: bold;
-    color: #8b5a2b; /* Kolor tytułu wydarzenia - brązowy */
+    font-size: 1.1rem;
+    color: #5c4033;
+}
+
+li em, li span {
+    color: #6e4d3a;
+    font-style: italic;
 }
 
 a {
-    color: #8b5a2b; /* Kolor linku - brązowy */
+    color: #8b5a2b;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
-    font-family: 'Marcellus', serif; /* Czcionka linku - Marcellus */
-    font-size: 18px;
+    margin: 0 5px;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #cfa67e; /* Kolor linku po najechaniu myszką - jasny brąz */
+    color: #cfa67e;
+}
+.update{
+    width: 60%;
+    margin: auto;
 }
 
+/* RESPONSYWNOŚĆ */
+@media (max-width: 780px) {
+    .container {
+        flex-direction: column;
+        gap: 40px;
+    }
 
-@media (min-width: 640px) {
-    body {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-    .usun{
-        max-width: 50%;
-        margin: auto;
-        padding: 30px;
-    }
-    .dodaj{
-        margin: auto;
-        margin-top: 20px;
-        margin-bottom: 0;
+    .dodaj, .usun {
+        width: 100%;
     }
 }
