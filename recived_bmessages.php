@@ -49,6 +49,7 @@ $result_received = $stmt->get_result();
                     <th>Od</th>
                     <th>Temat</th>
                     <th>Data wysłania</th>
+                    <th>Wyświetl wiadomośc</th>
                 </tr>
                 <?php while ($row = $result_received->fetch_assoc()): ?>
                     <tr>
@@ -64,8 +65,16 @@ $result_received = $stmt->get_result();
                             echo $sender_username;
                             ?>
                         </td>
-                        <td><a href="view_message.php?id=<?php echo $row['id']; ?>"><?php echo $row['subject']; ?></a></td>
-                        <td><?php echo $row['date_sent']; ?></td>
+                        <td><?php echo htmlspecialchars($row['subject']); ?></td>
+                        <td><?php echo htmlspecialchars($row['date_sent']); ?></td>
+                        <td>
+                            <form action="view_message.php" method="get">
+                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                <button type="submit" class="view-btn" title="Wyświetl wiadomość">
+                                    🔍
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             </table>
