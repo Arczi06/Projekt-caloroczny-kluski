@@ -97,6 +97,8 @@ $profile_images = array_diff($profile_images, array('.', '..'));
     </style>
 </head>
 <body>
+<button id="burger" class="burger">☰</button>
+
 <div class="dashboard-container">
     <aside class="sidebar">
         <div class="sidebar-header">
@@ -108,12 +110,12 @@ $profile_images = array_diff($profile_images, array('.', '..'));
             <a href="recived_bmessages.php"><i class="ph ph-chat-circle-dots"></i> Wiadomości</a>
             <a href="#"><i class="ph ph-globe"></i> Strona</a>
             <a href="logout.php" id="Logout"><i class="ph ph-sign-out"></i> Logout</a>
-            <div class="sidebar-bottom">
+            <!-- <div class="sidebar-bottom">
                 <div class="solitaire-card">
                     <h3 class="pasjanszagraj">Zagraj w Pasjansa</h3>
                     <a href="https://pasjans-online.pl/" class="solitaire-btn">Rozpocznij Grę</a>
                 </div>
-            </div>
+            </div> -->
         </nav>
     </aside>
 
@@ -182,6 +184,23 @@ $profile_images = array_diff($profile_images, array('.', '..'));
 </script>
 
 <script src="profil.js"></script>
+<script>
+    const burger = document.getElementById('burger');
+    const sidebar = document.querySelector('.sidebar');
+
+    burger.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+
+    // Opcjonalnie: zamknij sidebar klikając poza nim
+    document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !burger.contains(e.target)) {
+            sidebar.classList.remove('show');
+        }
+    });
+</script>
+
+
 </body>
 </html>
 

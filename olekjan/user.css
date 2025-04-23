@@ -804,3 +804,7 @@ main.katalog {
     color: white;
 }
 
+.card-content h5,
+.card-content p {
+    font-size: clamp(0.4rem, 0.6rem, 2rem);
+}

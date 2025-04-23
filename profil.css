@@ -6,6 +6,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.burger {
+    display: none;
+}
+
+html, body {
+    height: 100%;
+    overflow-y: auto; /* Umożliwienie przewijania */
+}
+
 body {
     background: url('library-texture.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -143,6 +152,7 @@ body::before {
     background-size: cover; /* Zabezpieczenie na wypadek, gdybyś chciał dodać obrazek w tle */
     background-position: center center; /* Ustawienie na środek */
     background-repeat: no-repeat; /* Zapewnia, że obrazek w tle się nie powtarza */
+    overflow-y: auto; /* Pozwala na przewijanie */
 }
 
 /* Nagłówek profilu */
@@ -325,4 +335,55 @@ body::before {
     min-height: 250px;
     max-height: 350px;
     overflow-y: auto;
+}
+
+/* Responsywność */
+@media (max-width: 960px) {
+    .dashboard-container {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .sidebar {
+        width: 80%;
+        max-width: 300px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        background: rgba(85, 65, 45, 0.95);
+        border-radius: 0;
+        padding: 2rem 1rem;
+        z-index: 100;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .burger {
+        display: block;
+        position: fixed;
+        top: 3vh;
+        left: 5vw;
+        z-index: 110;
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .profile-container {
+        padding: 1rem;
+        max-height: 800px; /* Zmniejszenie maksymalnej wysokości dla ekranów od 780px do 960px */
+    }
+
+    .calendar-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
