@@ -138,21 +138,22 @@ body::before {
     margin-bottom: 30px;
 }
 
-/* Kontener profilu */
 .profile-container {
     flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: rgb(53, 41, 30); /* Kolor tła zdefiniowany dokładnie */
+    padding: 20px;
+    border-radius: 16px;
+    background-color: rgba(53, 41, 30, 0.8);
     color: #e6e0d4;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    background-size: cover; /* Zabezpieczenie na wypadek, gdybyś chciał dodać obrazek w tle */
-    background-position: center center; /* Ustawienie na środek */
-    background-repeat: no-repeat; /* Zapewnia, że obrazek w tle się nie powtarza */
-    /* overflow-y: auto; */
+    gap: 25px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-height: 100%;
+    overflow-y: auto;
+    border: 2px solid rgba(200, 150, 80, 0.7);
 }
 
 /* Nagłówek profilu */
@@ -163,15 +164,19 @@ body::before {
     text-shadow: 1px 1px 2px #000;
 }
 
-/* Obrazek profilu */
 .profile-img {
-    width: 120px;
-    height: 120px;
+    width: 150px; /* Dopasuj do rozmiaru */
+    height: 150px; /* Dopasuj do rozmiaru */
+    padding: 12px;
     border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto;
-    border: 3px solid #b99160;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Automatyczne marginesy, by wyśrodkować */
 }
+
 
 /* Email */
 .email {
@@ -242,11 +247,25 @@ body::before {
 
 /* Kalendarz aktywności */
 .activity-calendar {
+    height: calc(100% - 50px); /* Dopasuj wysokość do pozostałej przestrzeni */
+    overflow-y: auto; /* Dodaje przewijanie, jeśli zawartość jest za długa */
     background: rgba(85, 65, 45, 0.9); /* Tło w odcieniach drewna */
     padding: 20px;
     border-radius: 8px;
     color: #e6e0d4;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #calendar-month-year {
@@ -281,40 +300,56 @@ body::before {
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 10px;
     justify-items: center;
+    background: linear-gradient(135deg, rgba(245, 230, 170, 0.3), rgba(230, 220, 160, 0.2)), url('tlo.jpg');
+    background-size: cover; /* Tekstura w tle */
+    background-position: center;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Większy cień */
 }
+
 
 .calendar-day {
     min-width: 45px;
     padding: 12px;
-    background-color: rgba(240, 210, 160, 0.2); /* Jasny odcień drewna */
+    background-color: rgba(240, 210, 160, 0.2);
     border-radius: 8px;
     text-align: center;
     color: #34495e;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease; /* Zastosowanie animacji dla zmiany koloru */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15); /* Podwójny cień */
 }
+
+.calendar-day:hover {
+    border-radius: 12px; /* Zaokrąglenie na hover */
+    background-color: rgba(240, 180, 60, 0.7);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+
+
 
 .calendar-day.active {
     background-color: rgb(240, 180, 60); /* Aktywność z lekką intensywnością */
 }
 
-.calendar-day:hover {
-    background-color: rgba(240, 180, 60, 0.7);
-}
-
-/* Styl dla dni z aktywnością */
 .calendar-day[data-activity="1"] {
-    background-color: rgb(240, 180, 60); /* Aktywność z lekką intensywnością */
+    background-color: rgb(240, 180, 60);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtelny cień */
 }
 
 .calendar-day[data-activity="2"] {
-    background-color: rgb(255, 130, 0); /* Aktywność z średnią intensywnością */
+    background-color: rgb(255, 130, 0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .calendar-day[data-activity="3"] {
-    background-color: rgb(255, 50, 0); /* Aktywność z dużą intensywnością */
+    background-color: rgb(255, 50, 0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Wyraźniejszy cień dla większej aktywności */
 }
+
 
 /* Przestrzeń dla kalendarza - aby nie przeszkadzał */
 .activity-calendar .calendar-container {
@@ -323,53 +358,91 @@ body::before {
     overflow-y: auto;
 }
 
-/* Responsywność */
-@media (max-width: 960px) {
-    .dashboard-container {
-        flex-direction: column;
-        padding: 0.5rem;
-    }
 
-    .sidebar {
-        width: 80%;
-        max-width: 300px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        background: rgba(85, 65, 45, 0.95);
-        border-radius: 0;
-        padding: 2rem 1rem;
-        z-index: 100;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); /* Przesunięcie w pionie, by dodać głębi */
     }
-
-    .sidebar.show {
-        transform: translateX(0);
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    .burger {
-        display: block;
-        position: fixed;
-        top: 3vh;
-        left: 5vw;
-        z-index: 110;
-        background: rgba(0, 0, 0, 0.6);
-        border: none;
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.5rem;
+
+/* Widok na dużych ekranach (od 1024px) */
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+    }
+    .main-content {
+        width: 75%; /* Główna zawartość na większych ekranach zajmuje więcej miejsca */
+    }
+    .aside {
+        width: 25%; /* Sidebar zajmuje 25% przestrzeni */
+    }
+}
+
+/* Widok na średnich ekranach (tablety, 768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+    .main-content {
+        width: 70%; /* Główna zawartość na tabletach */
+    }
+    .aside {
+        width: 30%; /* Sidebar zajmuje 30% przestrzeni */
+    }
+}
+
+/* Widok na małych ekranach (smartfony, 767px - 480px) */
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column; /* Zmiana układu na kolumnowy na małych ekranach */
+    }
+    .main-content {
+        width: 100%; /* Główna zawartość na całym ekranie */
+        padding: 10px;
+    }
+    .aside {
+        width: 100%; /* Sidebar na całym ekranie */
+        display: none; /* Ukrywanie aside na małych ekranach */
+    }
+    .aside-toggle {
+        display: block; /* Pokazujemy przycisk do otwierania aside */
+        background-color: #333;
         color: #fff;
-        font-size: 1.5rem;
+        padding: 10px;
         cursor: pointer;
+        text-align: center;
     }
+}
 
-    .profile-container {
-        padding: 1rem;
-        max-height: 800px; /* Zmniejszenie maksymalnej wysokości dla ekranów od 780px do 960px */
+/* Widok na bardzo małych ekranach (do 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
     }
+    .main-content {
+        padding: 5px;
+    }
+    .aside {
+        width: 100%; /* Sidebar na 100% przestrzeni */
+    }
+    .aside-toggle {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
 
-    .calendar-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+/* Styl dla rozwiniętego aside */
+.aside-open {
+    display: block !important;
+}
+
+/* Opcjonalne animacje */
+.aside {
+    transition: all 0.3s ease;
 }
