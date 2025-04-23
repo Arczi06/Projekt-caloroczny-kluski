@@ -1,17 +1,33 @@
 /* --- OGÓLNE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    /* Remove align-items: center; as it's not needed for full-screen */
+    margin: 0; /* Reset margin to ensure full-screen */
     font-family: 'Georgia', serif;
     background: url('blackwood.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #e6d9c5;
-    margin: 0;
-    padding: 0;
+    /* Ensure the body takes up the full viewport height */
+    min-height: 100vh;
+    /* Use flexbox to center the content */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
 }
 
 .container {
+    width: 100%;
     display: flex;
+    flex-direction: row;
     padding: 40px;
     gap: 40px;
+    margin: auto; /* Remove this as the body now handles centering */
+    /* height: 100%;  Remove as the body is full height */
 }
 
 /* --- SIDEBAR --- */
@@ -56,9 +72,16 @@ body {
     transform: scale(1.05);
 }
 
+.powrut-link {
+    text-align: right;
+}
+
 /* --- MAIN --- */
 .message-area {
-    flex: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background: rgba(45, 35, 25, 0.95);
     padding: 35px;
     border-radius: 16px;
@@ -101,6 +124,11 @@ tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 /* --- FORMULARZE --- */
 form label {
     margin-bottom: 6px;
@@ -108,7 +136,8 @@ form label {
     color: #e8d9b0;
 }
 
-form select, form textarea {
+form select,
+form textarea {
     margin-bottom: 20px;
     padding: 14px;
     border-radius: 8px;
@@ -179,8 +208,10 @@ form button:hover {
 .popup {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;

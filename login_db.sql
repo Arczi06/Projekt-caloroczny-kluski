@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2025 at 01:30 AM
+-- Generation Time: Apr 22, 2025 at 11:46 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -33,29 +33,30 @@ CREATE TABLE `biblioteczka` (
   `tytuł` varchar(50) DEFAULT NULL,
   `autor` varchar(50) DEFAULT NULL,
   `krótki_opis` text DEFAULT NULL,
-  `streszczenie` text DEFAULT NULL
+  `streszczenie` text DEFAULT NULL,
+  `tematyka` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `biblioteczka`
 --
 
-INSERT INTO `biblioteczka` (`id`, `okładka`, `tytuł`, `autor`, `krótki_opis`, `streszczenie`) VALUES
-(1, './biblioteka/HP.jpg', 'Harry Potter i Kamień Filozoficzny', 'J.K. Rowling', 'Młody Harry Potter dowiaduje się, że jest czarodziejem i rozpoczyna naukę w Hogwarcie.', 'Pierwsza część sagi o Harrym Potterze, opowiadająca o jego odkryciu magicznych zdolności, przyjaźni z Ronem i Hermioną oraz walce z Lordem Voldemortem.'),
-(2, './biblioteka/LOTR.jpg', 'Władca Pierścieni: Drużyna Pierścienia', 'J.R.R. Tolkien', 'Frodo Baggins dziedziczy Pierścień Władzy i musi go zniszczyć, aby zapobiec panowaniu Saurona.', 'Pierwsza część epickiej sagi fantasy o Władcy Pierścieni, opowiadająca o podróży Froda i jego towarzyszy, aby zniszczyć Pierścień Władzy.'),
-(3, './biblioteka/1984.jpg', 'Rok 1984', 'George Orwell', 'W totalitarnym państwie Oceania Winston Smith buntuje się przeciwko systemowi.', 'Dystopijna powieść o totalitarnym państwie, w którym rząd kontroluje wszystkie aspekty życia.'),
-(4, './biblioteka/PD.jpg', 'Przeminęło z wiatrem', 'Margaret Mitchell', 'Historia miłości Scarlett O\'Hary i Rhett Butlera w czasie wojny secesyjnej.', 'Epicka powieść historyczna o miłości, wojnie i życiu na Południu w czasie wojny secesyjnej.'),
-(5, './biblioteka/AL.jpg', 'Alicja w Krainie Czarów', 'Lewis Carroll', 'Młoda Alicja wpada do dziury króliczej i trafia do fantastycznej krainy.', 'Klasyczna powieść dla dzieci o przygodach Alicji w magicznej krainie.'),
-(6, './biblioteka/Z.jpg', 'Zwierzęta z farmy', 'George Orwell', 'Zwierzęta na farmie obalają człowieka i tworzą własne społeczeństwo.', 'Satyryczna powieść o rewolucji i władzy, przedstawiona w alegorycznej formie historii zwierząt.'),
-(7, './biblioteka/D.jpg', 'Duma i uprzedzenie', 'Jane Austen', 'Historia miłości Elizabeth Bennet i pana Darcy.', 'Klasyczna powieść romantyczna o miłości, społeczeństwie i uprzedzeniach.'),
-(8, './biblioteka/MS.jpg', 'Mistrz i Małgorzata', 'Michaił Bułhakow', 'Diabeł odwiedza Moskwę i wywraca miasto do góry nogami.', 'Powieść łącząca satyrę, realizm magiczny i filozofię, ukazująca walkę dobra ze złem.'),
-(9, './biblioteka/BB.jpg', 'Bracia Karamazow', 'Fiodor Dostojewski', 'Historia trzech braci o różnych osobowościach i ich konfliktu z ojcem.', 'Głęboka powieść filozoficzna o wierze, moralności i rodzinnych relacjach.'),
-(10, './biblioteka/SH.jpg', 'Sherlock Holmes: Studium w szkarłacie', 'Arthur Conan Doyle', 'Detektyw Sherlock Holmes rozwiązuje tajemniczą zbrodnię w Londynie.', 'Pierwsza powieść o Sherlocku Holmesie, w której poznajemy jego niezwykłe metody dedukcji.'),
-(11, './biblioteka/PP.jpg', 'Proces', 'Franz Kafka', 'Josef K. zostaje aresztowany, ale nie wie, za co.', 'Powieść o absurdzie biurokracji i poczuciu winy w świecie bez wyjaśnień.'),
-(12, './biblioteka/WT.jpg', 'Wojna i pokój', 'Lew Tołstoj', 'Epopeja historyczna o wojnach napoleońskich i losach rosyjskiej arystokracji.', 'Jedna z najważniejszych powieści wszech czasów, łącząca fikcję z historią.'),
-(13, './biblioteka/HG.jpg', 'Igrzyska śmierci', 'Suzanne Collins', 'Katniss Everdeen bierze udział w brutalnej grze o przetrwanie.', 'Dystopijna powieść o totalitarnym państwie zmuszającym młodych ludzi do walki na śmierć i życie.'),
-(14, './biblioteka/DC.jpg', 'Don Kichot', 'Miguel de Cervantes', 'Szlachcic z La Manchy postanawia zostać wędrownym rycerzem.', 'Satyrystyczna powieść o iluzji, marzeniach i starciu z rzeczywistością.'),
-(15, './biblioteka/RJ.jpg', 'Romeo i Julia', 'William Shakespeare', 'Tragiczna miłość dwojga młodych kochanków z wrogich rodów.', 'Jedna z najsłynniejszych tragedii o miłości, nienawiści i przeznaczeniu.');
+INSERT INTO `biblioteczka` (`id`, `okładka`, `tytuł`, `autor`, `krótki_opis`, `streszczenie`, `tematyka`) VALUES
+(1, './biblioteka/HP.jpg', 'Harry Potter i Kamień Filozoficzny', 'J.K. Rowling', 'Młody Harry Potter dowiaduje się, że jest czarodziejem i rozpoczyna naukę w Hogwarcie.', 'Pierwsza część sagi o Harrym Potterze, opowiadająca o jego odkryciu magicznych zdolności, przyjaźni z Ronem i Hermioną oraz walce z Lordem Voldemortem.', 'fantasy, przygodowa, młodzieżowa'),
+(2, './biblioteka/LOTR.jpg', 'Władca Pierścieni: Drużyna Pierścienia', 'J.R.R. Tolkien', 'Frodo Baggins dziedziczy Pierścień Władzy i musi go zniszczyć, aby zapobiec panowaniu Saurona.', 'Pierwsza część epickiej sagi fantasy o Władcy Pierścieni, opowiadająca o podróży Froda i jego towarzyszy, aby zniszczyć Pierścień Władzy.', 'fantasy, epicka, przygodowa'),
+(3, './biblioteka/1984.jpg', 'Rok 1984', 'George Orwell', 'W totalitarnym państwie Oceania Winston Smith buntuje się przeciwko systemowi.', 'Dystopijna powieść o totalitarnym państwie, w którym rząd kontroluje wszystkie aspekty życia.', 'dystopia, polityczna, klasyka'),
+(4, './biblioteka/PD.jpg', 'Przeminęło z wiatrem', 'Margaret Mitchell', 'Historia miłości Scarlett O\'Hary i Rhett Butlera w czasie wojny secesyjnej.', 'Epicka powieść historyczna o miłości, wojnie i życiu na Południu w czasie wojny secesyjnej.', 'historyczna, romans, dramat'),
+(5, './biblioteka/AL.jpg', 'Alicja w Krainie Czarów', 'Lewis Carroll', 'Młoda Alicja wpada do dziury króliczej i trafia do fantastycznej krainy.', 'Klasyczna powieść dla dzieci o przygodach Alicji w magicznej krainie.', 'fantasy, dziecięca, przygodowa'),
+(6, './biblioteka/Z.jpg', 'Zwierzęta z farmy', 'George Orwell', 'Zwierzęta na farmie obalają człowieka i tworzą własne społeczeństwo.', 'Satyryczna powieść o rewolucji i władzy, przedstawiona w alegorycznej formie historii zwierząt.', 'satyrystyczna, polityczna, klasyka'),
+(7, './biblioteka/D.jpg', 'Duma i uprzedzenie', 'Jane Austen', 'Historia miłości Elizabeth Bennet i pana Darcy.', 'Klasyczna powieść romantyczna o miłości, społeczeństwie i uprzedzeniach.', 'romans, klasyka, obyczajowa'),
+(8, './biblioteka/MS.jpg', 'Mistrz i Małgorzata', 'Michaił Bułhakow', 'Diabeł odwiedza Moskwę i wywraca miasto do góry nogami.', 'Powieść łącząca satyrę, realizm magiczny i filozofię, ukazująca walkę dobra ze złem.', 'realizm magiczny, satyra, filozoficzna'),
+(9, './biblioteka/BB.jpg', 'Bracia Karamazow', 'Fiodor Dostojewski', 'Historia trzech braci o różnych osobowościach i ich konfliktu z ojcem.', 'Głęboka powieść filozoficzna o wierze, moralności i rodzinnych relacjach.', 'filozoficzna, psychologiczna, klasyka'),
+(10, './biblioteka/SH.jpg', 'Sherlock Holmes: Studium w szkarłacie', 'Arthur Conan Doyle', 'Detektyw Sherlock Holmes rozwiązuje tajemniczą zbrodnię w Londynie.', 'Pierwsza powieść o Sherlocku Holmesie, w której poznajemy jego niezwykłe metody dedukcji.', 'kryminalna, detektywistyczna, klasyka'),
+(11, './biblioteka/PP.jpg', 'Proces', 'Franz Kafka', 'Josef K. zostaje aresztowany, ale nie wie, za co.', 'Powieść o absurdzie biurokracji i poczuciu winy w świecie bez wyjaśnień.', 'absurd, egzystencjalna, klasyka'),
+(12, './biblioteka/WT.jpg', 'Wojna i pokój', 'Lew Tołstoj', 'Epopeja historyczna o wojnach napoleońskich i losach rosyjskiej arystokracji.', 'Jedna z najważniejszych powieści wszech czasów, łącząca fikcję z historią.', 'historyczna, epicka, klasyka'),
+(13, './biblioteka/HG.jpg', 'Igrzyska śmierci', 'Suzanne Collins', 'Katniss Everdeen bierze udział w brutalnej grze o przetrwanie.', 'Dystopijna powieść o totalitarnym państwie zmuszającym młodych ludzi do walki na śmierć i życie.', 'dystopia, młodzieżowa, akcja'),
+(14, './biblioteka/DC.jpg', 'Don Kichot', 'Miguel de Cervantes', 'Szlachcic z La Manchy postanawia zostać wędrownym rycerzem.', 'Satyrystyczna powieść o iluzji, marzeniach i starciu z rzeczywistością.', 'satyrystyczna, przygodowa, klasyka'),
+(15, './biblioteka/RJ.jpg', 'Romeo i Julia', 'William Shakespeare', 'Tragiczna miłość dwojga młodych kochanków z wrogich rodów.', 'Jedna z najsłynniejszych tragedii o miłości, nienawiści i przeznaczeniu.', 'tragedia, romans, dramat');
 
 -- --------------------------------------------------------
 
@@ -219,7 +220,9 @@ INSERT INTO `messages` (`id`, `sender_id`, `recipient_id`, `message_body`, `date
 (5, 57, 43, 'co gówno', '2025-04-02 19:59:25', NULL, 'ej'),
 (6, 43, 57, 'nigger', '2025-04-02 20:01:25', NULL, 'ej '),
 (7, 43, 82, 'no', '2025-04-02 21:28:01', NULL, 'ej'),
-(8, 43, 74, 'wiem', '2025-04-02 21:28:21', NULL, 'wiesz co ?');
+(8, 43, 74, 'wiem', '2025-04-02 21:28:21', NULL, 'wiesz co ?'),
+(9, 86, 87, 'kjcsbajkbfs', '2025-04-09 14:43:21', NULL, 'mjbxzcjhdf'),
+(10, 87, 86, 'zfgsyyasbhds hygdfa', '2025-04-09 14:44:17', NULL, 'kij ci w oko');
 
 -- --------------------------------------------------------
 
@@ -247,7 +250,8 @@ INSERT INTO `pending_users` (`id`, `username`, `email`, `password`, `role`, `sta
 (3, 'bibliotekarzrz', 'bibliotekarzrz@gmail.com', '$2y$10$SX7OevMQSv0h8GB0vKhkWuyEVq785lmN.Ss7QH232hnwE1I3OAqmK', 1, 'rejected', '#4e0740', '2025-02-16 16:24:54'),
 (10, 'przykład44', 'przykład444@gmail.com', '$2y$10$RcsV5LqsWNFfThrjhAaxD.eYBRf7BC/lLDNbt4iHzXgaGRHvoohTi', 1, 'pending', '#4a44dc', '2025-02-18 16:32:32'),
 (11, 'przykład55', 'przyukąłsd', '$2y$10$b0tta7c.VK3FSqUS6LQi6.8KzsSfOc3PbC.Ll0.r21hNie/dlPQma', 1, 'pending', '#4fc82b', '2025-02-18 16:51:17'),
-(12, 'przykład66', 'wfwa', '$2y$10$iV7yTJ.fVkc.ytOE04E8TeWVcXtGQ9C6xTJO9oD8eV82c9XfOGop.', 1, 'pending', '#6b51d4', '2025-02-18 16:51:31');
+(12, 'przykład66', 'wfwa', '$2y$10$iV7yTJ.fVkc.ytOE04E8TeWVcXtGQ9C6xTJO9oD8eV82c9XfOGop.', 1, 'pending', '#6b51d4', '2025-02-18 16:51:31'),
+(13, 'lol', 'lol@gmail.com', '$2y$10$3QsrpaPZ9WBW3T7v3KRIv.YNj0LZ1VZFVgxdDrHy45Js1ZuY5suXm', 1, 'pending', '#3fdba3', '2025-04-10 03:23:56');
 
 -- --------------------------------------------------------
 
@@ -271,10 +275,9 @@ CREATE TABLE `rere` (
 --
 
 INSERT INTO `rere` (`id`, `zdjecie`, `tytul`, `data`, `opis`, `likes`, `hearts`, `claps`) VALUES
-(1, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 0, 0),
-(2, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0),
-(3, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 0, 0),
-(4, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 0, 0, 0);
+(1, './eventy/gielda_ksiazek.jpg', 'Spotkanie autorskie', '2025-04-10', 'Spotkanie z autorem bestsellerów.', 0, 3, 0),
+(2, './eventy/spotkanie_autorskie.jpg', 'Warsztaty literackie', '2025-05-15', 'Praktyczne warsztaty dla młodych pisarzy.', 2, 1, 1),
+(14, './eventy/warsztaty_dzieci.jpg', 'dziwne u mnie działa', '2025-04-18', '1000-lecie 1 króla', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -324,7 +327,9 @@ INSERT INTO `users` (`id`, `email`, `username`, `password`, `message_color`, `ro
 (82, '1212@gmail.com', '121234', '$2y$10$3hm1.TOlw0eficFhybBRjeqxBr5O6/jHfiqTGwSsGdhN0ydV10I2a', '#a46e37', 1, '2025-02-17 18:54:20', 'c90e6945a097553cb4e5e1788266a0fe.jpg'),
 (83, 'przykład333@gmial.com', 'przykład33', '$2y$10$pcXjsvYAjbwnhWKtzk1dMOC3OiL5Obb1MMpYarACiGoi5X3nBZAUm', '#000000', 1, '2025-02-18 16:48:06', 'default.jpg'),
 (84, 'niger111@gmail.com', 'czarny', '$2y$10$EOdB.g7B7vgNy2xTvYtWxuN8IpfxX55ocCzmf/JoSLC.enkbRcSaa', '#000000', 1, '2025-02-18 16:49:05', 'default.jpg'),
-(85, 'przyklad222@gmail.com', 'przykład22', '$2y$10$7XRQGVPZTQf2XKtVE2.JWOIka8kAtAY40paOsIeW9sU8VBQfVkSve', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg');
+(85, 'przyklad222@gmail.com', 'przykład22', '$2y$10$7XRQGVPZTQf2XKtVE2.JWOIka8kAtAY40paOsIeW9sU8VBQfVkSve', '#000000', 1, '2025-02-18 16:51:37', 'default.jpg'),
+(86, 'lolek@gmail.com', 'lolek', '$2y$10$SyzM1bhCj9ENNk3sHTYK5uC6hyYv5658xTDjxRQP2D5W9cepPzCUa', '#434c9b', 0, '2025-04-08 12:42:28', 'default.jpg'),
+(87, 'xd@gmail.com', 'xd', '$2y$10$62BVZA6Qj7khm4dPki8ZU.P0neo2JpEvnAOElE5BhI.wYuyJaCn0e', '#bdd2d3', 0, '2025-04-08 13:39:38', '0d2431c80a1b31454859a0ffe3a56743.jpg');
 
 -- --------------------------------------------------------
 
@@ -378,34 +383,39 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_date`, `login_time`, `lo
 (48, 43, '2025-04-02', '2025-04-02 18:56:42', 6, 'Login'),
 (49, 57, '2025-04-02', '2025-04-02 19:55:25', 3, 'Login'),
 (50, 74, '2025-04-02', '2025-04-02 21:28:55', 1, 'Login'),
-(51, 74, '2025-04-03', '2025-04-02 22:09:43', 2, 'Login'),
-(52, 74, '2025-04-09', '2025-04-09 14:30:28', 1, 'Login');
+(51, 43, '2025-04-03', '2025-04-03 06:11:38', 1, 'Login'),
+(52, 74, '2025-04-03', '2025-04-03 06:12:46', 2, 'Login'),
+(53, 86, '2025-04-08', '2025-04-08 12:42:39', 1, 'Login'),
+(54, 87, '2025-04-08', '2025-04-08 13:39:59', 1, 'Login'),
+(55, 86, '2025-04-09', '2025-04-09 14:32:59', 2, 'Login'),
+(56, 87, '2025-04-09', '2025-04-09 14:43:45', 1, 'Login'),
+(57, 86, '2025-04-19', '2025-04-19 12:13:54', 1, 'Login'),
+(58, 86, '2025-04-20', '2025-04-20 18:35:22', 1, 'Login'),
+(59, 86, '2025-04-22', '2025-04-22 08:30:25', 1, 'Login');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `wydarzenia`
+-- Struktura tabeli dla tabeli `user_reactions`
 --
 
-CREATE TABLE `wydarzenia` (
+CREATE TABLE `user_reactions` (
   `id` int(11) NOT NULL,
-  `tytul` varchar(255) NOT NULL,
-  `opis` text NOT NULL,
-  `data` date NOT NULL,
-  `zdjecie` varchar(255) NOT NULL,
-  `reakcje` text DEFAULT '{}'
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `reaction` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `wydarzenia`
+-- Dumping data for table `user_reactions`
 --
 
-INSERT INTO `wydarzenia` (`id`, `tytul`, `opis`, `data`, `zdjecie`, `reakcje`) VALUES
-(1, 'Spotkanie autorskie', 'Zapraszamy na spotkanie z popularnym autorem, który opowie o swojej najnowszej książce.', '2024-04-10', './eventy/spotkanie_autorskie.jpg', '{}'),
-(2, 'Warsztaty dla dzieci', 'Zabawa i nauka w jednym! Zapraszamy wszystkie dzieci na kreatywne warsztaty.', '2024-04-15', './eventy/warsztaty_dzieci.jpg', '{}'),
-(3, 'Klub czytelnika', 'Dyskusja na temat klasycznych dzieł literatury. Dołącz do naszej społeczności miłośników książek!', '2024-04-20', './eventy/klub_czytelnika.jpg', '{}'),
-(4, 'Wieczór poezji', 'Romantyczna atmosfera i piękne wiersze czytane przez aktorów.', '2024-04-25', './eventy/wieczor_poezji.jpg', '{}'),
-(5, 'Giełda książek', 'Masz książki, których już nie czytasz? Wymień je na inne w naszej bibliotece!', '2024-04-30', './eventy/gielda_ksiazek.jpg', '{}');
+INSERT INTO `user_reactions` (`id`, `user_id`, `event_id`, `reaction`) VALUES
+(25, 87, 2, '👏'),
+(26, 87, 14, '❤️'),
+(27, 86, 2, '👍'),
+(28, 86, 14, '👍'),
+(29, 86, 1, '❤️');
 
 -- --------------------------------------------------------
 
@@ -425,6 +435,7 @@ CREATE TABLE `wypozyczenia` (
 --
 
 INSERT INTO `wypozyczenia` (`id`, `user_id`, `biblioteczka_id`, `data_wypozyczenia`) VALUES
+(0, 86, 2, '2025-04-19 14:22:31'),
 (6, 74, 1, '2025-04-10 00:17:07'),
 (11, 74, 11, '2025-04-10 00:26:25');
 
@@ -494,10 +505,12 @@ ALTER TABLE `user_activity`
   ADD UNIQUE KEY `user_id` (`user_id`,`activity_date`);
 
 --
--- Indeksy dla tabeli `wydarzenia`
+-- Indeksy dla tabeli `user_reactions`
 --
-ALTER TABLE `wydarzenia`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `user_reactions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_reaction` (`user_id`,`event_id`),
+  ADD KEY `event_id` (`event_id`);
 
 --
 -- Indeksy dla tabeli `wypozyczenia`
@@ -538,43 +551,37 @@ ALTER TABLE `dane_ksiazek`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pending_users`
 --
 ALTER TABLE `pending_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `rere`
 --
 ALTER TABLE `rere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- AUTO_INCREMENT for table `wydarzenia`
+-- AUTO_INCREMENT for table `user_reactions`
 --
-ALTER TABLE `wydarzenia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `wypozyczenia`
---
-ALTER TABLE `wypozyczenia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `user_reactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
@@ -595,10 +602,11 @@ ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `wypozyczenia`
+-- Constraints for table `user_reactions`
 --
-ALTER TABLE `wypozyczenia`
-  ADD CONSTRAINT `wypozyczenia_ibfk_1` FOREIGN KEY (`biblioteczka_id`) REFERENCES `biblioteczka` (`id`);
+ALTER TABLE `user_reactions`
+  ADD CONSTRAINT `user_reactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `user_reactions_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `rere` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

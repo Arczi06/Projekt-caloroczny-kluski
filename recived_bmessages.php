@@ -42,6 +42,7 @@ $result_received = $stmt->get_result();
         </aside>
 
         <div class="message-area">
+        <a href="dashboard.php" class="powrut-link">Powrót</a>
             <h3>Odebrane wiadomości</h3>
             <table>
                 <tr>

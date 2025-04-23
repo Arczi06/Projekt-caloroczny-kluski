@@ -13,15 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
         profileContainer.classList.add("fadeIn");
     }, 100);
 
-    // Usuwamy manipulację tłem i dodajemy preventDefault, aby sprawdzić, czy to pomoże
-    const backButton = document.querySelector('.btn-back');
-    backButton.addEventListener('click', (event) => {
-        // Zapobiegamy domyślnym akcjom
-        event.preventDefault();
-        // Możesz później dodać inne akcje, jeśli chcesz
-        // document.body.style.backgroundColor = '#34495e'; // Można to przywrócić później, jeśli konieczne
-    });
-
     const fetchActivityData = async () => {
         try {
             const response = await fetch('get_activity.php');
