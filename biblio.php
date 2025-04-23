@@ -15,6 +15,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($user = $result->fetch_assoc()) {
+    $username = $user['username'];
     $profile_image = (!empty($user['profile_image']) && file_exists('ni/' . $user['profile_image']))
         ? 'ni/' . $user['profile_image']
         : 'default_avatar.png';
@@ -46,36 +47,69 @@ $conn->close();
 </head>
 <body>
     <div class="dashboard-container">
-        <?php include 'biblio_sidebar.php'; ?>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">Biblioteka</div>
+            <div class="sidebar-nav">
+                <a href="biblio.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio.php' ? 'active' : '' ?>">Dashboard</a>
+                <a href="biblio_users.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_users.php' ? 'active' : '' ?>">Użytkownicy</a>
+                <a href="biblio_books.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_books.php' ? 'active' : '' ?>">Książki</a>
+                <a href="./olekjan/do/zarzadzanie_ksiazkami.php" class="<?= basename($_SERVER['PHP_SELF']) == './olekjan/do/zarzadzanie_ksiazkami.php' ? 'active' : '' ?>">Zarządzanie książkami</a>
+                <a href="./olekjan/do/zarzadzanie_wydarzeniami.php" class="<?= basename($_SERVER['PHP_SELF']) == './olekjan/do/zarzadzanie_wydarzeniami.php' ? 'active' : '' ?>">Zarządzanie wydarzeniami</a>
+                <a href="recived_bmessages.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_mess.php' ? 'active' : '' ?>">Wiadomości</a>
+                <a href="logout.php" id="Logout">Wyloguj</a>
+            </div>
+        </div>
 
-        <main class="dashboard-content">
-            <header class="dashboard-header">
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <div class="hamburger" onclick="toggleSidebar()">☰</div>
                 <div class="user-info">
-                    <img src="<?= $profile_image; ?>" alt="Profilowe" class="user-avatar">
-                    <span class="user-name">Witaj, <?= htmlspecialchars($user['username']); ?>!</span>
+                    <img src="<?= htmlspecialchars($profile_image) ?>" alt="Avatar" class="user-avatar">
+                    <span class="user-name"><?= htmlspecialchars($username) ?></span>
                 </div>
-            </header>
+            </div>
 
-            <section class="dashboard-section">
-                <h2>Statystyki</h2>
-                <div class="stats">
-                    <div class="card">
-                        <i class="fas fa-users"></i>
-                        <h3>Użytkownicy</h3>
-                        <p><?= $users_count; ?></p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-book"></i>
-                        <h3>Wypożyczone Książki</h3>
-                        <p><?= $books_count; ?></p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-book"></i>
-                        <a href="event.php">UTWÓRZ EVENT!</a>
-                    </div>
+            <div class="dashboard-section stats">
+                <div class="card">
+                    <h3>Użytkownicy</h3>
+                    <p><?= $users_count ?></p>
                 </div>
-            </section>
-        </main>
+                <div class="card">
+                    <h3>Wypożyczenia</h3>
+                    <p><?= $books_count ?></p>
+                </div>
+                <div class="card">
+                    <h3>Nowe książki</h3>
+                    <p>+12</p>
+                </div>
+                <div class="card">
+                    <h3>Do zwrotu</h3>
+                    <p>5</p>
+                </div>
+            </div>
+
+            <!-- Można tu dodać więcej sekcji jak tabele itd. -->
+        </div>
     </div>
+
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Zamykaj sidebar po kliknięciu poza nim
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const hamburger = document.querySelector('.hamburger');
+
+    // Jeśli kliknięto poza sidebar i poza hamburger, zamknij
+    if (sidebar.classList.contains('open') &&
+        !sidebar.contains(event.target) &&
+        !hamburger.contains(event.target)) {
+        sidebar.classList.remove('open');
+    }
+});
+</script>
+
 </body>
 </html>

@@ -1,8 +1,7 @@
-/* Ogólny styl dla całej strony */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f3f4;
-    color: #2c3e50;
+    font-family: 'Merriweather', serif;
+    background-color: #f5f1e3;
+    color: #3e2723;
     margin: 0;
     padding: 0;
 }
@@ -12,11 +11,10 @@ body {
     padding: 20px;
 }
 
-/* Sidebar */
 .users-sidebar {
     width: 20%;
-    background-color: #ecf0f1;
-    color: #2c3e50;
+    background-color: #efebe9;
+    color: #3e2723;
     padding: 15px;
     margin-right: 20px;
     border-radius: 8px;
@@ -34,19 +32,20 @@ body {
 
 .sidebar-link {
     text-decoration: none;
-    color: #2c3e50;
+    color: #f5f1e3;
     padding: 10px;
     margin: 5px 0;
-    background-color: #3498db;
-    border-radius: 4px;
+    background-color: #6d4c41;
+    border-radius: 6px;
     text-align: center;
+    font-weight: bold;
+    transition: background 0.3s;
 }
 
 .sidebar-link:hover {
-    background-color: #2980b9;
+    background-color: #5d4037;
 }
 
-/* Główna sekcja wiadomości */
 .message-area {
     flex: 1;
     background-color: white;
@@ -56,9 +55,9 @@ body {
 
 h3 {
     margin-bottom: 20px;
+    color: #5d4037;
 }
 
-/* Tabela wiadomości */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -66,7 +65,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #d7ccc8;
 }
 
 th, td {
@@ -75,14 +74,14 @@ th, td {
 }
 
 th {
-    background-color: #3498db;
+    background-color: #5d4037;
+    color: #f5f1e3;
 }
 
 tr:nth-child(even) {
-    background-color: #ecf0f1;
+    background-color: #f1e9e1;
 }
 
-/* Formularz wysyłania wiadomości */
 form {
     display: flex;
     flex-direction: column;
@@ -90,33 +89,35 @@ form {
 
 form label {
     margin-bottom: 5px;
+    color: #5d4037;
 }
 
 form select, form textarea {
     margin-bottom: 15px;
     padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    border-radius: 6px;
+    border: 1px solid #d7ccc8;
+    background-color: #fff;
 }
 
 form button {
     padding: 10px;
-    background-color: #3498db;
-    color: white;
+    background-color: #6d4c41;
+    color: #f5f1e3;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 form button:hover {
-    background-color: #2980b9;
+    background-color: #5d4037;
 }
 
-/* Styl dla powiadomienia użytkownika */
 .user-info {
     display: flex;
     align-items: center;
-    background-color: #f4f4f4;
+    background-color: #f0eae5;
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -127,28 +128,30 @@ form button:hover {
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
+    border: 2px solid #a1887f;
 }
 
 .greeting-message {
     font-size: 18px;
     margin-right: 20px;
+    color: #5d4037;
 }
 
 .back-button {
     padding: 8px 16px;
-    background-color: #3498db;
-    color: white;
+    background-color: #6d4c41;
+    color: #f5f1e3;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     text-decoration: none;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .back-button:hover {
-    background-color: #2980b9;
+    background-color: #5d4037;
 }
 
-/* --- POP-UP --- */
 .popup {
     display: none;
     position: fixed;
@@ -173,25 +176,23 @@ form button:hover {
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Zamknięcie pop-upu */
 .close-btn {
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 28px;
     cursor: pointer;
-    color: #3498db;
+    color: #5d4037;
 }
 
 .close-btn:hover {
-    color: red;
+    color: #e74c3c;
 }
 
-/* --- KAFELKI UŻYTKOWNIKÓW --- */
 .user-groups h3 {
     margin-top: 15px;
     font-size: 18px;
-    color: #2c3e50;
+    color: #5d4037;
     text-align: left;
     padding-left: 10px;
 }
@@ -207,7 +208,7 @@ form button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f8f8f8;
+    background: #f5f1e3;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -217,7 +218,7 @@ form button:hover {
 
 .user-tile:hover {
     transform: scale(1.05);
-    background: #e0e0e0;
+    background: #e0dcd3;
 }
 
 .user-tile img {
@@ -225,16 +226,16 @@ form button:hover {
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #3498db;
+    border: 2px solid #6d4c41;
     margin-bottom: 8px;
 }
 
 .user-tile span {
     font-size: 14px;
-    color: #3498db;
+    color: #6d4c41;
+    font-weight: bold;
 }
 
-/* --- ANIMACJA --- */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }

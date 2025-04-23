@@ -38,10 +38,23 @@ $books_result = $conn->query($books_sql);
 </head>
 <body>
     <div class="dashboard-container">
-        <?php include 'biblio_sidebar.php'; ?>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">Biblioteka</div>
+            <div class="sidebar-nav">
+                <a href="biblio.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio.php' ? 'active' : '' ?>">Dashboard</a>
+                <a href="biblio_users.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_users.php' ? 'active' : '' ?>">Użytkownicy</a>
+                <a href="biblio_books.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_books.php' ? 'active' : '' ?>">Książki</a>
+                <a href="./olekjan/do/zarzadzanie_ksiazkami.php" class="<?= basename($_SERVER['PHP_SELF']) == './olekjan/do/zarzadzanie_ksiazkami.php' ? 'active' : '' ?>">Zarządzanie książkami</a>
+                <a href="./olekjan/do/zarzadzanie_wydarzeniami.php" class="<?= basename($_SERVER['PHP_SELF']) == './olekjan/do/zarzadzanie_wydarzeniami.php' ? 'active' : '' ?>">Zarządzanie wydarzeniami</a>
+                <a href="recived_bmessages.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_mess.php' ? 'active' : '' ?>">Wiadomości</a>
+                <a href="logout.php" id="Logout">Wyloguj</a>
+            </div>
+        </div>
+        
 
         <main class="dashboard-content">
             <header class="dashboard-header">
+            <div class="hamburger" onclick="toggleSidebar()">☰</div>
                 <div class="user-info">
                     <img src="<?php echo $profile_image_path; ?>" alt="Profile Image" class="user-avatar">
                     <span class="user-name">Witaj, <?php echo htmlspecialchars($username); ?>!</span>
@@ -57,9 +70,9 @@ $books_result = $conn->query($books_sql);
                             <th>Tytuł</th>
                             <th>Autor</th>
                             <th>Rok</th>
-                            <th>Wypożyczone przez</th>
-                            <th>Data wypożyczenia</th>
-                            <th>Termin zwrotu</th>
+                            <th><p>Wypożyczone <p>przez</th>
+                            <th><p>Data <p>wypożyczenia</th>
+                            <th><p>Termin <p>zwrotu</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -105,4 +118,22 @@ $books_result = $conn->query($books_sql);
         </main>
     </div>
 </body>
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Zamykaj sidebar po kliknięciu poza nim
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const hamburger = document.querySelector('.hamburger');
+
+    // Jeśli kliknięto poza sidebar i poza hamburger, zamknij
+    if (sidebar.classList.contains('open') &&
+        !sidebar.contains(event.target) &&
+        !hamburger.contains(event.target)) {
+        sidebar.classList.remove('open');
+    }
+});
+</script>
 </html>

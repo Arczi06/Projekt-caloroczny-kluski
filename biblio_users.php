@@ -47,10 +47,22 @@ function getRoleDetails($role) {
 </head>
 <body>
     <div class="dashboard-container">
-        <?php include 'biblio_sidebar.php'; ?>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">Biblioteka</div>
+            <div class="sidebar-nav">
+                <a href="biblio.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio.php' ? 'active' : '' ?>">Dashboard</a>
+                <a href="biblio_users.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_users.php' ? 'active' : '' ?>">Użytkownicy</a>
+                <a href="biblio_books.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_books.php' ? 'active' : '' ?>">Książki</a>
+                <a href="./olekjan/do/zarzadzanie_ksiazkami.php" class="<?= basename($_SERVER['PHP_SELF']) == './olekjan/do/zarzadzanie_ksiazkami.php' ? 'active' : '' ?>">Zarządzanie książkami</a>
+                <a href="./olekjan/do/zarzadzanie_wydarzeniami.php" class="<?= basename($_SERVER['PHP_SELF']) == './olekjan/do/zarzadzanie_wydarzeniami.php' ? 'active' : '' ?>">Zarządzanie wydarzeniami</a>
+                <a href="recived_bmessages.php" class="<?= basename($_SERVER['PHP_SELF']) == 'biblio_mess.php' ? 'active' : '' ?>">Wiadomości</a>
+                <a href="logout.php" id="Logout">Wyloguj</a>
+            </div>
+        </div>
 
         <main class="dashboard-content">
             <header class="dashboard-header">
+            <div class="hamburger" onclick="toggleSidebar()">☰</div>
                 <div class="user-info">
                     <img src="<?php echo $profile_image_path; ?>" alt="Profile Image" class="user-avatar">
                     <span class="user-name">Witaj, <?php echo htmlspecialchars($username); ?>!</span>
@@ -60,31 +72,51 @@ function getRoleDetails($role) {
             <section class="dashboard-section">
                 <h2>Lista użytkowników</h2>
                 <div class="table-container">
-                    <table class="users-table">
-                        <thead>
-                            <tr>
-                                <th class="sortable" data-column="name">Nazwa</th>
-                                <th class="sortable" data-column="email">E-mail</th>
-                                <th class="sortable" data-column="role">Rola</th>
-                                <th>Profil</th> <!-- Bez sortowania -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while ($row = $users_result->fetch_assoc()) : 
-                                list($roleName, $roleClass, $roleIcon) = getRoleDetails($row['role']);
-                            ?>
+                    <div class="table-scroll-wrapper">
+                        <table class="users-table">
+                            <thead>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($row['username']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['email']); ?></td>
-                                    <td><span class="role <?php echo $roleClass; ?>"><i class="<?php echo $roleIcon; ?>"></i> <?php echo $roleName; ?></span></td>
-                                    <td><a href="biblio_profile.php?id=<?php echo $row['id']; ?>" class="profile-link">Zobacz profil</a></td>
+                                    <th class="sortable" data-column="name">Nazwa</th>
+                                    <th class="sortable" data-column="email">E-mail</th>
+                                    <th class="sortable" data-column="role">Rola</th>
+                                    <th>Profil</th> <!-- Bez sortowania -->
                                 </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = $users_result->fetch_assoc()) : 
+                                    list($roleName, $roleClass, $roleIcon) = getRoleDetails($row['role']);
+                                ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($row['username']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+                                        <td><span class="role <?php echo $roleClass; ?>"><i class="<?php echo $roleIcon; ?>"></i> <?php echo $roleName; ?></span></td>
+                                        <td><a href="biblio_profile.php?id=<?php echo $row['id']; ?>" class="profile-link">Zobacz profil</a></td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
 </body>
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Zamykaj sidebar po kliknięciu poza nim
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const hamburger = document.querySelector('.hamburger');
+
+    // Jeśli kliknięto poza sidebar i poza hamburger, zamknij
+    if (sidebar.classList.contains('open') &&
+        !sidebar.contains(event.target) &&
+        !hamburger.contains(event.target)) {
+        sidebar.classList.remove('open');
+    }
+});
+</script>
 </html>
