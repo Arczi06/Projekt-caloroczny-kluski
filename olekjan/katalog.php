@@ -122,28 +122,31 @@ function showNotification(message, success = true) {
 }
 
 function wypozyczKsiegi(biblioteczka_id) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "wypozycz_ksiazke.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    const responseText = xhr.responseText;
-                    console.log("Odpowiedź z serwera:", responseText);
-                    if (responseText.includes("Książka została wypożyczona.")) {
-                        showNotification("Książka została wypożyczona!", true);
-                    } else if (responseText.includes("Osiągnąłeś maksymalny limit wypożyczeń")) {
-                        showNotification(responseText, false);
-                    } else {
-                        showNotification(responseText, false);
-                    }
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "wypozycz_ksiazke.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                const responseText = xhr.responseText;
+                console.log("Odpowiedź z serwera:", responseText);
+
+                if (responseText.includes("Książka została wypożyczona.")) {
+                    showNotification("Książka została wypożyczona!", true);
+                } else if (responseText.includes("Osiągnąłeś maksymalny limit wypożyczeń")) {
+                    showNotification(responseText, false);
+                } else if (responseText.includes("Ta książka jest już wypożyczona")) {
+                    showNotification("Ta książka jest już wypożyczona. Spróbuj później.", false);
                 } else {
-                    console.error("Wystąpił błąd podczas komunikacji z serwerem:", xhr.status);
-                    showNotification("Wystąpił błąd połączenia!", false);
+                    showNotification("Nieoczekiwany komunikat: " + responseText, false);
                 }
+            } else {
+                console.error("Wystąpił błąd podczas komunikacji z serwerem:", xhr.status);
+                showNotification("Wystąpił błąd połączenia!", false);
             }
-        };
-        xhr.send("biblioteczka_id=" + biblioteczka_id);
+        }
+    };
+    xhr.send("biblioteczka_id=" + biblioteczka_id);
 }
 
     document.addEventListener("DOMContentLoaded", function () {
