@@ -44,21 +44,40 @@ $result_sent = $stmt->get_result();
         </aside>
 
         <div class="message-area">
+        <a href="dashboard.php" class="powrut-link">Powrót</a>
             <h3>Wysłane wiadomości</h3>
             <table>
                 <tr>
                     <th>Do</th>
                     <th>Temat</th>
                     <th>Data wysłania</th>
+                    <th>Wyświetl Wiadomość</th>
+                    <th>Usuń Wiadomość</th>
                 </tr>
                 <?php while ($row = $result_sent->fetch_assoc()): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['username']); ?></td>
-                        <td><a href="view_message.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['subject']); ?></a></td>
-                        <td><?php echo $row['date_sent']; ?></td>
+                        <td><?php echo htmlspecialchars($row['subject']); ?></td>
+                        <td><?php echo htmlspecialchars($row['date_sent']); ?></td>
+                        <td>
+                            <form action="view_message.php" method="get">
+                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                <button type="submit" class="view-btn" title="Wyświetl wiadomość">
+                                    🔍
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="delete_message.php" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć tę wiadomość?');">
+                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                <button type="submit" class="delete-btn" title="Usuń wiadomość">🗑️</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             </table>
+
+
         </div>
     </div>
 </body>

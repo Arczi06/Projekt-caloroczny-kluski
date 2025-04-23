@@ -75,15 +75,12 @@ $return_page = ($user_id === $sender_id) ? "sent_bmessages.php" : "recived_bmess
         </aside>
 
         <div class="message-area">
+        <a href="<?php echo $return_page; ?>" class="back-button">Powrót</a>
             <h3>Wiadomość <?php echo ($user_id === $sender_id) ? "do: $recipient_username" : "od: $sender_username"; ?></h3>
             <p><strong>Temat:</strong> <?php echo htmlspecialchars($subject); ?></p>
             <p><strong>Data wysłania:</strong> <?php echo htmlspecialchars($date_sent); ?></p>
             <p><strong>Treść:</strong></p>
             <p><?php echo nl2br(htmlspecialchars($message_body)); ?></p>
-        </div>
-
-        <div class="back-button-container">
-            <a href="<?php echo $return_page; ?>" class="back-button">Powrót</a>
         </div>
     </div>
 </body>
