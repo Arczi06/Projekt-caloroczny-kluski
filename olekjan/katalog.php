@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Flip Project</title>
+    <title>Twoja Biblioteka</title>
     <link rel="stylesheet" href="user.css"> 
 </head>
 <body class='katalog'>
@@ -17,7 +17,7 @@
         <button class="menu-button">☰</button>
         <nav class="menu-content">
             <ul>
-                <li><a href="core.html">Strona Główna</a></li>
+                <li><a href="../dashboard.php">Dashboard</a></li>
                 <li><a href="katalog.php">Katalog Książek</a></li>
                 <li><a href="#">Lektury Obowiązkowe</a>
                     <ul class="submenu">
@@ -32,6 +32,7 @@
             </ul>
         </nav>
     </div>
+        <div id="notifications" class="notifications"></div>
     <main class="katalog">
         <?php
         $servername = "localhost";
@@ -46,7 +47,7 @@
         }
 
         $search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
-        $sql = "SELECT * FROM biblioteczka WHERE tytuł LIKE '%$search%' OR autor LIKE '%$search%'";
+        $sql = "SELECT * FROM biblioteczka WHERE tytuł LIKE '%$search%' OR autor LIKE '%$search%' OR tematyka LIKE '%$search'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -69,6 +70,10 @@
                         data-description="' . htmlspecialchars($row["streszczenie"]) . '">
                         Odkryj Więcej
                       </button>';
+                      
+                // Dodanie przycisku do wypożyczenia
+                echo '<button class="card-button" onclick="wypozyczKsiegi(' . $row["id"] . ')">Wypożycz</button>';
+                
                 echo '</div>';
                 echo '</div>';
 
@@ -85,13 +90,57 @@
 
     <div id="popup-box" class="popup">
         <div class="popup-content">
-            <span class="close-popup">&times;</span>
+            <span class="close-popup">×</span>
             <h2 id="popup-title"></h2>
             <p id="popup-description"></p>
         </div>
     </div>
 
     <script>
+function showNotification(message, success = true) {
+    const notificationsContainer = document.getElementById("notifications");
+    const notification = document.createElement("div");
+    notification.className = "notification" + (success ? "" : " error");
+    notification.innerText = message;
+
+    notificationsContainer.appendChild(notification);
+    notification.classList.add("show");
+
+    setTimeout(() => {
+        notification.classList.remove("show");
+        notification.classList.add("hide");
+
+        setTimeout(() => {
+            notificationsContainer.removeChild(notification);
+        }, 500);
+    }, 3000);
+}
+
+function wypozyczKsiegi(biblioteczka_id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "wypozycz_ksiazke.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const responseText = xhr.responseText;
+                    console.log("Odpowiedź z serwera:", responseText);
+                    if (responseText.includes("Książka została wypożyczona.")) {
+                        showNotification("Książka została wypożyczona!", true);
+                    } else if (responseText.includes("Osiągnąłeś maksymalny limit wypożyczeń")) {
+                        showNotification(responseText, false);
+                    } else {
+                        showNotification(responseText, false);
+                    }
+                } else {
+                    console.error("Wystąpił błąd podczas komunikacji z serwerem:", xhr.status);
+                    showNotification("Wystąpił błąd połączenia!", false);
+                }
+            }
+        };
+        xhr.send("biblioteczka_id=" + biblioteczka_id);
+}
+
     document.addEventListener("DOMContentLoaded", function () {
         const popup = document.getElementById("popup-box");
         const popupTitle = document.getElementById("popup-title");

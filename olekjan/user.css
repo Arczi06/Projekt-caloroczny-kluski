@@ -6,11 +6,20 @@
 }
 
 body {
-    background: url("./ikony/bgc2.jpg") no-repeat;
+    background: url('../library-texture.jpg') no-repeat center center fixed;
     background-color: #3e2723;
     background-size: cover;
-    background-attachment: fixed;
-    color: #f1e0c6;
+    position: relative;
+    min-height: 100vh;
+    color: #f8e5c0;}
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 30, 20, 0.7); /* Ciemniejsze przyciemnienie */
+    background-size: auto;
+    backdrop-filter: blur(3px);
+    z-index: -1;
 }
 header {
     display: flex;
@@ -51,58 +60,97 @@ header > h1 {
 .menu-container {
     position: relative;
     display: inline-block;
+    width: 100%;
 }
- 
+
 .menu-button {
+    width: 100%;
+    border: 1px solid #b99160;
+    background: rgba(85, 65, 45, 0.3);
+    color: #f8e5c0;
     cursor: pointer;
     padding: 10px;
     font-size: 20px;
 }
- 
+
 .menu-content {
-    display: none; /* domyślnie ukryte */
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 250px; /* możesz dostosować szerokość */
-    background: rgba(255,255,255,0.15);
+    width: 100%;
+    background: rgba(85, 65, 45, 0.3);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.5);
-    box-shadow: 0 6px 6px rgba(0,0,0,0.5);
+    border: 1px solid #b99160;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     z-index: 1002;
+    text-align: center;
 }
- 
+
 .menu-content ul {
     list-style: none;
-    padding: 10px;
     margin: 0;
+    padding: 0;
 }
- 
+
 .menu-content ul li {
-    padding: 5px;
+    position: relative; /* Umożliwia prawidłowe pozycjonowanie submenu */
+    margin: auto;
+    padding: 15px;
 }
- 
+
 .menu-content ul li a {
-    color: #000; /* możesz dostosować kolor tekstu */
+    display: block;
+    color: #f8e5c0;
     text-decoration: none;
 }
- 
+
+/* Pokazuje menu po najechaniu na kontener */
 .menu-container:hover .menu-content {
-    display: block; /* pokazuje menu po najechaniu na kontener */
+    display: block;
 }
- 
+
+/* Submenu pojawia się pod elementem nadrzędnym */
 .submenu {
     display: none;
-    padding-left: 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(85, 65, 45, 0.9);
+    border-radius: 10px;
+    border: 1px solid #b99160;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1003;
+    padding: 5px 0;
+    min-width: 100%;
+    flex-direction: column;
 }
- 
+
 .menu-content ul li:hover .submenu {
-    display: block; /* submenu pojawia się po najechaniu na element nadrzędny */
+    display: flex;
 }
+
+.submenu > li {
+    padding: 5px 10px;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.submenu > li a {
+    color: #f8e5c0;
+    text-decoration: none;
+}
+
+.submenu > li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
 section > header > h4 {
     text-align: center;
 }
+
 /* ============== main core ================= */
 
 main.core {
@@ -113,8 +161,8 @@ main.core {
 .event-card {
     z-index: 0;
     margin-top: 5%;
-    background-color: #3e2723;
-    color: #fff;
+    background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
+    color: #f8ddaa;
     border-radius: 15px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -122,7 +170,7 @@ main.core {
     transform-style: preserve-3d;
     transition: transform 0.8s ease-in-out;
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 1px solid #e3c27b;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
                 -5px -5px 10px rgba(0, 0, 0, 0.05);
     border-radius: 15px;
@@ -137,7 +185,10 @@ main.core {
     background-position: center;
     height: 200px;
 }
+.event-content > h2 {
+    color: #e2c68d;
 
+}
 .event-content {
     padding: 20px;
 }
@@ -232,13 +283,11 @@ main.eventy {
     padding: 20px;
     top: 20%;
     width: 120%;
-    background-color: #3e2723;
-    color: #f1e0c6;
-    border: 1px solid #694a07;
+    background: rgba(85, 65, 45, 0.6); /* Ciemniejszy background */
+    color: #f8e5c0;
+    border: 1px solid #b99160;
 }
-.carousel-item > header {
-    background-color: #3e2723;
-}
+
 .carousel-item > header > h4 {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin: auto;
@@ -300,88 +349,155 @@ tr:hover {
 }
 
 /* ================katalog================ */
+/* Styl wyszukiwania */
 #szukaj {
+    background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
     display: flex;
     margin: 2px;
+    border: 1px solid #b99160;
 }
 
 #szukaj > input {
-    width:70%;
+    background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
+    width: 70%;
     height: auto;
     margin-left: 30%;
-    border: 1px solid black;
-    /* border-radius: 15%; */
-    
+    border: 1px solid #b99160;
+    color: #e2c68d;
+}
+
+#szukaj ::placeholder {
+    color: #e2c68d;
+}
+
+/* Kontener główny katalogu */
+main.katalog {
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+}
+
+.wrapper {
+    margin: auto;
+}
+
+/* Styl kart książek */
+
+
+#szukaj {
+    background: rgba(85, 65, 45, 0.3);
+    display: flex;
+    margin: 2px;
+    border: 1px solid #b99160;
+}
+
+#szukaj > input {
+    background: rgba(85, 65, 45, 0.3);
+    width: 70%;
+    height: auto;
+    margin-left: 30%;
+    border: 1px solid #b99160;
+    color: #e2c68d;
+}
+
+#szukaj ::placeholder {
+    color: #e2c68d;
 }
 
 main.katalog {
     margin-top: 3%;
     display: grid;
-    grid-template-columns: repeat(1, 1fr); 
+    grid-template-columns: repeat(2, 1fr); 
     gap: 20px; 
 }
+
 .wrapper {
     margin: auto;
-    /* margin: 30px; */
-    /* perspective: 3000px; */
 }
 
 .card {
-    width: 175px;
-    height: 245px;
+    width: 120px;
+    height: 180px;
     transform-style: preserve-3d;
     transition: transform 0.8s ease-in-out;
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 1px solid #b99160;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
                 -5px -5px 10px rgba(0, 0, 0, 0.05);
     border-radius: 15px;
+    position: relative;
 }
 
 .card:hover {
     transform: rotateY(180deg);
 }
 
-.front-page,
+.front-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
+    background-image: url('ścieżka/do/twojego/zdjęcia.jpg'); /* Twoje zdjęcie jako tło */
+    background-size: contain; /* Ustawienie zdjęcia, by było mniejsze */
+    background-repeat: no-repeat; /* Zapobiega powtarzaniu zdjęcia */
+    background-position: center; /* Wyśrodkowanie zdjęcia */
+    backdrop-filter: blur(6px); /* Efekt rozmycia tła */
+    border: 1px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Cień */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.front-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2); /* Przysłona z czarną przezroczystością */
+    border-radius: 15px;
+}
+
+.card:hover .front-page {
+    transform: scale(1.03);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+
+
 .back-page {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
-}
-
-.front-page {
-    background-size:contain;
-    background-repeat: no-repeat;
-}
-
-.card-info {
-    display: none;
-    position: absolute;
-    bottom: 50px;
-    color: #3c3a3a;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-
-.card-title {
-    font-weight: bold;
-}
-
-.card-subtitle {
-    margin-top: 5px;
-    color: #0fbcf9;
-}
-
-.back-page {
-    background-color: #3e2723;
-    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #e2c68d;
     display: flex;
     justify-content: center;
     align-items: center;
     transform: rotateY(180deg);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-info {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 10px;
+    color: #cacac9;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 .card-content {
@@ -390,22 +506,14 @@ main.katalog {
     max-width: 300px;
 }
 
-.card-content h5 {
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
 .card-description {
-    font-size: x-small;
-    color: #ccc;
-    /* margin-bottom: 20px; */
-    /* line-height: 1.6; */
+    color: #f8e5c0;
 }
 
 .card-button {
     margin-top: 5%;
-    background-color: #533530;
-    color: #fff;
+    background-color: #a67c52;
+    color: white;
     padding: 2% 5%;
     border: none;
     border-radius: 25px;
@@ -418,6 +526,7 @@ main.katalog {
     color: #f1e0c6;
     border: 1px solid #694a07;
 }
+
 .popup {
     display: none;
     margin: auto; 
@@ -448,12 +557,17 @@ main.katalog {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
-    color: #4e4e4e;
+    color: #cac2c2;
 }
 
 .close-popup:hover {
     color: red;
 }
+#popup-title {
+    color: white;
+}
+
+
 
 /* =========wydarzenia  =========================*/
 
@@ -464,14 +578,14 @@ main.katalog {
         grid-template-columns: repeat(2, 1fr);
     }
     main.katalog {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
     body{
         font-size:medium;
     }
     .card{
-        width: 200px;
-        height: 280px;
+        width: 160px;
+        height: 220px;
     }
     #szukaj{
         margin-right: 10px;
@@ -481,7 +595,7 @@ main.katalog {
         width:90%;
         height: auto;
         margin-left: 10%;
-        border: 1px solid black;
+        border: 1px solid #b99160;
         /* border-radius: 15%; */
         
     }
@@ -545,11 +659,8 @@ main.katalog {
         justify-content: space-evenly;
         line-height: 3vh;
         height: 8vh;
-        background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(10px);
         border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
         position: relative;
         z-index: 1000; 
     }
@@ -559,12 +670,13 @@ main.katalog {
         justify-content: space-evenly;
     }
     .submenu > li {
-        background: rgba(255, 255, 255);
+        background: rgba(85, 65, 45, 0.3); /* Ciemniejszy background */
         backdrop-filter: blur(10px);
         border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+        border: 1px solid #b99160;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
         position: relative;
+        margin: 10px;
     }
     main.eventy {
         grid-template-columns: repeat(3, 1fr);
@@ -592,11 +704,11 @@ main.katalog {
         margin-bottom: 10px;
     }
     main.katalog {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
     .card{
-        width: 300px;
-        height: 420px;
+        width: 180px;
+        height: 360px;
     }
 
 }
@@ -618,15 +730,15 @@ main.katalog {
         grid-template-columns: repeat(4, 1fr);
     }
     main.katalog {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
     }
     body{
         font-size: larger;
     }
 
     .card{
-        width: 400px;
-        height: 560px;
+        width: 220px;
+        height: 300px;
     }
     body{
         font-size: larger;
@@ -656,4 +768,43 @@ main.katalog {
         max-width: 1500px;
         margin: auto;
     }
+}
+
+.notifications {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 300px;
+}
+
+.notification {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: none; 
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.notification.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification.hide {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.notification.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.card-content h5,
+.card-content p {
+    font-size: clamp(0.4rem, 0.6rem, 2rem);
 }
